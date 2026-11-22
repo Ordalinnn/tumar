@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+.streamlit.log
+TASK.md
+docs/zashita.md
+docs/metrics_blind.md
+data/*.csv
+scripts/make_blind.py

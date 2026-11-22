@@ -1,0 +1,17 @@
+<style>*{margin:0;box-sizing:border-box}body{overflow:hidden;font-family:Bahnschrift,"Segoe UI",sans-serif;color:#e6ebf5}
+.h{position:relative;height:250px;border-radius:26px 26px 26px 6px;overflow:hidden;background:radial-gradient(900px 260px at 70% 118%,#b23a3a 0,#6d2a5c 38%,transparent 76%),linear-gradient(180deg,#0f1338,#1f1c5c)}
+canvas{position:absolute;inset:0;width:100%;height:100%}.t{position:absolute;left:44px;top:50px;font-size:118px;font-weight:700;font-stretch:75%;line-height:.8;letter-spacing:-3px}.p{position:absolute;left:48px;bottom:34px;font-size:22px}
+@media(max-width:620px){.t{font-size:72px;left:24px}.p{left:26px;font-size:17px}}</style>
+<div class="h"><canvas></canvas><div class="t">Тұмар</div><div class="p">Радар медленных мошеннических схем</div></div>
+<script>
+const c=document.querySelector("canvas"),g=c.getContext("2d"),calm=matchMedia("(prefers-reduced-motion:reduce)").matches;let W,H,q,s,P=[];
+const L=(a,b,x,y,n,k)=>Array.from({length:n},(_,i)=>[a+(x-a)*i/(n-1),b+(y-b)*i/(n-1),k]),D=(x,y,r,n,k)=>Array.from({length:n},(_,i)=>{const z=Math.sqrt((i+.5)/n)*r,t=i*2.4;return[x+Math.cos(t)*z,y+Math.sin(t)*z,k]});
+function build(){q=devicePixelRatio;W=c.clientWidth;H=c.clientHeight;c.width=W*q;c.height=H*q;const X=W-170;let o=[];
+if(W>620){o.push(...L(X,16,X+112,160,52,0),...L(X,16,X-112,160,52,0),...L(X-112,160,X+112,160,60,0),...L(X,26,X+101,154,44,0),...L(X,26,X-101,154,44,0),...L(X-101,154,X+101,154,52,0),...L(X,0,X,14,5,0));
+for(let i=0;i<170;i++){let u=(.5+i*.75488)%1,v=(.5+i*.56984)%1;if(u+v>1){u=1-u;v=1-v}o.push([X+38*u-38*v,66+(u+v)*68,1])}
+[[-92,26],[-46,36],[0,46],[46,36],[92,26]].forEach(([x,l])=>o.push(...L(X+x,162,X+x,160+l,7,0),...D(X+x,170+l,9,26,0)))}
+const R=Math.random;P=o.map(([x,y,k])=>({x,y,k,a:.95,r:1.35,fx:R()*W,fy:R()*H*1.4-H*.2,d:R()*.5}));for(let i=0;i<150;i++)P.push({x:R()*W,y:R()*H,k:2,a:.12+R()*.35,r:.5+R()*.8,fx:R()*W,fy:R()*H,d:0});s=performance.now()}
+const C=["#e6ebf5","#ff5a3c","#96a0cd"];
+function f(n){g.setTransform(q,0,0,q,0,0);g.clearRect(0,0,W,H);const e=(n-s)/1700;P.forEach((p,i)=>{let u=calm?1:Math.max(0,Math.min(1,(e-p.d)/.9));u=u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;g.globalAlpha=p.a*(p.k==2?1:.85+.15*Math.sin(n/600+i));g.fillStyle=C[p.k];g.beginPath();g.arc(p.fx+(p.x-p.fx)*u,p.fy+(p.y-p.fy)*u+(p.k==2?Math.sin(n/3000+i)*4:0),p.r,0,7);g.fill()});if(!calm||e<1)requestAnimationFrame(f)}
+build();addEventListener("resize",build);requestAnimationFrame(f);
+</script>

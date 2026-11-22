@@ -1,0 +1,18 @@
+127.0.0.1 - - [22/Nov/2026 18:16:39] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:16:42] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:16:42] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:16:42] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:31:48] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:31:48] code 404, message File not found
+127.0.0.1 - - [22/Nov/2026 18:31:48] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Nov/2026 18:45:50] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:45:56] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:46:01] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:46:36] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 18:50:51] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 19:04:59] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 19:11:40] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 19:11:40] code 404, message File not found
+127.0.0.1 - - [22/Nov/2026 19:11:40] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Nov/2026 19:12:08] "GET /slides.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Nov/2026 20:21:47] "GET /slides.html HTTP/1.1" 200 -
