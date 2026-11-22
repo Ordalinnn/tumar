@@ -6,6 +6,9 @@
 <title>Тұмар — радар медленных мошеннических схем</title>
 <meta name="description" content="Учебный прототип: замечает медленную схему по истории переводов и предупреждает клиента до закрытия депозита или кредита.">
 <meta name="theme-color" content="#0c0f2c">
+<meta property="og:title" content="Тұмар — радар медленных мошеннических схем">
+<meta property="og:description" content="Пять признаков, объяснимое правило и три слепых теста без купюр.">
+<meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23e6ebf5' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -39,11 +42,15 @@ a{color:inherit;text-decoration:none}
 ::selection{background:rgba(255,90,60,.3)}
 :focus-visible{outline:2px solid var(--carn);outline-offset:3px;border-radius:10px}
 .wrap{width:min(1180px,calc(100% - 44px));margin-inline:auto;position:relative;z-index:1}
+.skip{position:absolute;left:16px;top:-60px;z-index:99;padding:10px 16px;border-radius:12px;background:var(--silver);color:#141a44;font-size:14px;transition:top .2s}
+.skip:focus{top:12px}
 
 /* ---------- header ---------- */
 .hd{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;
   border-bottom:1px solid transparent}
 .hd.stuck{background:rgba(11,14,42,.74);backdrop-filter:blur(16px) saturate(140%);border-color:var(--line-2)}
+.pg{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--carn),var(--amber));opacity:0;transition:opacity .3s}
+.hd.stuck .pg{opacity:1}
 .hd .wrap{display:flex;align-items:center;gap:28px;height:72px}
 .brand{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:700;letter-spacing:-.3px}
 .brand svg{width:26px;height:26px;flex:none}
@@ -63,7 +70,7 @@ a{color:inherit;text-decoration:none}
 .btn:hover .ar{transform:translate(2px,-2px)}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(42px,7vw,96px) 0 clamp(40px,6vw,80px)}
+.hero{padding:clamp(42px,7vw,96px) 0 clamp(40px,6vw,80px);overflow-x:clip}
 .hero .wrap{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,5vw,64px);align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--carn-2);font-weight:600}
 .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--carn);box-shadow:0 0 0 5px rgba(255,90,60,.16)}
@@ -90,7 +97,7 @@ h1 em{font-style:normal;color:var(--carn-2)}
   box-shadow:0 40px 80px -40px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.07);
   transform:translate3d(0,0,0);transition:transform .4s var(--ease)}
 .card .top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--dim)}
-.card .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--dim)}
+.card .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
 .card .amt{font-size:42px;font-weight:700;letter-spacing:-.03em;margin:10px 0 16px;font-variant-numeric:tabular-nums}
 .card .amt small{font-size:.5em;font-weight:500;color:var(--dim);margin-left:2px}
 .warn{border-radius:18px;padding:16px 17px;color:#fff;
@@ -108,12 +115,31 @@ h1 em{font-style:normal;color:var(--carn-2)}
 
 /* ---------- sections ---------- */
 section{position:relative;padding:clamp(56px,8vw,104px) 0;scroll-margin-top:84px}
-.sec-head{max-width:760px}
+.sec-head{max-width:780px}
 .kicker{font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--carn-2);font-weight:600}
 h2{font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em;margin-top:16px;font-weight:700;font-stretch:80%;text-wrap:balance}
-.sub{margin-top:16px;font-size:17px;line-height:1.5;color:var(--dim);font-weight:300;max-width:56ch}
+.sub{margin-top:16px;font-size:17px;line-height:1.5;color:var(--dim);font-weight:300;max-width:60ch}
 .sub b{color:var(--silver);font-weight:600}
 
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px}
+.tl::before{content:"";position:absolute;left:2px;right:2px;top:21px;height:1px;
+  background:linear-gradient(90deg,rgba(230,235,245,.3),rgba(255,90,60,.55) 55%,rgba(255,196,92,.55))}
+.st{position:relative;padding-top:48px}
+.st .dot{position:absolute;left:0;top:13px;width:17px;height:17px;border-radius:50%;
+  background:var(--night);border:1.5px solid rgba(230,235,245,.45)}
+.st.hot .dot{border-color:var(--carn);box-shadow:0 0 0 5px rgba(255,90,60,.14)}
+.st.end .dot{border-color:var(--amber);box-shadow:0 0 0 5px rgba(255,196,92,.13)}
+.st .day{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums}
+.st h3{font-size:18.5px;margin-top:8px;line-height:1.14;letter-spacing:-.01em}
+.st p{margin-top:8px;font-size:14px;line-height:1.46;color:var(--dim);font-weight:300}
+.st p b{color:var(--silver);font-weight:600}
+.st .sg{display:inline-block;margin-top:11px;font-size:12px;padding:3px 9px;border-radius:999px;
+  border:1px solid rgba(255,90,60,.45);color:var(--carn-2)}
+.st .sg.t{border-color:rgba(69,214,200,.45);color:var(--turq)}
+.tl-note{margin-top:26px;font-size:13.5px;line-height:1.5;color:var(--faint);max-width:80ch}
+
+/* signals */
 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px}
 .sig{position:relative;padding:22px 20px 24px;border-radius:20px;background:var(--card);
   border:1px solid var(--line-2);transition:transform .35s var(--ease),border-color .35s,background .35s;overflow:hidden}
@@ -124,6 +150,7 @@ h2{font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em;margin
 .sig .ico{width:44px;height:44px;color:var(--carn-2)}
 .sig h3{font-size:19px;margin-top:18px;letter-spacing:-.01em}
 .sig p{margin-top:8px;font-size:14.5px;line-height:1.42;color:var(--dim);font-weight:300}
+.sig p b{color:var(--silver);font-weight:600}
 .sig .n{position:absolute;right:16px;top:16px;font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
 
 /* logic */
@@ -140,7 +167,7 @@ h2{font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em;margin
 .pill.hot{border-color:rgba(255,90,60,.55);color:var(--carn-2);background:rgba(255,90,60,.09)}
 .bars{position:relative;border-radius:24px;border:1px solid var(--line-2);padding:26px;background:linear-gradient(165deg,rgba(26,30,78,.6),rgba(14,17,48,.5))}
 .bars .row{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px dashed rgba(230,235,245,.1);font-size:14.5px}
-.bars .row:last-child{border-bottom:0}
+.bars .row:last-of-type{border-bottom:0}
 .bars .row .lbl{width:96px;color:var(--dim);flex:none}
 .bars .rail{position:relative;height:9px;border-radius:999px;background:rgba(230,235,245,.1);flex:1;overflow:hidden}
 .bars .fill{position:absolute;inset:0 auto 0 0;border-radius:inherit;width:var(--w);transform-origin:left;transform:scaleX(0);transition:transform 1.1s var(--ease) .1s}
@@ -152,6 +179,34 @@ h2{font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em;margin
 .bars .cap{margin-top:16px;font-size:13px;line-height:1.45;color:var(--faint)}
 .bars .title{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
 
+/* simulator */
+.sim{margin-top:clamp(28px,4vw,48px);display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(20px,3vw,40px);
+  padding:clamp(20px,2.4vw,30px);border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(165deg,rgba(26,30,78,.6),rgba(14,17,48,.5))}
+.sim .title{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.sim .lead{margin-top:10px;font-size:16px;line-height:1.5;color:var(--dim);font-weight:300;max-width:44ch}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chip{font:inherit;font-size:14.5px;padding:9px 15px;border-radius:999px;border:1.5px solid var(--line);
+  background:transparent;color:var(--dim);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.chip:hover{border-color:rgba(230,235,245,.38);color:var(--silver)}
+.chip[aria-pressed="true"]{border-color:var(--carn);background:rgba(255,90,60,.16);color:#ffd9d0}
+.switch{display:flex;gap:11px;align-items:flex-start;margin-top:20px;font-size:14px;color:var(--dim);
+  cursor:pointer;line-height:1.4;max-width:40ch}
+.switch input{appearance:none;-webkit-appearance:none;width:38px;height:22px;border-radius:999px;
+  border:1.5px solid var(--line);background:rgba(255,255,255,.06);position:relative;flex:none;cursor:pointer;transition:.25s;margin-top:1px}
+.switch input::after{content:"";position:absolute;left:2px;top:2px;width:15px;height:15px;border-radius:50%;background:var(--dim);transition:.25s var(--ease)}
+.switch input:checked{background:rgba(69,214,200,.22);border-color:var(--turq)}
+.switch input:checked::after{transform:translateX(15px);background:var(--turq)}
+.out{border-radius:18px;border:1px solid var(--line-2);background:rgba(8,10,32,.5);padding:20px}
+.out-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;
+  border-bottom:1px dashed rgba(230,235,245,.1);font-size:14.5px;color:var(--dim)}
+.out-row:last-of-type{border-bottom:0}
+.out-row b{color:var(--silver);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.out-row b.no{color:var(--faint);font-weight:400}
+.out-row b.yes{color:var(--carn-2)}
+.out-row b.pz{color:var(--turq)}
+.why{margin-top:14px;font-size:13.5px;line-height:1.5;color:var(--faint)}
+
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
 .stat{position:relative;padding:26px;border-radius:22px;border:1px solid var(--line-2);background:var(--card);overflow:hidden}
@@ -161,7 +216,7 @@ h2{font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em;margin
 .stat .v small{font-size:.48em;font-weight:500;color:var(--dim);margin-left:4px;letter-spacing:0}
 .stat .k{margin-top:12px;font-size:14.5px;line-height:1.45;color:var(--dim);font-weight:300;max-width:34ch}
 .stat .k b{color:var(--silver);font-weight:600}
-.demo-note{margin-top:16px;font-size:14px;color:var(--faint);max-width:70ch;line-height:1.5}
+.demo-note{margin-top:16px;font-size:14px;color:var(--faint);max-width:80ch;line-height:1.5}
 
 /* tests */
 .tests{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
@@ -173,18 +228,40 @@ h2{font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em;margin
 .meter{margin-top:16px}
 .meter .cap{display:flex;justify-content:space-between;font-size:12.5px;color:var(--dim);margin-bottom:7px}
 .meter .cap b{color:var(--silver);font-weight:600}
-.dots{display:flex;gap:5px}
+.dots{display:flex;gap:5px;flex-wrap:wrap}
 .dots i{width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(230,235,245,.28)}
 .dots i.on{border-color:transparent}
 .dots.carn i.on{background:var(--carn)} .dots.amber i.on{background:var(--amber)}
 .test .note{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(230,235,245,.12);font-size:13.5px;line-height:1.45;color:var(--dim);font-weight:300}
 .test .note b{color:var(--silver);font-weight:600}
 .test.bad{background:linear-gradient(165deg,rgba(255,196,92,.07),rgba(255,255,255,.03));border-color:rgba(255,196,92,.24)}
+.legend{margin-top:18px;font-size:13.5px;line-height:1.5;color:var(--faint);max-width:84ch}
+.legend b{color:var(--dim);font-weight:600}
+
+/* verdict + table */
+.verdict{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.vd{padding:20px 22px;border-radius:18px;border:1px solid var(--line-2);background:var(--card);
+  font-size:14.5px;line-height:1.5;color:var(--dim);font-weight:300}
+.vd b{display:block;color:var(--silver);margin-bottom:7px;font-size:15.5px;font-weight:600}
+.cmp{margin-top:28px;border:1px solid var(--line-2);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.02)}
+.cmp .scroll{overflow-x:auto}
+.cmp table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:600px}
+.cmp th,.cmp td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line-2);white-space:nowrap}
+.cmp th{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:600;background:rgba(255,255,255,.03)}
+.cmp td{color:var(--dim)}
+.cmp td:first-child{color:var(--silver);font-weight:600}
+.cmp tr:last-child td{border-bottom:0}
+.cmp .bad{color:var(--amber)} .cmp .ok{color:var(--turq)} .cmp .mid{color:var(--carn-2)}
+.scroll-hint{display:none;margin-top:10px;font-size:12.5px;color:var(--faint)}
 
 /* limits */
 .limits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 44px;margin-top:40px}
 .limit{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--line-2);font-size:15.5px;line-height:1.45;color:var(--dim);font-weight:300}
 .limit::before{content:"";width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--amber);flex:none}
+.next{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+.nx{padding:18px 20px;border-radius:16px;border:1px dashed rgba(230,235,245,.18);font-size:14px;line-height:1.45;color:var(--dim);font-weight:300}
+.nx b{display:block;color:var(--silver);margin-bottom:6px;font-size:15px;font-weight:600}
+.nx i{font-style:normal;display:block;color:var(--carn-2);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
 
 /* run */
 .run-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:center;margin-top:8px}
@@ -221,20 +298,33 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
   .stage{min-height:0;justify-items:start;margin-top:4px}
   .grid5{grid-template-columns:repeat(2,1fr)}
   .logic,.run-grid{grid-template-columns:1fr}
-  .stats,.tests{grid-template-columns:1fr}
+  .stats,.tests,.verdict{grid-template-columns:1fr}
   .limits{grid-template-columns:1fr}
+  .next{grid-template-columns:repeat(2,1fr)}
+  .sim{grid-template-columns:1fr}
   .nav{display:none}
+  .hd .btn.sm{margin-left:auto}
+  .scroll-hint{display:block}
+  .tl{grid-template-columns:1fr;gap:0}
+  .tl::before{left:8px;right:auto;top:8px;bottom:8px;width:1px;height:auto;
+    background:linear-gradient(180deg,rgba(230,235,245,.28),rgba(255,90,60,.5) 55%,rgba(255,196,92,.5))}
+  .st{padding:0 0 26px 38px}
+  .st .dot{left:0;top:4px}
+  .st h3{margin-top:6px}
 }
 @media (max-width:560px){
-  .hd .wrap{height:64px}
+  .hd .wrap{height:64px;gap:14px}
   .grid5{grid-template-columns:1fr}
   .card{width:100%}
   .hero-meta{font-size:13px}
   .hide-sm{display:none}
   .eyebrow{letter-spacing:.1em;font-size:12.5px}
   .bars{padding:18px}
-  .bars .row .lbl{width:88px;font-size:13px}
-  .bars .val{width:46px;font-size:13px}
+  .bars .row .lbl{width:82px;font-size:13px}
+  .bars .val{width:50px;font-size:13px}
+  .next{grid-template-columns:1fr}
+  .brand{font-size:20px}
+  .hd .btn.sm{padding:8px 14px;font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -242,9 +332,16 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
   .bars .fill{transform:scaleX(1);transition:none}
   .btn:hover,.sig:hover,.test:hover{transform:none}
 }
+@media print{
+  .hd,.skip,.pg{display:none}
+  body{background:#0c0f2c}
+  .rv{opacity:1;transform:none;transition:none}
+  .bars .fill{transform:scaleX(1)}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <header class="hd" id="hd">
   <div class="wrap">
@@ -253,17 +350,18 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
       Тұмар
     </a>
     <nav class="nav" aria-label="Разделы">
+      <a href="#scheme">Схема</a>
       <a href="#signs">Признаки</a>
-      <a href="#logic">Логика</a>
       <a href="#tests">Тесты</a>
       <a href="#run">Запуск</a>
     </nav>
     <a class="btn pri sm" href="slides.html">Слайды <span class="ar" aria-hidden="true">↗</span></a>
   </div>
+  <div class="pg" id="pg" aria-hidden="true"></div>
 </header>
 
-<main id="top">
-  <section class="hero">
+<main id="main">
+  <section class="hero" id="top">
     <div class="wrap">
       <div>
         <p class="eyebrow rv"><i></i>Учебный прототип<span class="hide-sm">&nbsp;· Python + Streamlit</span></p>
@@ -271,7 +369,7 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
         <p class="lede rv" style="--d:.12s">Клиента неделями втягивают в лже-брокера. Тұмар видит, как отдельные переводы складываются в схему, и <b>предупреждает до того</b>, как он закроет депозит или возьмёт кредит.</p>
         <div class="cta-row rv" style="--d:.18s">
           <a class="btn pri" href="slides.html">Смотреть слайды <span class="ar" aria-hidden="true">↗</span></a>
-          <a class="btn" href="#signs">Пять признаков</a>
+          <a class="btn" href="#scheme">Как это выглядит</a>
         </div>
         <p class="hero-meta rv" style="--d:.24s">
           <span>Только операции, которые банк уже видит</span>
@@ -296,6 +394,53 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="scheme">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker rv">Что происходит на самом деле</p>
+        <h2 class="rv" style="--d:.05s">Пять шагов, четыре месяца,<br>одна история</h2>
+        <p class="sub rv" style="--d:.1s">Так выглядит медленная схема глазами банка. Ни одного подозрительного действия в отдельности — <b>только сумма переводов во времени</b>.</p>
+      </div>
+
+      <div class="tl">
+        <article class="st rv" style="--d:.02s">
+          <span class="dot" aria-hidden="true"></span>
+          <p class="day">День 65</p>
+          <h3>«Консультант»</h3>
+          <p>Пишет в мессенджере, обещает доход и просит начать с малого.</p>
+        </article>
+        <article class="st rv" style="--d:.06s">
+          <span class="dot" aria-hidden="true"></span>
+          <p class="day">День 75</p>
+          <h3>Фальшивый кабинет</h3>
+          <p>На экране «прибыль» растёт, но деньги никуда не вложены.</p>
+        </article>
+        <article class="st hot rv" style="--d:.1s">
+          <span class="dot" aria-hidden="true"></span>
+          <p class="day">День 101–107</p>
+          <h3>Переводы растут</h3>
+          <p>11 100 → 29 800 ₸ одному и тому же получателю.</p>
+          <span class="sg">Сигнал: лесенка</span>
+        </article>
+        <article class="st hot rv" style="--d:.14s">
+          <span class="dot" aria-hidden="true"></span>
+          <p class="day">День 111</p>
+          <h3>Вернули 10 100 ₸</h3>
+          <p>«Выведите немного» — чтобы клиент поверил, что деньги настоящие.</p>
+          <span class="sg">Сигнал: наживка</span>
+        </article>
+        <article class="st end rv" style="--d:.18s">
+          <span class="dot" aria-hidden="true"></span>
+          <p class="day">День 116</p>
+          <h3>175 000 ₸</h3>
+          <p>А впереди — заявка на закрытие вклада на <b>2 154 900 ₸</b>.</p>
+          <span class="sg">Сигналы: опустошение, доплата</span>
+        </article>
+      </div>
+      <p class="tl-note rv" style="--d:.2s">Дни и суммы — из демо-истории Мейрамбека. Один перевод здесь ничего не доказывает: смысл появляется, только когда сигналы складываются.</p>
     </div>
   </section>
 
@@ -332,33 +477,56 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
   </section>
 
   <section id="logic">
-    <div class="wrap logic">
-      <div>
-        <p class="kicker rv">Как принимается решение</p>
-        <h2 class="rv" style="--d:.05s">Правила, которые можно объяснить</h2>
-        <div class="rules">
-          <div class="rule rv" style="--d:.08s"><span class="num">01</span><div><h3>Сигналы на каждой операции</h3>
-            <p>Пять правил проверяются по истории клиента. Ничего, кроме операций, которые банк и так видит.</p>
-            <div class="thresh"><span class="pill">лесенка</span><span class="pill">наживка</span><span class="pill">опустошение</span><span class="pill">общий получатель</span><span class="pill">доплата</span></div>
-          </div></div>
-          <div class="rule rv" style="--d:.12s"><span class="num">02</span><div><h3>Порог</h3>
-            <p><b>0–1 сигнал:</b> молчим. <b>2 и больше:</b> предупреждаем и объясняем, что именно заметили.</p>
-            <div class="thresh"><span class="pill">0–1 — тишина</span><span class="pill hot">2+ — предупреждение</span></div>
-          </div></div>
-          <div class="rule rv" style="--d:.16s"><span class="num">03</span><div><h3>Пауза — только по согласию</h3>
-            <p>Только на заявке на депозит или кредит, только если клиент включил режим защиты заранее, и только при опустошении вместе с наживкой или общим получателем — либо при 3+ сигналах.</p>
-          </div></div>
+    <div class="wrap">
+      <div class="logic">
+        <div>
+          <p class="kicker rv">Как принимается решение</p>
+          <h2 class="rv" style="--d:.05s">Правила, которые можно объяснить</h2>
+          <div class="rules">
+            <div class="rule rv" style="--d:.08s"><span class="num">01</span><div><h3>Сигналы на каждой операции</h3>
+              <p>Пять правил проверяются по истории клиента. Ничего, кроме операций, которые банк и так видит.</p>
+              <div class="thresh"><span class="pill">лесенка</span><span class="pill">наживка</span><span class="pill">опустошение</span><span class="pill">общий получатель</span><span class="pill">доплата</span></div>
+            </div></div>
+            <div class="rule rv" style="--d:.12s"><span class="num">02</span><div><h3>Порог</h3>
+              <p><b>0–1 сигнал:</b> молчим. <b>2 и больше:</b> предупреждаем и объясняем, что именно заметили.</p>
+              <div class="thresh"><span class="pill">0–1 — тишина</span><span class="pill hot">2+ — предупреждение</span></div>
+            </div></div>
+            <div class="rule rv" style="--d:.16s"><span class="num">03</span><div><h3>Пауза — только по согласию</h3>
+              <p>Только на заявке на депозит или кредит, только если клиент включил режим защиты заранее, и только при опустошении вместе с наживкой или общим получателем — либо при 3+ сигналах.</p>
+            </div></div>
+          </div>
+        </div>
+        <aside class="bars rv" style="--d:.1s" id="bars" aria-label="Как сигналы складываются в предупреждение">
+          <p class="title">История Мейрамбека</p>
+          <div class="row"><span class="lbl">день 101</span><div class="rail"><span class="fill carn" style="--w:7%"></span></div><span class="val">11 100</span></div>
+          <div class="row"><span class="lbl">день 107</span><div class="rail"><span class="fill carn" style="--w:14%"></span></div><span class="val">29 800</span></div>
+          <div class="row"><span class="lbl">вернули</span><div class="rail"><span class="fill turq" style="--w:5%"></span></div><span class="val">10 100</span></div>
+          <div class="row"><span class="lbl">день 116</span><div class="rail"><span class="fill carn" style="--w:64%"></span></div><span class="val">175 000</span></div>
+          <div class="row"><span class="lbl">заявка</span><div class="rail"><span class="fill amber" style="--w:96%"></span></div><span class="val">2 154 900</span></div>
+          <p class="cap">Суммы в тенге. Шкала условная: показано, как растут переводы новому получателю и чем всё заканчивается без предупреждения.</p>
+        </aside>
+      </div>
+
+      <div class="sim rv" style="--d:.06s">
+        <div>
+          <p class="title">Проверьте правило сами</p>
+          <p class="lead">Отметьте сигналы, которые заметил радар. Решение принимается по тому же правилу, что в коде.</p>
+          <div class="chips" role="group" aria-label="Сигналы">
+            <button class="chip" type="button" data-sig="les" aria-pressed="false">Лесенка</button>
+            <button class="chip" type="button" data-sig="nazh" aria-pressed="false">Наживка</button>
+            <button class="chip" type="button" data-sig="opus" aria-pressed="false">Опустошение</button>
+            <button class="chip" type="button" data-sig="obsh" aria-pressed="false">Общий получатель</button>
+            <button class="chip" type="button" data-sig="dop" aria-pressed="false">Доплата</button>
+          </div>
+          <label class="switch"><input type="checkbox" id="prot"><span>Клиент заранее включил режим защиты — пауза возможна</span></label>
+        </div>
+        <div class="out" aria-live="polite">
+          <div class="out-row"><span>Сигналов</span><b id="cnt">0</b></div>
+          <div class="out-row"><span>Предупреждение</span><b id="warnv" class="no">нет</b></div>
+          <div class="out-row"><span>Пауза на заявку</span><b id="pausev" class="no">нет</b></div>
+          <p class="why" id="why">Сигналов нет — обычная операция, радар молчит.</p>
         </div>
       </div>
-      <aside class="bars rv" style="--d:.1s" id="bars" aria-label="Как сигналы складываются в предупреждение">
-        <p class="title">История Мейрамбека</p>
-        <div class="row"><span class="lbl">день 101</span><div class="rail"><span class="fill carn" style="--w:7%"></span></div><span class="val">11 100</span></div>
-        <div class="row"><span class="lbl">день 107</span><div class="rail"><span class="fill carn" style="--w:14%"></span></div><span class="val">29 800</span></div>
-        <div class="row"><span class="lbl">вернули</span><div class="rail"><span class="fill turq" style="--w:5%"></span></div><span class="val">10 100</span></div>
-        <div class="row"><span class="lbl">день 116</span><div class="rail"><span class="fill carn" style="--w:64%"></span></div><span class="val">175 000</span></div>
-        <div class="row"><span class="lbl">заявка</span><div class="rail"><span class="fill amber" style="--w:96%"></span></div><span class="val">2 154 900</span></div>
-        <p class="cap">Суммы в тенге. Шкала условная: показано, как растут переводы новому получателю и чем всё заканчивается без предупреждения.</p>
-      </aside>
     </div>
   </section>
 
@@ -387,22 +555,43 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
       <div class="tests">
         <article class="test bad rv" style="--d:.04s">
           <div class="h"><b>Тест 1</b><span>5 обман / 5 честных</span></div>
-          <div class="meter"><div class="cap"><span>Поймано</span><b>0 из 5</b></div><div class="dots carn" data-dots="5:0"></div></div>
+          <div class="meter"><div class="cap"><span>Заметили обман</span><b>0 из 5</b></div><div class="dots carn" data-dots="5:0"></div></div>
           <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 5</b></div><div class="dots amber" data-dots="5:0"></div></div>
           <p class="note">В этих историях не было ни депозита, ни кредита. Пауза не сработала.</p>
         </article>
         <article class="test bad rv" style="--d:.09s">
           <div class="h"><b>Тест 2</b><span>10 обман / 10 честных</span></div>
-          <div class="meter"><div class="cap"><span>Поймано</span><b>8 из 10</b></div><div class="dots carn" data-dots="10:8"></div></div>
+          <div class="meter"><div class="cap"><span>Заметили обман</span><b>8 из 10</b></div><div class="dots carn" data-dots="10:8"></div></div>
           <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>9 из 10</b></div><div class="dots amber" data-dots="10:9"></div></div>
           <p class="note">Исправили «общего получателя». Предупреждение приходило до заявки, но <b>честных беспокоили почти всегда</b>.</p>
         </article>
         <article class="test rv" style="--d:.14s">
           <div class="h"><b>Тест 3</b><span>10 обман / 10 честных</span></div>
-          <div class="meter"><div class="cap"><span>Поймано</span><b>10 из 10</b></div><div class="dots carn" data-dots="10:10"></div></div>
+          <div class="meter"><div class="cap"><span>Заметили обман</span><b>10 из 10</b></div><div class="dots carn" data-dots="10:10"></div></div>
           <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 10</b></div><div class="dots amber" data-dots="10:0"></div></div>
           <p class="note">Исправили лесенку и наживку. Но <b>до заявки — 0 из 4</b>, медиана денег до предупреждения 19%.</p>
         </article>
+      </div>
+      <p class="legend rv" style="--d:.16s"><b>Как читать:</b> «заметили обман» — предупреждение появилось хотя бы раз за историю; «ложные тревоги» — честный клиент получил предупреждение. «До заявки» считается отдельно и видно в таблице.</p>
+
+      <p class="scroll-hint">Таблица прокручивается вбок →</p>
+      <div class="cmp rv" style="--d:.1s">
+        <div class="scroll">
+          <table>
+            <thead><tr><th scope="col">Набор</th><th scope="col">Заметили обман</th><th scope="col">Успели до заявки</th><th scope="col">Ложные тревоги</th><th scope="col">Пауза сработала</th></tr></thead>
+            <tbody>
+              <tr><td>Тест 1</td><td class="bad">0 из 5</td><td>—</td><td class="ok">0 из 5</td><td class="bad">0 из 5</td></tr>
+              <tr><td>Тест 2</td><td class="mid">8 из 10</td><td class="ok">100%</td><td class="bad">9 из 10</td><td class="bad">0 из 5</td></tr>
+              <tr><td>Тест 3</td><td class="ok">10 из 10</td><td class="bad">0 из 4</td><td class="ok">0 из 10</td><td class="bad">0 из 4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <div class="vd rv" style="--d:.03s"><b>Ловим — но поздно</b>В третьем тесте предупреждение приходило уже после заявки: 19% денег к этому моменту успевало уйти.</div>
+        <div class="vd rv" style="--d:.06s"><b>Рано — но с тревогами</b>Во втором тесте успевали до заявки, зато беспокоили 9 честных клиентов из 10.</div>
+        <div class="vd rv" style="--d:.09s"><b>Значит, порог 2 — компромисс</b>Не победа. Чтобы двигаться дальше, нужны обезличенные данные банка, а не новые подгонки под свои же примеры.</div>
       </div>
     </div>
   </section>
@@ -412,12 +601,19 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
       <div class="sec-head">
         <p class="kicker rv">Ограничения</p>
         <h2 class="rv" style="--d:.05s">Чего Тұмар пока не умеет</h2>
+        <p class="sub rv" style="--d:.1s">Честный список важнее красивых цифр: именно он показывает, что проверять дальше.</p>
       </div>
       <div class="limits">
         <p class="limit rv">Если депозит закрыли рано, предупреждаем поздно.</p>
         <p class="limit rv" style="--d:.04s">Не видим обман через лицензированную биржу.</p>
         <p class="limit rv" style="--d:.08s">Честный клиент — оплата стройке, долг другу, торговля криптовалютой — бывает похож на жертву.</p>
         <p class="limit rv" style="--d:.12s">Все истории вымышлены: это проверка логики, а не результат в банке.</p>
+      </div>
+      <div class="next">
+        <div class="nx rv" style="--d:.04s"><i>Шаг 1</i><b>Раньше депозита</b>Искать сигналы до заявки, а не рядом с ней.</div>
+        <div class="nx rv" style="--d:.07s"><i>Шаг 2</i><b>Данные банка</b>Проверить на обезличенных операциях, а не на вымышленных.</div>
+        <div class="nx rv" style="--d:.1s"><i>Шаг 3</i><b>Порог и ложные</b>Снизить тревоги, не потеряв раннее предупреждение.</div>
+        <div class="nx rv" style="--d:.13s"><i>Шаг 4</i><b>Казахский язык</b>Интерфейс и текст предупреждения — на двух языках.</div>
       </div>
     </div>
   </section>
@@ -500,7 +696,7 @@ addEventListener('beforeprint',()=>document.querySelectorAll('.rv').forEach(e=>e
 // dots в карточках тестов: data-dots="всего:включено"
 document.querySelectorAll('.dots').forEach(box=>{
   const [total,on]=box.dataset.dots.split(':').map(Number);
-  box.innerHTML=Array.from({length:total},(_,i)=>`<i class="${i<on?'on':''}"></i>`).join('');
+  box.innerHTML=Array.from({length:total},(_,i)=>`<i class="${i<on?'on':''}" aria-hidden="true"></i>`).join('');
 });
 
 // появление секций
@@ -511,14 +707,18 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 const bars=document.getElementById('bars');
 new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){bars.classList.add('in');}}),{threshold:.3}).observe(bars);
 
-// шапка
-const hd=document.getElementById('hd');
-const onScroll=()=>hd.classList.toggle('stuck',scrollY>12);
-onScroll();addEventListener('scroll',onScroll,{passive:true});
+// шапка и прогресс чтения
+const hd=document.getElementById('hd'),pg=document.getElementById('pg');
+const onScroll=()=>{
+  hd.classList.toggle('stuck',scrollY>12);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  pg.style.width=(h>0?Math.min(1,scrollY/h)*100:0)+'%';
+};
+onScroll();addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});
 
 // мягкий параллакс карточки
 const card=document.getElementById('card'),calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-if(!calm&&card){addEventListener('pointermove',e=>{
+if(!calm&&card&&matchMedia('(hover:hover)').matches){addEventListener('pointermove',e=>{
   const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);
   card.style.transform=`translate3d(${x*10}px,${y*8}px,0) rotate(${x*1.6}deg)`;
 },{passive:true});}
@@ -531,6 +731,40 @@ copy?.addEventListener('click',async()=>{
   catch{copy.textContent='Не вышло';}
   setTimeout(()=>copy.textContent='Скопировать',1600);
 });
+
+// тренажёр правила: 0–1 молчим, 2+ предупреждаем, пауза только по согласию
+(()=>{
+  const chips=[...document.querySelectorAll('.chip')],on=new Set();
+  const cnt=document.getElementById('cnt'),warnv=document.getElementById('warnv'),
+        pausev=document.getElementById('pausev'),why=document.getElementById('why'),
+        prot=document.getElementById('prot');
+  const paint=(el,text,cls)=>{el.textContent=text;el.className=cls||'';};
+  function render(){
+    const n=on.size,opus=on.has('opus'),bait=on.has('nazh')||on.has('obsh');
+    cnt.textContent=n;
+    const warn=n>=2;
+    paint(warnv,warn?'да':'нет',warn?'yes':'no');
+    const cond=n>=3||(opus&&bait);
+    const pause=prot.checked&&cond;
+    paint(pausev,pause?'да':'нет',pause?'pz':'no');
+    let s;
+    if(!n)s='Сигналов нет — обычная операция, радар молчит.';
+    else if(n===1)s='Один сигнал — молчим: слишком легко ошибиться на одном совпадении.';
+    else s='Два сигнала и больше — предупреждаем и показываем, что именно заметили.';
+    if(!cond)s+=' Для паузы нужно опустошение вместе с наживкой или общим получателем — либо 3+ сигнала.';
+    else if(!prot.checked)s+=' Условие для паузы выполнено, но режим защиты не включён: без согласия клиента паузы нет.';
+    else s+=' Режим защиты включён: заявка на депозит или кредит подождёт.';
+    why.textContent=s;
+  }
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    const k=c.dataset.sig;
+    if(on.has(k)){on.delete(k);c.setAttribute('aria-pressed','false');}
+    else{on.add(k);c.setAttribute('aria-pressed','true');}
+    render();
+  }));
+  prot.addEventListener('change',render);
+  render();
+})();
 </script>
 </body>
 </html>
