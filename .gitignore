@@ -3,7 +3,4 @@ __pycache__/
 .streamlit.log
 TASK.md
 docs/zashita.md
-docs/metrics_blind.md
-data/*.csv
-scripts/make_blind.py
 *.log

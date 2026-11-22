@@ -4,8 +4,13 @@
 в лже-брокера или пирамиду, и предупреждает **до** того, как он закроет депозит или
 возьмёт кредит. Все данные вымышленные, это не продукт БЦК.
 
-**Слайды для защиты:** [ordalinnn.github.io/tumar](https://ordalinnn.github.io/tumar/) —
-стрелки, пробел или клик. PDF: [`docs/slides.pdf`](docs/slides.pdf).
+**Сайт:** [ordalinnn.github.io/tumar](https://ordalinnn.github.io/tumar/) — как устроена схема,
+пять признаков, тренажёр правила, три слепых теста и скриншоты приложения.
+Казахская версия: [`kz.html`](https://ordalinnn.github.io/tumar/kz.html).
+
+**Слайды для защиты:** [ordalinnn.github.io/tumar/slides.html](https://ordalinnn.github.io/tumar/slides.html) —
+стрелки, пробел или клик. PDF: [`docs/slides.pdf`](docs/slides.pdf) (9 слайдов, 6.9 МБ).
+Сайт и слайды делят один стиль: `docs/style.css` и `docs/site.js`, поэтому правки не расходятся.
 
 ## Запуск
 
@@ -28,6 +33,9 @@ pytest -q
 | `radar/evaluate.py` | `python -m radar.evaluate --set A` и `--blind data/blind.csv` |
 | `app.py` | Streamlit: экраны «Клиент», «Аналитик», «Качество» |
 | `docs/metrics_A.md` | отчёт по набору A со всеми цифрами, включая плохие |
+| `docs/index.html`, `docs/kz.html` | сайт на русском и казахском, общие `style.css` и `site.js` |
+| `docs/slides.html`, `docs/slides.pdf` | 9 слайдов для защиты и PDF из них |
+| `docs/img/` | скриншоты приложения для сайта и слайдов |
 
 ## Как работает радар
 
@@ -74,6 +82,10 @@ pytest -q
 `docs/metrics_blind2.md`: поймано 8 из 10, ложных 9 из 10, медиана денег до предупреждения 2%.
 Тест 3 — `data/blind3.csv`, отчёт `docs/metrics_blind3.md`: поймано 10 из 10, ложных 0 из 10,
 но до заявки 0% и медиана денег до предупреждения 19%.
+
+Наборы `data/blind{1,2,3}.csv`, генератор `scripts/make_blind.py` и отчёт
+`docs/metrics_blind.md` лежат в репозитории: любую цифру выше можно пересчитать
+командой `python -m radar.evaluate --blind data/blind3.csv`.
 
 ## Демо за три минуты
 

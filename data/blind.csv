@@ -1,0 +1,302 @@
+story_id,label,day,kind,amount,cp,cp_type
+101,fraud,2,salary,485000,ТОО Казахтелеком,employer
+101,fraud,5,purchase,8500,Magnum,merchant
+101,fraud,9,out,25000,Айдар,person
+101,fraud,14,purchase,12400,Small,merchant
+101,fraud,19,in,18000,Айдар,person
+101,fraud,23,out,45000,Аренда квартиры,person
+101,fraud,28,purchase,6200,Glovo,merchant
+101,fraud,32,out,15000,Марат,person
+101,fraud,37,salary,485000,ТОО Казахтелеком,employer
+101,fraud,41,purchase,32000,Technodom,merchant
+101,fraud,46,out,12000,Айдар,person
+101,fraud,51,purchase,9500,Small,merchant
+101,fraud,55,out,45000,Аренда квартиры,person
+101,fraud,60,in,30000,Марат,person
+101,fraud,66,purchase,18000,Air Astana,merchant
+101,fraud,72,salary,485000,ТОО Казахтелеком,employer
+101,fraud,79,out,20000,Айдар,person
+101,fraud,86,purchase,14500,Magnum,merchant
+101,fraud,94,in,150000,Инвестиционная платформа Qazaq Capital,company
+101,fraud,96,out,100000,Инвестиционная платформа Qazaq Capital,wallet
+101,fraud,99,in,35000,Инвестиционная платформа Qazaq Capital,company
+101,fraud,103,out,35000,Инвестиционная платформа Qazaq Capital,wallet
+101,fraud,108,in,280000,Инвестиционная платформа Qazaq Capital,company
+101,fraud,111,out,250000,Инвестиционная платформа Qazaq Capital,wallet
+101,fraud,117,in,65000,Инвестиционная платформа Qazaq Capital,company
+101,fraud,122,out,60000,Инвестиционная платформа Qazaq Capital,wallet
+101,fraud,130,in,500000,Инвестиционная платформа Qazaq Capital,company
+101,fraud,132,out,480000,Инвестиционная платформа Qazaq Capital,wallet
+101,fraud,141,out,125000,Инвестиционная платформа Qazaq Capital,wallet
+101,fraud,149,out,75000,Инвестиционная платформа Qazaq Capital,wallet
+102,fraud,1,salary,390000,ТОО АлмаСервис,employer
+102,fraud,6,purchase,7200,Small,merchant
+102,fraud,11,out,30000,Аренда квартиры,person
+102,fraud,16,purchase,15000,Magnum,merchant
+102,fraud,21,in,12000,Данияр,person
+102,fraud,26,out,18000,Коммунальные услуги,company
+102,fraud,30,purchase,9500,Glovo,merchant
+102,fraud,35,out,22000,Алия,person
+102,fraud,40,salary,390000,ТОО АлмаСервис,employer
+102,fraud,45,purchase,27000,Kaspi Магазин,merchant
+102,fraud,50,out,30000,Аренда квартиры,person
+102,fraud,55,purchase,11000,Small,merchant
+102,fraud,60,in,25000,Данияр,person
+102,fraud,65,out,14000,Коммунальные услуги,company
+102,fraud,70,salary,390000,ТОО АлмаСервис,employer
+102,fraud,75,purchase,18000,Magnum,merchant
+102,fraud,82,out,20000,Алия,person
+102,fraud,89,purchase,13500,Glovo,merchant
+102,fraud,93,in,50000,Инвестиционный клуб Golden Future,person
+102,fraud,95,out,45000,Участник клуба Руслан,person
+102,fraud,98,in,120000,Инвестиционный клуб Golden Future,person
+102,fraud,101,out,110000,Кошелек GF Invest,wallet
+102,fraud,105,in,90000,Участник клуба Тимур,person
+102,fraud,109,out,85000,Кошелек GF Invest,wallet
+102,fraud,114,in,210000,Инвестиционный клуб Golden Future,person
+102,fraud,118,out,200000,Кошелек GF Invest,wallet
+102,fraud,125,in,160000,Участник клуба Руслан,person
+102,fraud,129,out,155000,Кошелек GF Invest,wallet
+102,fraud,137,in,300000,Инвестиционный клуб Golden Future,person
+102,fraud,143,out,290000,Кошелек GF Invest,wallet
+102,fraud,150,out,180000,Кошелек GF Invest,wallet
+105,fraud,1,salary,610000,ТОО КазФарм,employer
+105,fraud,6,purchase,14500,Magnum,merchant
+105,fraud,11,out,55000,Аренда квартиры,person
+105,fraud,16,purchase,9800,Small,merchant
+105,fraud,21,in,25000,Ермек,person
+105,fraud,26,purchase,18000,Glovo,merchant
+105,fraud,31,out,22000,Коммунальные услуги,company
+105,fraud,36,purchase,32000,Technodom,merchant
+105,fraud,41,salary,610000,ТОО КазФарм,employer
+105,fraud,46,out,55000,Аренда квартиры,person
+105,fraud,51,purchase,12500,Magnum,merchant
+105,fraud,56,in,30000,Ермек,person
+105,fraud,61,purchase,16000,Small,merchant
+105,fraud,66,out,22000,Коммунальные услуги,company
+105,fraud,71,salary,610000,ТОО КазФарм,employer
+105,fraud,76,purchase,24000,Kaspi Магазин,merchant
+105,fraud,82,out,55000,Аренда квартиры,person
+105,fraud,88,purchase,13500,Magnum,merchant
+105,fraud,93,in,200000,Платформа InvestPro KZ,company
+105,fraud,96,out,180000,Кошелек InvestPro,wallet
+105,fraud,100,in,75000,Платформа InvestPro KZ,company
+105,fraud,104,out,70000,Кошелек InvestPro,wallet
+105,fraud,109,in,450000,Платформа InvestPro KZ,company
+105,fraud,112,out,430000,Кошелек InvestPro,wallet
+105,fraud,119,in,90000,Платформа InvestPro KZ,company
+105,fraud,124,out,85000,Кошелек InvestPro,wallet
+105,fraud,132,in,620000,Платформа InvestPro KZ,company
+105,fraud,136,out,590000,Кошелек InvestPro,wallet
+105,fraud,144,out,240000,Кошелек InvestPro,wallet
+105,fraud,150,out,130000,Кошелек InvestPro,wallet
+106,fraud,2,salary,375000,ТОО City Logistics,employer
+106,fraud,7,purchase,8200,Small,merchant
+106,fraud,12,out,28000,Аренда квартиры,person
+106,fraud,17,purchase,13500,Magnum,merchant
+106,fraud,22,in,18000,Руслан,person
+106,fraud,27,purchase,11000,Glovo,merchant
+106,fraud,32,out,14000,Коммунальные услуги,company
+106,fraud,37,purchase,24000,Kaspi Магазин,merchant
+106,fraud,42,salary,375000,ТОО City Logistics,employer
+106,fraud,47,out,28000,Аренда квартиры,person
+106,fraud,52,purchase,9200,Small,merchant
+106,fraud,57,in,22000,Руслан,person
+106,fraud,62,purchase,15500,Magnum,merchant
+106,fraud,67,out,14000,Коммунальные услуги,company
+106,fraud,72,salary,375000,ТОО City Logistics,employer
+106,fraud,77,purchase,19000,Technodom,merchant
+106,fraud,83,out,28000,Аренда квартиры,person
+106,fraud,89,purchase,10500,Glovo,merchant
+106,fraud,94,in,65000,Фонд Future Generation,person
+106,fraud,97,out,60000,Кошелек FuturePay,wallet
+106,fraud,101,in,95000,Фонд Future Generation,person
+106,fraud,105,out,90000,Кошелек FuturePay,wallet
+106,fraud,110,in,175000,Участник фонда Арман,person
+106,fraud,114,out,165000,Кошелек FuturePay,wallet
+106,fraud,120,in,280000,Фонд Future Generation,person
+106,fraud,125,out,270000,Кошелек FuturePay,wallet
+106,fraud,133,in,320000,Участник фонда Арман,person
+106,fraud,138,out,310000,Кошелек FuturePay,wallet
+106,fraud,145,out,140000,Кошелек FuturePay,wallet
+106,fraud,150,out,95000,Кошелек FuturePay,wallet
+109,fraud,2,salary,540000,ТОО Orda Construction,employer
+109,fraud,7,purchase,11500,Magnum,merchant
+109,fraud,12,out,42000,Аренда квартиры,person
+109,fraud,17,purchase,8900,Small,merchant
+109,fraud,22,in,20000,Марат,person
+109,fraud,27,purchase,16500,Glovo,merchant
+109,fraud,32,out,17000,Коммунальные услуги,company
+109,fraud,37,purchase,28500,Technodom,merchant
+109,fraud,42,salary,540000,ТОО Orda Construction,employer
+109,fraud,47,out,42000,Аренда квартиры,person
+109,fraud,52,purchase,12500,Magnum,merchant
+109,fraud,57,in,24000,Марат,person
+109,fraud,62,purchase,9500,Small,merchant
+109,fraud,67,out,17000,Коммунальные услуги,company
+109,fraud,72,salary,540000,ТОО Orda Construction,employer
+109,fraud,77,purchase,32000,Kaspi Магазин,merchant
+109,fraud,83,out,42000,Аренда квартиры,person
+109,fraud,89,purchase,14500,Magnum,merchant
+109,fraud,94,in,180000,Prime Asset Group,company
+109,fraud,97,out,175000,Prime Asset Wallet,wallet
+109,fraud,101,in,45000,Prime Asset Group,company
+109,fraud,105,out,43000,Prime Asset Wallet,wallet
+109,fraud,110,in,360000,Prime Asset Group,company
+109,fraud,114,out,350000,Prime Asset Wallet,wallet
+109,fraud,120,in,85000,Prime Asset Group,company
+109,fraud,124,out,80000,Prime Asset Wallet,wallet
+109,fraud,132,in,570000,Prime Asset Group,company
+109,fraud,136,out,550000,Prime Asset Wallet,wallet
+109,fraud,144,out,220000,Prime Asset Wallet,wallet
+109,fraud,150,out,160000,Prime Asset Wallet,wallet
+103,honest,3,salary,520000,ТОО КазахЭнерго,employer
+103,honest,7,purchase,12000,Magnum,merchant
+103,honest,12,out,40000,Аренда квартиры,person
+103,honest,17,purchase,8500,Small,merchant
+103,honest,22,in,25000,Аскар,person
+103,honest,27,purchase,18000,Glovo,merchant
+103,honest,31,out,15000,Коммунальные услуги,company
+103,honest,36,purchase,22000,Technodom,merchant
+103,honest,40,salary,520000,ТОО КазахЭнерго,employer
+103,honest,45,out,35000,Аренда квартиры,person
+103,honest,50,purchase,9700,Magnum,merchant
+103,honest,55,in,18000,Аскар,person
+103,honest,60,purchase,14000,Small,merchant
+103,honest,66,out,15000,Коммунальные услуги,company
+103,honest,71,salary,520000,ТОО КазахЭнерго,employer
+103,honest,76,purchase,26000,Kaspi Магазин,merchant
+103,honest,83,out,40000,Аренда квартиры,person
+103,honest,90,purchase,11500,Magnum,merchant
+103,honest,94,out,180000,Брокерская компания Halyk Finance,licensed
+103,honest,96,out,220000,Брокерская компания Halyk Finance,licensed
+103,honest,99,in,420000,Брокерская компания Halyk Finance,licensed
+103,honest,103,out,95000,Брокерская компания Halyk Finance,licensed
+103,honest,108,in,130000,Брокерская компания Halyk Finance,licensed
+103,honest,112,out,250000,Брокерская компания Halyk Finance,licensed
+103,honest,119,in,360000,Брокерская компания Halyk Finance,licensed
+103,honest,123,out,175000,Брокерская компания Halyk Finance,licensed
+103,honest,130,in,240000,Брокерская компания Halyk Finance,licensed
+103,honest,135,out,310000,Брокерская компания Halyk Finance,licensed
+103,honest,143,in,185000,Брокерская компания Halyk Finance,licensed
+103,honest,149,out,90000,Брокерская компания Halyk Finance,licensed
+104,honest,2,salary,450000,ТОО МедТех,employer
+104,honest,8,purchase,11000,Magnum,merchant
+104,honest,13,out,35000,Аренда квартиры,person
+104,honest,18,purchase,7500,Small,merchant
+104,honest,23,in,20000,Мадина,person
+104,honest,29,purchase,16000,Glovo,merchant
+104,honest,34,out,12000,Коммунальные услуги,company
+104,honest,39,purchase,28000,Technodom,merchant
+104,honest,43,salary,450000,ТОО МедТех,employer
+104,honest,48,out,35000,Аренда квартиры,person
+104,honest,53,purchase,9500,Magnum,merchant
+104,honest,58,in,15000,Мадина,person
+104,honest,63,purchase,13000,Small,merchant
+104,honest,68,out,12000,Коммунальные услуги,company
+104,honest,73,salary,450000,ТОО МедТех,employer
+104,honest,79,purchase,19000,Kaspi Магазин,merchant
+104,honest,85,out,35000,Аренда квартиры,person
+104,honest,90,purchase,12500,Magnum,merchant
+104,honest,95,loan,2500000,Собственный кредитный счет,own
+104,honest,97,out,850000,Автосалон Астана Моторс,company
+104,honest,100,out,420000,Автосалон Астана Моторс,company
+104,honest,104,out,350000,Автосалон Астана Моторс,company
+104,honest,108,in,180000,Мадина,person
+104,honest,113,out,280000,Страховая компания Nomad,company
+104,honest,118,out,195000,Автосалон Астана Моторс,company
+104,honest,124,in,300000,Возврат от автосалона,company
+104,honest,129,out,160000,Автосалон Астана Моторс,company
+104,honest,136,out,95000,СТО АвтоМастер,company
+104,honest,143,in,120000,Мадина,person
+104,honest,150,out,85000,Погашение автокредита,own
+107,honest,3,salary,580000,ТОО QazTech Solutions,employer
+107,honest,8,purchase,13500,Magnum,merchant
+107,honest,13,out,45000,Аренда квартиры,person
+107,honest,18,purchase,11000,Small,merchant
+107,honest,23,in,30000,Данияр,person
+107,honest,28,purchase,17500,Glovo,merchant
+107,honest,33,out,18000,Коммунальные услуги,company
+107,honest,38,purchase,29000,Technodom,merchant
+107,honest,43,salary,580000,ТОО QazTech Solutions,employer
+107,honest,48,out,45000,Аренда квартиры,person
+107,honest,53,purchase,14500,Magnum,merchant
+107,honest,58,in,22000,Данияр,person
+107,honest,63,purchase,12500,Small,merchant
+107,honest,68,out,18000,Коммунальные услуги,company
+107,honest,73,salary,580000,ТОО QazTech Solutions,employer
+107,honest,78,purchase,35000,Kaspi Магазин,merchant
+107,honest,84,out,45000,Аренда квартиры,person
+107,honest,90,purchase,15500,Magnum,merchant
+107,honest,94,out,300000,АО Halyk Bank,licensed
+107,honest,97,out,250000,АО Halyk Bank,licensed
+107,honest,100,in,12000,АО Halyk Bank,licensed
+107,honest,104,in,8500,АО Halyk Bank,licensed
+107,honest,109,out,180000,АО Halyk Bank,licensed
+107,honest,113,in,7200,АО Halyk Bank,licensed
+107,honest,118,out,220000,АО Halyk Bank,licensed
+107,honest,123,in,14500,АО Halyk Bank,licensed
+107,honest,131,out,95000,АО Halyk Bank,licensed
+107,honest,137,in,6200,АО Halyk Bank,licensed
+107,honest,144,out,150000,АО Halyk Bank,licensed
+107,honest,150,in,11000,АО Halyk Bank,licensed
+108,honest,1,salary,430000,ТОО MedLine,employer
+108,honest,6,purchase,10500,Magnum,merchant
+108,honest,11,out,32000,Аренда квартиры,person
+108,honest,16,purchase,7800,Small,merchant
+108,honest,21,in,15000,Алия,person
+108,honest,26,purchase,14500,Glovo,merchant
+108,honest,31,out,16000,Коммунальные услуги,company
+108,honest,36,purchase,21000,Technodom,merchant
+108,honest,41,salary,430000,ТОО MedLine,employer
+108,honest,46,out,32000,Аренда квартиры,person
+108,honest,51,purchase,9500,Magnum,merchant
+108,honest,56,in,18000,Алия,person
+108,honest,61,purchase,11500,Small,merchant
+108,honest,66,out,16000,Коммунальные услуги,company
+108,honest,71,salary,430000,ТОО MedLine,employer
+108,honest,76,purchase,27000,Kaspi Магазин,merchant
+108,honest,82,out,32000,Аренда квартиры,person
+108,honest,89,purchase,12000,Magnum,merchant
+108,honest,94,loan,4200000,Собственный кредитный счет,own
+108,honest,97,out,1250000,ИП AutoTrade,company
+108,honest,100,out,980000,ИП AutoTrade,company
+108,honest,104,out,750000,ИП AutoTrade,company
+108,honest,109,in,180000,ИП AutoTrade,company
+108,honest,114,out,420000,Страховая компания Nomad,company
+108,honest,119,out,350000,ИП AutoTrade,company
+108,honest,125,in,250000,ИП AutoTrade,company
+108,honest,131,out,180000,СТО АвтоМастер,company
+108,honest,138,out,95000,Государственные сборы,company
+108,honest,145,in,120000,Алия,person
+108,honest,150,out,110000,Погашение автокредита,own
+111,honest,3,salary,620000,ТОО Data Systems KZ,employer
+111,honest,8,purchase,14500,Magnum,merchant
+111,honest,13,out,48000,Аренда квартиры,person
+111,honest,18,purchase,9500,Small,merchant
+111,honest,23,in,28000,Азамат,person
+111,honest,28,purchase,19000,Glovo,merchant
+111,honest,33,out,21000,Коммунальные услуги,company
+111,honest,38,purchase,34000,Technodom,merchant
+111,honest,43,salary,620000,ТОО Data Systems KZ,employer
+111,honest,48,out,48000,Аренда квартиры,person
+111,honest,53,purchase,13500,Magnum,merchant
+111,honest,58,in,32000,Азамат,person
+111,honest,63,purchase,11500,Small,merchant
+111,honest,68,out,21000,Коммунальные услуги,company
+111,honest,73,salary,620000,ТОО Data Systems KZ,employer
+111,honest,78,purchase,29000,Kaspi Магазин,merchant
+111,honest,84,out,48000,Аренда квартиры,person
+111,honest,90,purchase,16000,Magnum,merchant
+111,honest,94,out,450000,АО Банк ЦентрКредит,licensed
+111,honest,97,in,12500,АО Банк ЦентрКредит,licensed
+111,honest,101,out,300000,АО Банк ЦентрКредит,licensed
+111,honest,105,in,8700,АО Банк ЦентрКредит,licensed
+111,honest,110,out,180000,АО Банк ЦентрКредит,licensed
+111,honest,114,in,15200,АО Банк ЦентрКредит,licensed
+111,honest,120,out,250000,АО Банк ЦентрКредит,licensed
+111,honest,125,in,9600,АО Банк ЦентрКредит,licensed
+111,honest,133,out,120000,АО Банк ЦентрКредит,licensed
+111,honest,139,in,18500,АО Банк ЦентрКредит,licensed
+111,honest,145,out,90000,АО Банк ЦентрКредит,licensed
+111,honest,150,in,11000,АО Банк ЦентрКредит,licensed
