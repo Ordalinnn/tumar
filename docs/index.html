@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Тұмар — радар медленных мошеннических схем</title>
 <meta name="description" content="Учебный прототип: замечает медленную схему по истории переводов и предупреждает клиента до закрытия депозита или кредита.">
-<meta name="theme-color" content="#0c0f2c">
+<meta name="theme-color" content="#06080a">
 <meta property="og:title" content="Тұмар — радар медленных мошеннических схем">
 <meta property="og:description" content="Пять признаков, объяснимое правило и три слепых теста без купюр.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23e6ebf5' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
@@ -21,12 +21,13 @@
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 29.5 28H2.5Z" fill="none" stroke="#e6ebf5" stroke-width="1.5" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M16 11.5 22.5 24h-13Z" fill="#ff5a3c"/></svg>
       Тұмар
     </a>
-    <nav class="nav" aria-label="Разделы">
+    <nav class="nav" id="nav" aria-label="Разделы">
       <a href="#scheme">Схема</a>
       <a href="#signs">Признаки</a>
       <a href="#tests">Тесты</a>
       <a href="#run">Запуск</a>
     </nav>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Меню">☰</button>
     <div class="lang" aria-label="Язык"><a class="on" href="index.html" lang="ru">RU</a><a href="kz.html" lang="kk" hreflang="kk">KZ</a></div>
     <a class="btn pri sm" href="slides.html">Слайды <span class="ar" aria-hidden="true">↗</span></a>
   </div>
@@ -364,6 +365,6 @@
 
 <dialog class="lb" id="lb" aria-label="Скриншот приложения"><button class="lb-x" type="button" aria-label="Закрыть">×</button><img src="img/app-client.jpg" alt=""></dialog>
 
-<script src="site.js"></script>
+<script src="site.js?v=2"></script>
 </body>
 </html>

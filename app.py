@@ -581,7 +581,7 @@ def page_style():
     st.html("""<style>
     html, body, .stApp, .stApp button, .stApp input, .stApp p, .stApp h1, .stApp h2, .stApp h3,
     .stApp label {font-family: Bahnschrift, "Segoe UI", sans-serif}
-    .stApp {background: linear-gradient(180deg, #0f1338 0, #1a1b52 70%, #2a2060 100%) fixed}
+    .stApp {background: linear-gradient(180deg, #06080a 0, #070a0b 52%, #07090a 100%) fixed}
     .stApp h2 {font-size: 46px; font-stretch: 75%; letter-spacing: -.6px}
     .stApp h3 {font-stretch: 80%}
     .block-container, .stMainBlockContainer {padding-top: 1.2rem; max-width: 1180px}
@@ -589,15 +589,15 @@ def page_style():
     .stTabs [data-baseweb="tab"] p {font-size: 20px; font-weight: 600}
     .stButton button {border: 2px solid #8f9ac6; border-radius: 14px; width: 100%; min-height: 50px;
                       font-weight: 600; background: rgba(255,255,255,.04); transition: background .18s, color .18s}
-    .stButton button:hover {background: #e6ebf5; color: #151a45; border-color: #e6ebf5}
-    .stButton button:focus-visible {outline: 3px solid #45d6c8; outline-offset: 2px}
+    .stButton button:hover {background: #e6ebf5; color: #04120e; border-color: #e6ebf5}
+    .stButton button:focus-visible {outline: 3px solid #5ec8b4; outline-offset: 2px}
     .card {padding: 26px 30px; border-radius: 24px 24px 24px 6px; animation: alarm .6s cubic-bezier(.16,1,.3,1)}
     .card b {display: block; font-size: 38px; font-stretch: 78%; line-height: 1.05; margin-bottom: 8px}
     .card span {font-size: 19px; line-height: 1.35}
     .card.warn {background: linear-gradient(150deg, #e2492f, #a8212d); color: #fff}
     .card.hold {background: #ffc45c; color: #2a1c05}
-    .card.ok {background: #0f5f5c; color: #fff; border: 2px solid #45d6c8}
-    .card.go {background: #2a2e68; color: #e6ebf5; border: 2px solid #8f9ac6}
+    .card.ok {background: #0c4f4a; color: #fff; border: 2px solid #5ec8b4}
+    .card.go {background: #11181a; color: #e6ebf5; border: 2px solid #6d8f88}
     .card.calm {background: rgba(255,255,255,.05); color: #e6ebf5}
     .why {display: flex; align-items: center; font-size: 19px; padding: 5px 0; flex-wrap: wrap}
     .why i {width: 13px; height: 13px; border-radius: 50%; background: #ff5a3c; margin-right: 14px; flex: none}
@@ -612,21 +612,23 @@ def page_style():
     [data-testid="stMetricValue"] {font-size: 42px; font-stretch: 75%; font-weight: 700; line-height: 1}
     @keyframes alarm {from {transform: translateY(24px) scale(.97); opacity: 0}}
     /* метрики-карточки, вкладки-пилюли, мягче тени */
-    .stApp {background: radial-gradient(900px 420px at 78% -6%, rgba(109,42,92,.55), transparent 62%),
-                              radial-gradient(700px 360px at 8% 2%, rgba(35,32,110,.6), transparent 60%),
-                              linear-gradient(180deg, #0b0e2a 0, #10143a 46%, #161544 100%) fixed}
+    .stApp {background: radial-gradient(900px 440px at 78% -8%, rgba(94,200,180,.15), transparent 62%),
+                              radial-gradient(760px 400px at 6% 2%, rgba(94,200,180,.06), transparent 60%),
+                              radial-gradient(1000px 520px at 50% 108%, rgba(255,90,60,.10), transparent 66%),
+                              linear-gradient(180deg, #06080a 0, #070a0b 52%, #07090a 100%) fixed}
     [data-testid="stMetric"] {background: rgba(255,255,255,.045); border: 1px solid rgba(230,235,245,.1);
                               border-radius: 16px; padding: 14px 16px}
-    [data-testid="stMetricLabel"] p {font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: #aab3d6}
+    [data-testid="stMetricLabel"] p {font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: #9aa7a2}
     [data-testid="stMetricValue"] {font-size: 38px}
-    .stTabs [data-baseweb="tab-list"] {gap: 4px; background: rgba(255,255,255,.045); padding: 5px;
-                                       border-radius: 999px; width: max-content; border: 1px solid rgba(230,235,245,.09)}
+    .stTabs [data-baseweb="tab-list"] {gap: 4px; background: rgba(255,255,255,.04); padding: 5px;
+                                       border-radius: 999px; width: max-content; border: 1px solid rgba(236,247,243,.1)}
     .stTabs [data-baseweb="tab"] {border-radius: 999px; padding: 4px 20px; height: auto}
-    .stTabs [aria-selected="true"] {background: rgba(255,90,60,.18)}
+    .stTabs [aria-selected="true"] {background: rgba(94,200,180,.18)}
     .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {display: none}
     .card {box-shadow: 0 26px 60px -38px #000, inset 0 1px 0 rgba(255,255,255,.09)}
     .why {border-bottom: 1px dashed rgba(230,235,245,.1); padding: 9px 0}
     .why:last-of-type {border-bottom: 0}
+    [data-testid="stElementToolbar"], [data-testid="stToolbar"] {display: none !important}
     .stButton button {min-height: 52px}
     .stButton button:hover {transform: translateY(-1px)}
     .stButton button[kind="primary"] {box-shadow: 0 14px 28px -16px rgba(255,90,60,.85)}

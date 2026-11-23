@@ -106,6 +106,19 @@
   });
 
 
+  // мобильное меню
+  const burger = document.getElementById("burger");
+  const navEl = document.getElementById("nav");
+  if (burger && navEl) {
+    const setMenu = open => {
+      navEl.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", String(open));
+    };
+    burger.addEventListener("click", () => setMenu(!navEl.classList.contains("open")));
+    navEl.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+    addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+  }
+
   // кнопка «наверх»
   const up = document.getElementById("up");
   if (up) {
