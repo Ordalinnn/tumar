@@ -10,7 +10,7 @@
 <meta property="og:description" content="Бес белгі, түсіндіруге болатын ереже және үш соқыр тест.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23e6ebf5' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <a class="skip" href="#main">Мазмұнға өту</a>
@@ -36,6 +36,7 @@
 
 <main id="main">
   <section class="hero" id="top">
+    <canvas class="sky" id="sky" aria-hidden="true"></canvas>
     <div class="wrap">
       <div>
         <p class="eyebrow rv"><i></i>Оқу прототипі<span class="hide-sm">&nbsp;· Python + Streamlit</span></p>
@@ -52,8 +53,7 @@
       </div>
 
       <div class="stage rv" style="--d:.1s">
-        <div class="sweep" aria-hidden="true"></div>
-        <div class="glow" aria-hidden="true"></div>
+        <div class="art" id="art" aria-hidden="true"></div>
         <div class="card" id="card">
           <div class="top"><span>Жаңа алушыға аударым</span><span class="chip">116-күн</span></div>
           <div class="amt">175 000<small>₸</small></div>
@@ -257,20 +257,20 @@
       <div class="tests">
         <article class="test bad rv" style="--d:.04s">
           <div class="h"><b>1-тест</b><span>5 алдау / 5 адал</span></div>
-          <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>5-тен 0</b></div><div class="dots carn" data-dots="5:0"></div></div>
-          <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>5-тен 0</b></div><div class="dots amber" data-dots="5:0"></div></div>
+          <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>5-тен 0</b></div><div class="dots carn" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>5-тен 0</b></div><div class="dots amber" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
           <p class="note">Бұл тарихтарда депозит те, кредит те болған жоқ. Кідірту іске қосылмады.</p>
         </article>
         <article class="test bad rv" style="--d:.09s">
           <div class="h"><b>2-тест</b><span>10 алдау / 10 адал</span></div>
-          <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>10-нан 8</b></div><div class="dots carn" data-dots="10:8"></div></div>
-          <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>10-нан 9</b></div><div class="dots amber" data-dots="10:9"></div></div>
+          <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>10-нан 8</b></div><div class="dots carn" data-dots="10:8" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+          <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>10-нан 9</b></div><div class="dots amber" data-dots="10:9" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
           <p class="note">«Ортақ алушыны» түзедік. Ескерту өтінімге дейін келді, бірақ <b>адал клиенттерді дерлік әрдайым мазаладық</b>.</p>
         </article>
         <article class="test rv" style="--d:.14s">
           <div class="h"><b>3-тест</b><span>10 алдау / 10 адал</span></div>
-          <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>10-нан 10</b></div><div class="dots carn" data-dots="10:10"></div></div>
-          <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>10-нан 0</b></div><div class="dots amber" data-dots="10:0"></div></div>
+          <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>10-нан 10</b></div><div class="dots carn" data-dots="10:10" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>10-нан 0</b></div><div class="dots amber" data-dots="10:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
           <p class="note">Баспалдақ пен жемді түзедік. Бірақ <b>өтінімге дейін — 4-тен 0</b>, ескертуге дейінгі ақша медианасы 19%.</p>
         </article>
       </div>
@@ -306,6 +306,7 @@
         <h2 class="rv" style="--d:.05s">Тұмар әзірге не істей алмайды</h2>
         <p class="sub rv" style="--d:.1s">Адал тізім әдемі сандардан маңыздырақ: дәл сол не тексеру керегін көрсетеді.</p>
       </div>
+      <div class="fray" id="fray" aria-hidden="true"></div>
       <div class="limits">
         <p class="limit rv">Депозитті ерте жапса, ескерту кеш келеді.</p>
         <p class="limit rv" style="--d:.04s">Лицензиясы бар биржа арқылы алдауды көрмейміз.</p>
@@ -365,6 +366,6 @@
 
 <dialog class="lb" id="lb" aria-label="Скриншот приложения"><button class="lb-x" type="button" aria-label="Закрыть">×</button><img src="img/app-client.jpg" alt=""></dialog>
 
-<script src="site.js?v=3"></script>
+<script src="site.js?v=4"></script>
 </body>
 </html>

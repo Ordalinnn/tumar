@@ -1,7 +1,9 @@
-/* Общий скрипт сайта: амулет, появление секций, прогресс чтения,
+/* Общий скрипт сайта: амулет из точек, прогресс чтения,
    копирование команд и тренажёр правила. Строки — на двух языках. */
 (() => {
-  const calm = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const motion = matchMedia("(prefers-reduced-motion:reduce)");
+  let calm = motion.matches;
+  motion.addEventListener?.("change", e => (calm = e.matches));
   const sy = () => (document.scrollingElement || document.documentElement).scrollTop;
   const lang = document.documentElement.lang === "kk" ? "kk" : "ru";
   const T = {
@@ -25,60 +27,142 @@
     },
   }[lang];
 
-  const AMULET = `
-<svg viewBox="0 0 300 330" role="presentation">
-  <defs>
-    <pattern id="pd" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.5" fill="#ff5a3c"/></pattern>
-    <pattern id="pw" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.3" fill="#e6ebf5"/></pattern>
-  </defs>
-  <g fill="none" stroke="#e6ebf5" stroke-width="1.9" stroke-linecap="round" stroke-dasharray="0 6.4">
-    <path d="M150 0v34"/>
-    <path d="M150 34 282 258H18Z"/>
-    <path d="M150 62 258 246H42Z" opacity=".55"/>
-  </g>
-  <path d="M150 132 208 238H92Z" fill="url(#pd)" stroke="#ffc45c" stroke-width="1.6" stroke-dasharray="0 5.4" stroke-linecap="round"/>
-  <g fill="none" stroke="#ffc45c" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 4.6">
-    <path d="M120 210c-16 0-22-10-18-19 4-8 16-6 15 3-1 8-13 9-17 2"/>
-    <path d="M180 210c16 0 22-10 18-19-4-8-16-6-15 3 1 8 13 9 17 2"/>
-  </g>
-  <g fill="none" stroke="#e6ebf5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="0 6">
-    <path d="M96 258v34M150 258v52M204 258v40"/>
-  </g>
-  <g fill="url(#pw)" stroke="#e6ebf5" stroke-width="1.6" stroke-dasharray="0 5" stroke-linecap="round">
-    <circle cx="96" cy="308" r="14"/><circle cx="150" cy="326" r="14"/><circle cx="204" cy="314" r="14"/>
-  </g>
-  <g fill="#e6ebf5" opacity=".5">
-    <circle cx="150" cy="46" r="2"/><circle cx="266" cy="246" r="2"/><circle cx="34" cy="246" r="2"/>
-  </g>
-</svg>`;
-  document.querySelectorAll("#amulet,#amulet2").forEach(el => (el.innerHTML = AMULET));
+  /* ---------- амулет из точек: та же техника, что в slides.html ----------
+     Это украшение: любая ошибка здесь не должна ломать меню, копирование и тренажёр. */
+  try {
+  const COL = ["230,235,245", "255,90,60", "69,214,200", "255,196,92", "150,160,205"]; // серебро, сердолик, бирюза, янтарь, пыль
+  let seed = 7;
+  const R = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+  const P = (x, y, c = 0, r = 2.2, a = 1) => ({ x, y, c, r, a });
+  const line = (x1, y1, x2, y2, n, c, r) => Array.from({ length: n }, (_, i) => { const t = n > 1 ? i / (n - 1) : 0; return P(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, c, r); });
+  const disc = (x, y, rad, n, c, r) => Array.from({ length: n }, (_, i) => { const q = Math.sqrt((i + .5) / n) * rad, t = i * 2.39996; return P(x + Math.cos(t) * q, y + Math.sin(t) * q, c, r); });
+  function tri(ax, ay, bx, by, cx, cy, n, c, r) { const o = []; for (let i = 0; i < n; i++) { let u = (.5 + i * .7548776662) % 1, v = (.5 + i * .569840291) % 1; if (u + v > 1) { u = 1 - u; v = 1 - v; } o.push(P(ax + (bx - ax) * u + (cx - ax) * v, ay + (by - ay) * u + (cy - ay) * v, c, r)); } return o; }
+  // точки вдоль SVG-пути; путь временно кладём в скрытый <svg> в документе — так измерение работает во всех браузерах
+  const svgNS = "http://www.w3.org/2000/svg";
+  const CURL = (() => {
+    const host = document.createElementNS(svgNS, "svg"), e = document.createElementNS(svgNS, "path");
+    host.setAttribute("aria-hidden", "true"); host.setAttribute("width", "0"); host.setAttribute("height", "0");
+    host.style.cssText = "position:absolute;left:-9999px;top:0;width:0;height:0;overflow:hidden";
+    e.setAttribute("d", "M0 0 c-30 40 -96 32 -92 -16 c4 -36 56 -34 50 2 c-3 16 -24 14 -22 0");
+    host.append(e); document.body.append(host);
+    const L = e.getTotalLength(), n = 100;
+    const pts = Array.from({ length: n }, (_, i) => { const p = e.getPointAtLength(L * i / (n - 1)); return { x: p.x, y: p.y }; });
+    host.remove(); return pts;
+  })();
+  // amulet() перенесён из слайдов: треугольник, сердоликовое ядро, завитки и пять подвесок
+  function amulet(cx, top, k) {
+    const X = x => cx + (x - 350) * k, Y = y => top + y * k; let o = [];
+    for (const g of [0, 9]) { o.push(...line(X(350), Y(92 + g * 1.6), X(684 - g * 1.9), Y(560 - g), 150, 0, 2.3), ...line(X(350), Y(92 + g * 1.6), X(16 + g * 1.9), Y(560 - g), 150, 0, 2.3), ...line(X(16 + g * 1.9), Y(560 - g), X(684 - g * 1.9), Y(560 - g), 170, 0, 2.3)); }
+    for (let i = 1; i < 20; i++) { const a = i / 20; o.push(...disc(X(350 - 304 * a), Y(160 + 366 * a), 5.5 * k, 6, 0, 2), ...disc(X(350 + 304 * a), Y(160 + 366 * a), 5.5 * k, 6, 0, 2), ...disc(X(46 + 608 * a), Y(526), 5.5 * k, 6, 0, 2)); }
+    o.push(...line(X(350), Y(226), X(452), Y(412), 60, 3, 2.4), ...line(X(350), Y(226), X(248), Y(412), 60, 3, 2.4), ...line(X(248), Y(412), X(452), Y(412), 60, 3, 2.4), ...tri(X(350), Y(244), X(438), Y(402), X(262), Y(402), 330, 1, 2.8));
+    for (const m of [1, -1]) o.push(...CURL.map(p => P(X(350 + p.x * m), Y(486 + p.y), 3, 2.2)));
+    o.push(...line(X(350), Y(-10), X(350), Y(88), 22, 0, 2.2));
+    [[70, 120], [210, 150], [350, 184], [490, 150], [630, 120]].forEach(([x, l]) => {
+      o.push(...line(X(x), Y(566), X(x), Y(560 + l), Math.round(l / 7), 0, 1.9)); const y = 560 + l;
+      o.push(...line(X(x), Y(y), X(x - 25), Y(y + 44), 9, 0, 2.2), ...line(X(x), Y(y), X(x + 25), Y(y + 44), 9, 0, 2.2), ...tri(X(x), Y(y + 8), X(x - 19), Y(y + 42), X(x + 19), Y(y + 42), 16, 0, 2.2), ...disc(X(x), Y(y + 58), 30 * k, 96, 0, 2.2));
+    });
+    return o;
+  }
+  // рассыпающийся амулет со слайда «Чего Тұмар пока не умеет»
+  const fray = (cx, top, k) => amulet(cx, top, k).map(p => {
+    const d = (p.x - cx) * .62 + (p.y - top - 400 * k) * .78; if (d < 60 * k) return p;
+    const q = (d - 60 * k) / (300 * k);
+    return { ...p, x: p.x + q * (R() * 300 - 60) * k, y: p.y + q * (R() * 300 - 40) * k, a: Math.max(.25, 1 - q * .6) };
+  });
+  // точка — радиальный спрайт, как в слайдах
+  const SP = COL.map(c => {
+    const k = document.createElement("canvas"); k.width = k.height = 48; const g = k.getContext("2d"), q = g.createRadialGradient(24, 24, 0, 24, 24, 24);
+    q.addColorStop(0, `rgba(${c},1)`); q.addColorStop(.3, `rgba(${c},.95)`); q.addColorStop(.42, `rgba(${c},.28)`); q.addColorStop(1, `rgba(${c},0)`);
+    g.fillStyle = q; g.fillRect(0, 0, 48, 48); return k;
+  });
+  const dot = (g, x, y, c, r, a) => { g.globalAlpha = a; const z = r * 5.2; g.drawImage(SP[c], x - z / 2, y - z / 2, z, z); };
+  const AW = 700, AH = 860; // поле амулета в его собственных координатах
+  const fit = (w, h) => Math.min(w / AW, h / AH);
+  const sizeCanvas = (cv, w, h) => { const q = Math.min(2, devicePixelRatio || 1); cv.width = Math.round(w * q); cv.height = Math.round(h * q); const g = cv.getContext("2d"); g.setTransform(q, 0, 0, q, 0, 0); return g; };
+  // радиусы точек растут вместе с амулетом, но не мельче читаемого
+  const scaleR = (pts, k) => { const m = Math.max(.42, Math.min(1, k * 1.05)); pts.forEach(p => (p.r *= m)); return pts; };
+  // перестраиваем только когда размер действительно изменился (скрытие адресной строки — не повод)
+  const onResize = (fn, key) => { let rt, was = key(); addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { const now = key(); if (now !== was) { was = now; fn(); } }, 150); }, { passive: true }); };
 
-  // страховка: если наблюдатель не сработал (печать, старый браузер) — показываем всё
-  setTimeout(() => document.querySelectorAll(".rv:not(.in)").forEach(e => {
-    if (e.getBoundingClientRect().top < innerHeight * 1.2) e.classList.add("in");
-  }), 3000);
-  addEventListener("beforeprint", () => document.querySelectorAll(".rv").forEach(e => e.classList.add("in")));
+  // статичные амулеты: в финале — целый, в «ограничениях» — рассыпающийся
+  function still(box, make) {
+    if (!box) return;
+    const cv = document.createElement("canvas"); box.append(cv);
+    const size = () => box.clientWidth + "x" + box.clientHeight;
+    const draw = () => {
+      const w = box.clientWidth, h = box.clientHeight; if (!w || !h) return;
+      const g = sizeCanvas(cv, w, h); seed = 11; g.clearRect(0, 0, w, h);
+      make(w, h).forEach(p => dot(g, p.x, p.y, p.c, p.r, p.a));
+    };
+    draw(); onResize(draw, size);
+  }
+  still(document.getElementById("amulet2"), (w, h) => { const k = fit(w, h); return scaleR(amulet(w / 2, (h - AH * k) / 2 + 10 * k, k), k); });
+  still(document.getElementById("fray"), (w, h) => { const k = Math.min(fit(w * 1.2, h), .62); return scaleR(fray(w * .47, 10, k), k); });
 
-  // dots в карточках тестов: data-dots="всего:включено"
-  document.querySelectorAll(".dots").forEach(box => {
+  // первый экран: точки слетаются в амулет, вокруг — звёзды ночной степи
+  const sky = document.getElementById("sky"), art = document.getElementById("art");
+  if (sky && art) {
+    const hero = sky.parentElement;
+    const LIFE = 20000, FADE = 3000; // через 20 с покачивание и мерцание плавно затихают, цикл останавливается
+    let W = 0, H = 0, g, pts = [], from = [], dl = [], sw = [], ph = [], cx = 0, top = 0, t0 = 0, raf = 0, last = 0, seen = true, intro = !calm;
+    // положение рамки амулета без учёта transform (анимация появления сдвигает .stage на 28px)
+    const box = () => { let x = 0, y = 0, e = art; while (e && e !== hero) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x, y, w: art.offsetWidth, h: art.offsetHeight }; };
+    const key = () => { const b = box(); return [hero.clientWidth, hero.clientHeight, b.x, b.y, b.w, b.h].join(); };
+    const layout = () => {
+      W = hero.clientWidth; H = hero.clientHeight; g = sizeCanvas(sky, W, H);
+      const b = box(), k = fit(b.w, b.h); cx = b.x + b.w / 2; top = b.y + (b.h - AH * k) / 2 + 10 * k;
+      seed = 7;
+      const shape = scaleR(amulet(cx, top, k), k);
+      const dust = Array.from({ length: Math.round(W * H / 2400) }, () => P(R() * W, Math.pow(R(), .7) * H, 4, .7 + R() * 1.1, .12 + R() * .34));
+      pts = shape.concat(dust);
+      from = pts.map(p => ({ x: p.x + (R() - .5) * W * 1.1, y: p.y + (R() - .5) * H * 1.2 }));
+      dl = pts.map(() => R() * .42); sw = pts.map(() => (R() - .5) * 220); ph = pts.map(() => R() * 6.28);
+    };
+    const ez = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const amp = now => calm ? 0 : Math.max(0, Math.min(1, (t0 + LIFE - now) / FADE));
+    const paint = now => {
+      g.clearRect(0, 0, W, H);
+      const el = intro ? (now - t0) / 1650 : 9, A = amp(now), sway = Math.sin(now / 1900) * .013 * A;
+      for (let j = 0; j < pts.length; j++) {
+        const b = pts[j]; let x = b.x, y = b.y, a = b.a;
+        const u = Math.max(0, Math.min(1, (el - dl[j]) / .95));
+        if (u < 1) { const f = from[j], e = ez(u), w = Math.sin(u * 3.1416); x = f.x + (b.x - f.x) * e + w * sw[j]; y = f.y + (b.y - f.y) * e - w * Math.abs(sw[j]) * .7; a = b.a * e; }
+        else if (b.c === 4) { x += Math.sin(now / 5200 + ph[j]) * 4 * A; y += Math.cos(now / 6100 + ph[j]) * 3 * A; }
+        else if (sway) { const ox = x - cx, oy = y - top; x = cx + ox - sway * oy; y = top + oy + sway * ox; }
+        const tw = b.c === 4 ? 1 : 1 - A * (.14 - .14 * Math.sin(now / 640 + ph[j] + x * .012));
+        dot(g, x, y, b.c, b.r, a * tw);
+      }
+      if (intro && el > 1.5) intro = false;
+    };
+    const loop = now => {
+      raf = 0;
+      if (calm || !seen || document.hidden) return;
+      if (intro || now - last > 40) { last = now; paint(now); } // после сборки — не чаще 25 кадров в секунду
+      if (intro || amp(now) > 0) raf = requestAnimationFrame(loop);
+    };
+    const kick = () => { if (!calm && !raf && seen && !document.hidden && (intro || amp(performance.now()) > 0)) raf = requestAnimationFrame(loop); };
+    layout();
+    if (calm) paint(0); else { t0 = performance.now(); kick(); }
+    // при смене размера сборка не прерывается: точки просто летят к новому месту
+    onResize(() => { layout(); if (!raf) paint(performance.now()); kick(); }, key);
+    if ("IntersectionObserver" in window) new IntersectionObserver(es => { seen = es[0].isIntersecting; kick(); }).observe(hero);
+    document.addEventListener("visibilitychange", kick);
+    // пользователь включил или выключил «уменьшить движение» на ходу
+    motion.addEventListener?.("change", () => {
+      if (calm) { if (raf) cancelAnimationFrame(raf); raf = 0; intro = false; paint(performance.now()); }
+      else { t0 = performance.now(); kick(); }
+    });
+  }
+  } catch (err) { /* украшение не нарисовалось — остальное работает */ }
+
+  // точки в строках тестов уже в разметке; на случай пустых — дорисовываем
+  document.querySelectorAll(".dots[data-dots]").forEach(box => {
+    if (box.children.length) return;
     const [total, on] = box.dataset.dots.split(":").map(Number);
-    box.innerHTML = Array.from({ length: total }, (_, i) => `<i class="${i < on ? "on" : ""}" aria-hidden="true"></i>`).join("");
+    box.innerHTML = Array.from({ length: total }, (_, i) => `<i class="${i < on ? "on" : ""}"></i>`).join("");
   });
 
-  // появление секций
-  // Прячем секции только когда JS работает; через 2,5 с показываем всё, что вдруг не проявилось.
-  document.documentElement.classList.add("js");
-  setTimeout(() => document.querySelectorAll(".rv:not(.in)").forEach(el => {
-    if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in");
-  }), 2500);
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-  }), { rootMargin: "0px 0px -12% 0px", threshold: .12 });
-  document.querySelectorAll(".rv").forEach(el => io.observe(el));
-  const bars = document.getElementById("bars");
-  if (bars) new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) bars.classList.add("in");
-  }), { threshold: .3 }).observe(bars);
+  // появление секций делает CSS (animation-timeline: view()), JS для этого не нужен
 
   // шапка и прогресс чтения
   const hd = document.getElementById("hd"), pg = document.getElementById("pg");
@@ -94,8 +178,9 @@
 
   // мягкий параллакс карточки
   const card = document.getElementById("card");
-  if (!calm && card && matchMedia("(hover:hover)").matches) {
+  if (card && matchMedia("(hover:hover)").matches) {
     addEventListener("pointermove", e => {
+      if (calm) { card.style.transform = ""; return; }
       const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
       card.style.transform = `translate3d(${x * 10}px,${y * 8}px,0) rotate(${x * 1.6}deg)`;
     }, { passive: true });
@@ -165,7 +250,7 @@
   }
 
   // тренажёр правила: 0–1 молчим, 2+ предупреждаем, пауза только по согласию
-  const chips = [...document.querySelectorAll(".chip")];
+  const chips = [...document.querySelectorAll(".chips .chip")];
   const cnt = document.getElementById("cnt");
   if (!chips.length || !cnt) return;
   const on = new Set();

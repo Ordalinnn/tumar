@@ -10,7 +10,7 @@
 <meta property="og:description" content="Пять признаков, объяснимое правило и три слепых теста без купюр.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23e6ebf5' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
@@ -36,6 +36,7 @@
 
 <main id="main">
   <section class="hero" id="top">
+    <canvas class="sky" id="sky" aria-hidden="true"></canvas>
     <div class="wrap">
       <div>
         <p class="eyebrow rv"><i></i>Учебный прототип<span class="hide-sm">&nbsp;· Python + Streamlit</span></p>
@@ -52,8 +53,7 @@
       </div>
 
       <div class="stage rv" style="--d:.1s">
-        <div class="sweep" aria-hidden="true"></div>
-        <div class="glow" aria-hidden="true"></div>
+        <div class="art" id="art" aria-hidden="true"></div>
         <div class="card" id="card">
           <div class="top"><span>Перевод новому получателю</span><span class="chip">день 116</span></div>
           <div class="amt">175 000<small>₸</small></div>
@@ -257,20 +257,20 @@
       <div class="tests">
         <article class="test bad rv" style="--d:.04s">
           <div class="h"><b>Тест 1</b><span>5 обман / 5 честных</span></div>
-          <div class="meter"><div class="cap"><span>Заметили обман</span><b>0 из 5</b></div><div class="dots carn" data-dots="5:0"></div></div>
-          <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 5</b></div><div class="dots amber" data-dots="5:0"></div></div>
+          <div class="meter"><div class="cap"><span>Заметили обман</span><b>0 из 5</b></div><div class="dots carn" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 5</b></div><div class="dots amber" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
           <p class="note">В этих историях не было ни депозита, ни кредита. Пауза не сработала.</p>
         </article>
         <article class="test bad rv" style="--d:.09s">
           <div class="h"><b>Тест 2</b><span>10 обман / 10 честных</span></div>
-          <div class="meter"><div class="cap"><span>Заметили обман</span><b>8 из 10</b></div><div class="dots carn" data-dots="10:8"></div></div>
-          <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>9 из 10</b></div><div class="dots amber" data-dots="10:9"></div></div>
+          <div class="meter"><div class="cap"><span>Заметили обман</span><b>8 из 10</b></div><div class="dots carn" data-dots="10:8" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+          <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>9 из 10</b></div><div class="dots amber" data-dots="10:9" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
           <p class="note">Исправили «общего получателя». Предупреждение приходило до заявки, но <b>честных беспокоили почти всегда</b>.</p>
         </article>
         <article class="test rv" style="--d:.14s">
           <div class="h"><b>Тест 3</b><span>10 обман / 10 честных</span></div>
-          <div class="meter"><div class="cap"><span>Заметили обман</span><b>10 из 10</b></div><div class="dots carn" data-dots="10:10"></div></div>
-          <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 10</b></div><div class="dots amber" data-dots="10:0"></div></div>
+          <div class="meter"><div class="cap"><span>Заметили обман</span><b>10 из 10</b></div><div class="dots carn" data-dots="10:10" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 10</b></div><div class="dots amber" data-dots="10:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
           <p class="note">Исправили лесенку и наживку. Но <b>до заявки — 0 из 4</b>, медиана денег до предупреждения 19%.</p>
         </article>
       </div>
@@ -306,6 +306,7 @@
         <h2 class="rv" style="--d:.05s">Чего Тұмар пока не умеет</h2>
         <p class="sub rv" style="--d:.1s">Честный список важнее красивых цифр: именно он показывает, что проверять дальше.</p>
       </div>
+      <div class="fray" id="fray" aria-hidden="true"></div>
       <div class="limits">
         <p class="limit rv">Если депозит закрыли рано, предупреждаем поздно.</p>
         <p class="limit rv" style="--d:.04s">Не видим обман через лицензированную биржу.</p>
@@ -365,6 +366,6 @@
 
 <dialog class="lb" id="lb" aria-label="Скриншот приложения"><button class="lb-x" type="button" aria-label="Закрыть">×</button><img src="img/app-client.jpg" alt=""></dialog>
 
-<script src="site.js?v=3"></script>
+<script src="site.js?v=4"></script>
 </body>
 </html>
