@@ -1,552 +1,552 @@
 story_id,label,day,kind,amount,cp,cp_type
-1,fraud,2,salary,385000,ТОО Орда Сервис,employer
-1,fraud,3,purchase,12500,Magnum,merchant
-1,fraud,7,out,18000,Алия Сарсенова,person
-1,fraud,11,purchase,4200,Small,merchant
-1,fraud,15,out,35000,Ермек Толеуов,person
-1,fraud,19,purchase,28500,Technodom,merchant
-1,fraud,24,in,45000,ТОО Орда Сервис,employer
-1,fraud,28,purchase,7800,Arbuz,merchant
-1,fraud,32,out,22000,Данияр Касымов,person
-1,fraud,37,purchase,16000,Carrefour,merchant
-1,fraud,42,in,385000,ТОО Орда Сервис,employer
-1,fraud,46,out,12000,Алия Сарсенова,person
-1,fraud,51,purchase,35000,Helios,merchant
-1,fraud,55,out,27000,Ермек Толеуов,person
-1,fraud,60,purchase,9500,Small,merchant
-1,fraud,65,in,385000,ТОО Орда Сервис,employer
-1,fraud,69,purchase,18500,Magnum,merchant
-1,fraud,73,out,15000,Данияр Касымов,person
-1,fraud,78,purchase,22000,Мечта,merchant
-1,fraud,83,in,52000,ТОО Орда Сервис,employer
-1,fraud,87,purchase,6500,Arbuz,merchant
-1,fraud,92,out,45000,Руслан Абдрахманов,person
-1,fraud,96,out,85000,Марат Жумабаев,person
-1,fraud,101,in,12000,Руслан Абдрахманов,person
-1,fraud,105,out,145000,Айдос Нурбеков,person
-1,fraud,110,out,230000,Самат Омаров,person
-1,fraud,115,out,310000,Ерлан Кенжебеков,person
-1,fraud,121,out,420000,Бекзат Алиев,person
-1,fraud,128,out,580000,Тимур Садыков,person
-1,fraud,137,out,750000,Нуржан Искаков,person
-2,fraud,1,salary,310000,ТОО Алем Строй,employer
-2,fraud,5,purchase,18000,Magnum,merchant
-2,fraud,9,out,25000,Мадина Ермекова,person
-2,fraud,14,purchase,6500,Small,merchant
-2,fraud,18,in,310000,ТОО Алем Строй,employer
-2,fraud,22,out,15000,Аскар Беков,person
-2,fraud,27,purchase,42000,Sulpak,merchant
-2,fraud,31,out,35000,Мадина Ермекова,person
-2,fraud,36,purchase,12000,Helios,merchant
-2,fraud,40,in,310000,ТОО Алем Строй,employer
-2,fraud,44,purchase,9500,Arbuz,merchant
-2,fraud,49,out,18000,Аскар Беков,person
-2,fraud,53,purchase,24000,Детский мир,merchant
-2,fraud,58,in,310000,ТОО Алем Строй,employer
-2,fraud,62,out,22000,Мадина Ермекова,person
-2,fraud,67,purchase,8500,Magnum,merchant
-2,fraud,72,purchase,36000,Мечта,merchant
-2,fraud,77,in,310000,ТОО Алем Строй,employer
-2,fraud,82,out,14000,Аскар Беков,person
-2,fraud,86,purchase,11500,Small,merchant
-2,fraud,89,purchase,27000,Helios,merchant
-2,fraud,94,out,65000,Сауле Куатова,person
+1,fraud,2,salary,385000,E-0126,employer
+1,fraud,3,purchase,12500,M-0184,merchant
+1,fraud,7,out,18000,P-0017,person
+1,fraud,11,purchase,4200,M-0045,merchant
+1,fraud,15,out,35000,P-0128,person
+1,fraud,19,purchase,28500,M-0084,merchant
+1,fraud,24,in,45000,E-0126,employer
+1,fraud,28,purchase,7800,M-0085,merchant
+1,fraud,32,out,22000,P-0115,person
+1,fraud,37,purchase,16000,M-0214,merchant
+1,fraud,42,in,385000,E-0126,employer
+1,fraud,46,out,12000,P-0017,person
+1,fraud,51,purchase,35000,M-0113,merchant
+1,fraud,55,out,27000,P-0128,person
+1,fraud,60,purchase,9500,M-0045,merchant
+1,fraud,65,in,385000,E-0126,employer
+1,fraud,69,purchase,18500,M-0184,merchant
+1,fraud,73,out,15000,P-0115,person
+1,fraud,78,purchase,22000,M-0050,merchant
+1,fraud,83,in,52000,E-0126,employer
+1,fraud,87,purchase,6500,M-0085,merchant
+1,fraud,92,out,45000,P-0077,person
+1,fraud,96,out,85000,P-0174,person
+1,fraud,101,in,12000,P-0077,person
+1,fraud,105,out,145000,P-0243,person
+1,fraud,110,out,230000,P-0015,person
+1,fraud,115,out,310000,P-0094,person
+1,fraud,121,out,420000,P-0098,person
+1,fraud,128,out,580000,P-0201,person
+1,fraud,137,out,750000,P-0102,person
+2,fraud,1,salary,310000,E-0138,employer
+2,fraud,5,purchase,18000,M-0184,merchant
+2,fraud,9,out,25000,P-0163,person
+2,fraud,14,purchase,6500,M-0045,merchant
+2,fraud,18,in,310000,E-0138,employer
+2,fraud,22,out,15000,P-0091,person
+2,fraud,27,purchase,42000,M-0079,merchant
+2,fraud,31,out,35000,P-0163,person
+2,fraud,36,purchase,12000,M-0113,merchant
+2,fraud,40,in,310000,E-0138,employer
+2,fraud,44,purchase,9500,M-0085,merchant
+2,fraud,49,out,18000,P-0091,person
+2,fraud,53,purchase,24000,M-0193,merchant
+2,fraud,58,in,310000,E-0138,employer
+2,fraud,62,out,22000,P-0163,person
+2,fraud,67,purchase,8500,M-0184,merchant
+2,fraud,72,purchase,36000,M-0050,merchant
+2,fraud,77,in,310000,E-0138,employer
+2,fraud,82,out,14000,P-0091,person
+2,fraud,86,purchase,11500,M-0045,merchant
+2,fraud,89,purchase,27000,M-0113,merchant
+2,fraud,94,out,65000,P-0127,person
 2,fraud,98,deposit_close,1850000,own,own
-2,fraud,101,out,450000,Нурлан Ахметов,person
-2,fraud,104,out,390000,Диас Муратов,person
-2,fraud,109,out,520000,Арман Сейдахметов,person
-2,fraud,115,in,35000,Сауле Куатова,person
-2,fraud,121,out,275000,Кайрат Бекенов,person
-2,fraud,132,out,160000,Ермек Жанибеков,person
-3,fraud,3,salary,460000,ТОО Каспий Логистик,employer
-3,fraud,6,purchase,32000,Small,merchant
-3,fraud,10,out,40000,Айжан Нурланова,person
-3,fraud,14,purchase,12500,Magnum,merchant
-3,fraud,18,in,460000,ТОО Каспий Логистик,employer
-3,fraud,23,purchase,58000,Technodom,merchant
-3,fraud,27,out,30000,Бауыржан Есенов,person
-3,fraud,32,purchase,18000,Helios,merchant
-3,fraud,36,in,460000,ТОО Каспий Логистик,employer
-3,fraud,41,out,22000,Айжан Нурланова,person
-3,fraud,45,purchase,9500,Arbuz,merchant
-3,fraud,50,purchase,42000,Мечта,merchant
-3,fraud,54,in,460000,ТОО Каспий Логистик,employer
-3,fraud,59,out,35000,Бауыржан Есенов,person
-3,fraud,63,purchase,14500,Small,merchant
-3,fraud,68,purchase,21000,Magnum,merchant
-3,fraud,72,in,460000,ТОО Каспий Логистик,employer
-3,fraud,77,out,28000,Айжан Нурланова,person
-3,fraud,81,purchase,33000,Carrefour,merchant
-3,fraud,86,purchase,8500,Small,merchant
-3,fraud,90,in,460000,ТОО Каспий Логистик,employer
-3,fraud,94,out,55000,Ержан Сапаров,person
-3,fraud,97,loan,1200000,Банк ЦентрКредит,licensed
-3,fraud,100,out,180000,Данияр Касымов,person
-3,fraud,103,out,220000,Рустем Омаров,person
-3,fraud,107,out,310000,Алибек Жумабаев,person
-3,fraud,112,out,260000,Марат Сейтов,person
-3,fraud,118,in,45000,Ержан Сапаров,person
-3,fraud,124,out,190000,Талгат Ибраев,person
-3,fraud,133,out,145000,Нурлан Куанышев,person
-4,fraud,2,salary,275000,ТОО Жетысу Мед,employer
-4,fraud,6,purchase,9500,Magnum,merchant
-4,fraud,10,out,12000,Гульмира Алимова,person
-4,fraud,15,purchase,18500,Small,merchant
-4,fraud,19,in,275000,ТОО Жетысу Мед,employer
-4,fraud,24,purchase,6500,Arbuz,merchant
-4,fraud,28,out,20000,Серик Тлеубаев,person
-4,fraud,33,purchase,26000,Helios,merchant
-4,fraud,37,in,275000,ТОО Жетысу Мед,employer
-4,fraud,42,purchase,14500,Magnum,merchant
-4,fraud,46,out,18000,Гульмира Алимова,person
-4,fraud,51,purchase,39000,Мечта,merchant
-4,fraud,55,in,275000,ТОО Жетысу Мед,employer
-4,fraud,60,out,9000,Серик Тлеубаев,person
-4,fraud,64,purchase,12500,Small,merchant
-4,fraud,69,purchase,22000,Carrefour,merchant
-4,fraud,73,in,275000,ТОО Жетысу Мед,employer
-4,fraud,78,out,15000,Гульмира Алимова,person
-4,fraud,82,purchase,7800,Arbuz,merchant
-4,fraud,87,purchase,31000,Technodom,merchant
-4,fraud,90,in,275000,ТОО Жетысу Мед,employer
-4,fraud,95,out,35000,Ермек Касенов,person
-4,fraud,99,out,70000,Жанна Муратова,person
-4,fraud,103,out,125000,Азамат Сулейменов,person
-4,fraud,108,in,18000,Ермек Касенов,person
-4,fraud,113,out,210000,Ринат Ахметов,person
-4,fraud,119,out,165000,Мейрам Беков,person
-4,fraud,127,out,280000,Дамир Нуртаев,person
-4,fraud,138,out,340000,Алихан Садыков,person
-5,fraud,1,salary,520000,ТОО Алтын Дән,employer
-5,fraud,4,purchase,24000,Magnum,merchant
-5,fraud,8,out,35000,Алия Сарсенова,person
-5,fraud,13,purchase,17000,Small,merchant
-5,fraud,17,in,520000,ТОО Алтын Дән,employer
-5,fraud,21,purchase,45000,Technodom,merchant
-5,fraud,26,out,25000,Ермек Толеуов,person
-5,fraud,30,purchase,12000,Helios,merchant
-5,fraud,35,in,520000,ТОО Алтын Дән,employer
-5,fraud,39,out,18000,Данияр Касымов,person
-5,fraud,44,purchase,19500,Arbuz,merchant
-5,fraud,48,purchase,67000,Мечта,merchant
-5,fraud,53,in,520000,ТОО Алтын Дән,employer
-5,fraud,57,out,22000,Алия Сарсенова,person
-5,fraud,62,purchase,13500,Small,merchant
-5,fraud,66,purchase,28000,Carrefour,merchant
-5,fraud,71,in,520000,ТОО Алтын Дән,employer
-5,fraud,75,out,32000,Ермек Толеуов,person
-5,fraud,80,purchase,8500,Magnum,merchant
-5,fraud,85,purchase,41000,Technodom,merchant
-5,fraud,89,in,520000,ТОО Алтын Дән,employer
-5,fraud,93,out,55000,Самат Омаров,person
-5,fraud,97,out,90000,Бекзат Алиев,person
-5,fraud,101,out,160000,Нуржан Искаков,person
-5,fraud,105,in,28000,Самат Омаров,person
-5,fraud,110,out,240000,Тимур Садыков,person
-5,fraud,116,out,315000,Ерлан Кенжебеков,person
-5,fraud,123,out,420000,Марат Жумабаев,person
-5,fraud,134,out,510000,Руслан Абдрахманов,person
-6,honest,1,salary,340000,ТОО Астана Құрылыс,employer
-6,honest,4,purchase,18000,Magnum,merchant
-6,honest,8,out,25000,Аскар Беков,person
-6,honest,12,purchase,9500,Small,merchant
-6,honest,16,in,340000,ТОО Астана Құрылыс,employer
-6,honest,21,purchase,32000,Helios,merchant
-6,honest,25,out,18000,Мадина Ермекова,person
-6,honest,30,purchase,14500,Arbuz,merchant
-6,honest,34,in,340000,ТОО Астана Құрылыс,employer
-6,honest,39,purchase,22000,Carrefour,merchant
-6,honest,43,out,12000,Аскар Беков,person
-6,honest,48,purchase,8500,Small,merchant
-6,honest,52,in,340000,ТОО Астана Құрылыс,employer
-6,honest,57,purchase,27500,Magnum,merchant
-6,honest,61,out,20000,Мадина Ермекова,person
-6,honest,66,purchase,11500,Helios,merchant
-6,honest,70,in,340000,ТОО Астана Құрылыс,employer
-6,honest,75,purchase,19000,Arbuz,merchant
-6,honest,79,out,15000,Аскар Беков,person
-6,honest,84,purchase,12500,Small,merchant
-6,honest,88,in,340000,ТОО Астана Құрылыс,employer
-6,honest,94,out,180000,ТОО РемСтрой KZ,company
-6,honest,99,out,240000,ТОО РемСтрой KZ,company
-6,honest,104,purchase,85000,СтройМарт,merchant
-6,honest,110,out,310000,ТОО РемСтрой KZ,company
-6,honest,118,out,95000,ИП Касенов,company
-6,honest,126,purchase,42000,СтройМарт,merchant
-6,honest,139,out,135000,ТОО РемСтрой KZ,company
-7,honest,2,salary,410000,ТОО Дала Транс,employer
-7,honest,6,purchase,22000,Magnum,merchant
-7,honest,10,out,30000,Айжан Нурланова,person
-7,honest,14,purchase,11500,Small,merchant
-7,honest,18,in,410000,ТОО Дала Транс,employer
-7,honest,23,purchase,48000,Helios,merchant
-7,honest,27,out,25000,Бауыржан Есенов,person
-7,honest,32,purchase,16000,Arbuz,merchant
-7,honest,36,in,410000,ТОО Дала Транс,employer
-7,honest,41,purchase,28500,Carrefour,merchant
-7,honest,45,out,18000,Айжан Нурланова,person
-7,honest,50,purchase,9500,Small,merchant
-7,honest,54,in,410000,ТОО Дала Транс,employer
-7,honest,59,purchase,34000,Magnum,merchant
-7,honest,63,out,22000,Бауыржан Есенов,person
-7,honest,68,purchase,12500,Helios,merchant
-7,honest,72,in,410000,ТОО Дала Транс,employer
-7,honest,77,purchase,19500,Arbuz,merchant
-7,honest,81,out,15000,Айжан Нурланова,person
-7,honest,86,purchase,14500,Small,merchant
-7,honest,90,in,410000,ТОО Дала Транс,employer
-7,honest,95,out,450000,Тимур Касымов,person
-7,honest,101,out,680000,Тимур Касымов,person
-7,honest,106,in,250000,Тимур Касымов,person
-7,honest,112,out,320000,Тимур Касымов,person
-7,honest,119,out,175000,Тимур Касымов,person
-7,honest,127,in,180000,Тимур Касымов,person
-7,honest,136,out,90000,Тимур Касымов,person
-8,honest,3,salary,295000,ТОО Жана Өмір,employer
-8,honest,7,purchase,14500,Magnum,merchant
-8,honest,11,out,18000,Гульмира Алимова,person
-8,honest,15,purchase,8500,Small,merchant
-8,honest,19,in,295000,ТОО Жана Өмір,employer
-8,honest,24,purchase,27000,Детский мир,merchant
-8,honest,28,out,22000,Серик Тлеубаев,person
-8,honest,33,purchase,12000,Arbuz,merchant
-8,honest,37,in,295000,ТОО Жана Өмір,employer
-8,honest,42,purchase,18500,Magnum,merchant
-8,honest,46,out,15000,Гульмира Алимова,person
-8,honest,51,purchase,9500,Small,merchant
-8,honest,55,in,295000,ТОО Жана Өмір,employer
-8,honest,60,purchase,42000,Детский мир,merchant
-8,honest,64,out,20000,Серик Тлеубаев,person
-8,honest,69,purchase,13500,Helios,merchant
-8,honest,73,in,295000,ТОО Жана Өмір,employer
-8,honest,78,purchase,16000,Arbuz,merchant
-8,honest,82,out,12000,Гульмира Алимова,person
-8,honest,87,purchase,11500,Magnum,merchant
-8,honest,90,in,295000,ТОО Жана Өмір,employer
-8,honest,96,out,120000,Айдос Сапаров,person
-8,honest,102,out,85000,Айдос Сапаров,person
-8,honest,108,in,70000,Айдос Сапаров,person
-8,honest,115,out,150000,Айдос Сапаров,person
-8,honest,123,out,95000,Айдос Сапаров,person
-8,honest,131,in,50000,Айдос Сапаров,person
-8,honest,140,out,60000,Айдос Сапаров,person
-9,honest,1,salary,560000,ТОО Каспий Инжиниринг,employer
-9,honest,5,purchase,32000,Magnum,merchant
-9,honest,9,out,45000,Марат Жумабаев,person
-9,honest,13,purchase,18500,Small,merchant
-9,honest,17,in,560000,ТОО Каспий Инжиниринг,employer
-9,honest,22,purchase,68000,Technodom,merchant
-9,honest,26,out,25000,Нуржан Искаков,person
-9,honest,31,purchase,24000,Helios,merchant
-9,honest,35,in,560000,ТОО Каспий Инжиниринг,employer
-9,honest,40,purchase,15500,Arbuz,merchant
-9,honest,44,out,30000,Марат Жумабаев,person
-9,honest,49,purchase,42000,Мечта,merchant
-9,honest,53,in,560000,ТОО Каспий Инжиниринг,employer
-9,honest,58,purchase,21500,Carrefour,merchant
-9,honest,62,out,18000,Нуржан Искаков,person
-9,honest,67,purchase,12500,Small,merchant
-9,honest,71,in,560000,ТОО Каспий Инжиниринг,employer
-9,honest,76,purchase,34000,Magnum,merchant
-9,honest,80,out,22000,Марат Жумабаев,person
-9,honest,85,purchase,19500,Helios,merchant
-9,honest,89,in,560000,ТОО Каспий Инжиниринг,employer
-9,honest,94,out,380000,ИП Садыков,company
-9,honest,100,out,520000,ИП Садыков,company
-9,honest,106,in,650000,ТОО Каспий Инжиниринг,employer
-9,honest,112,out,275000,ИП Садыков,company
-9,honest,119,purchase,145000,СтройМарт,merchant
-9,honest,127,out,310000,ИП Садыков,company
-9,honest,136,out,185000,ИП Садыков,company
-10,honest,2,salary,370000,ТОО Арман Сервис,employer
-10,honest,6,purchase,17500,Magnum,merchant
-10,honest,10,out,25000,Данияр Касымов,person
-10,honest,14,purchase,9500,Small,merchant
-10,honest,18,in,370000,ТОО Арман Сервис,employer
-10,honest,23,purchase,28000,Helios,merchant
-10,honest,27,out,18000,Рустем Омаров,person
-10,honest,32,purchase,14500,Arbuz,merchant
-10,honest,36,in,370000,ТОО Арман Сервис,employer
-10,honest,41,purchase,22000,Carrefour,merchant
-10,honest,45,out,15000,Данияр Касымов,person
-10,honest,50,purchase,8500,Small,merchant
-10,honest,54,in,370000,ТОО Арман Сервис,employer
-10,honest,59,purchase,36000,Magnum,merchant
-10,honest,63,out,22000,Рустем Омаров,person
-10,honest,68,purchase,12500,Helios,merchant
-10,honest,72,in,370000,ТОО Арман Сервис,employer
-10,honest,77,purchase,19500,Arbuz,merchant
-10,honest,81,out,18000,Данияр Касымов,person
-10,honest,86,purchase,11500,Small,merchant
-10,honest,90,in,370000,ТОО Арман Сервис,employer
-10,honest,95,out,160000,ИП Куанышев,company
-10,honest,101,out,230000,ИП Куанышев,company
-10,honest,107,in,125000,ТОО Арман Сервис,employer
-10,honest,113,out,185000,ИП Куанышев,company
-10,honest,120,purchase,95000,Kaspi Магазин,merchant
-10,honest,129,out,145000,ИП Куанышев,company
-10,honest,140,in,85000,ТОО Арман Сервис,employer
-11,honest,2,salary,425000,ТОО ТаразЭнерго,employer
-11,honest,5,purchase,18500,Magnum,merchant
-11,honest,9,out,35000,Айгерим Кудайбергенова,person
-11,honest,14,purchase,12000,Small,merchant
-11,honest,18,in,425000,ТОО ТаразЭнерго,employer
-11,honest,23,purchase,28000,Helios,merchant
-11,honest,28,out,45000,Ерлан Жакыпов,person
-11,honest,34,purchase,9500,Arbuz,merchant
-11,honest,39,in,425000,ТОО ТаразЭнерго,employer
-11,honest,44,purchase,22000,Carrefour,merchant
-11,honest,49,out,18000,Айгерим Кудайбергенова,person
-11,honest,54,purchase,16500,Magnum,merchant
-11,honest,59,in,425000,ТОО ТаразЭнерго,employer
-11,honest,64,purchase,8500,Small,merchant
-11,honest,69,out,25000,Ерлан Жакыпов,person
-11,honest,74,purchase,19500,Helios,merchant
-11,honest,80,in,425000,ТОО ТаразЭнерго,employer
-11,honest,85,purchase,14000,Arbuz,merchant
-11,honest,90,in,425000,ТОО ТаразЭнерго,employer
-11,honest,96,out,180000,Нурбек Сейдахметов,person
-11,honest,101,out,320000,ТОО Береке Банкет,company
-11,honest,106,out,245000,ИП Асылбекова,company
-11,honest,112,out,160000,Данияр Оразбаев,person
-11,honest,119,in,85000,Нурбек Сейдахметов,person
-11,honest,127,out,95000,ТОО Береке Банкет,company
-11,honest,138,out,65000,ИП Асылбекова,company
-12,honest,1,salary,295000,ТОО Медлайн Тараз,employer
-12,honest,6,purchase,14500,Magnum,merchant
-12,honest,10,out,22000,Меруерт Сапарова,person
-12,honest,15,purchase,8500,Small,merchant
-12,honest,20,in,295000,ТОО Медлайн Тараз,employer
-12,honest,25,purchase,18000,Helios,merchant
-12,honest,30,out,15000,Болат Кенжебаев,person
-12,honest,35,purchase,12500,Arbuz,merchant
-12,honest,40,in,295000,ТОО Медлайн Тараз,employer
-12,honest,45,purchase,21000,Carrefour,merchant
-12,honest,50,out,18000,Меруерт Сапарова,person
-12,honest,55,purchase,9500,Small,merchant
-12,honest,60,in,295000,ТОО Медлайн Тараз,employer
-12,honest,65,purchase,16000,Magnum,merchant
-12,honest,70,out,12000,Болат Кенжебаев,person
-12,honest,75,purchase,8500,Helios,merchant
-12,honest,81,in,295000,ТОО Медлайн Тараз,employer
-12,honest,86,purchase,13500,Arbuz,merchant
-12,honest,90,in,295000,ТОО Медлайн Тараз,employer
-12,honest,95,out,185000,ТОО Sana Clinic,company
-12,honest,101,out,240000,ТОО Sana Clinic,company
-12,honest,107,out,175000,ТОО Диагност-Тараз,company
-12,honest,113,in,60000,Меруерт Сапарова,person
-12,honest,120,out,95000,ТОО Sana Clinic,company
-12,honest,132,out,125000,ТОО Диагност-Тараз,company
-13,honest,3,salary,510000,ТОО QazTech Solutions,employer
-13,honest,7,purchase,26000,Magnum,merchant
-13,honest,11,out,30000,Самат Куанышев,person
-13,honest,16,purchase,14500,Small,merchant
-13,honest,21,in,510000,ТОО QazTech Solutions,employer
-13,honest,26,purchase,42000,Technodom,merchant
-13,honest,31,out,25000,Алия Жумабаева,person
-13,honest,36,purchase,18500,Helios,merchant
-13,honest,41,in,510000,ТОО QazTech Solutions,employer
-13,honest,46,purchase,22000,Arbuz,merchant
-13,honest,51,out,18000,Самат Куанышев,person
-13,honest,56,purchase,31000,Carrefour,merchant
-13,honest,61,in,510000,ТОО QazTech Solutions,employer
-13,honest,66,purchase,12500,Small,merchant
-13,honest,71,out,22000,Алия Жумабаева,person
-13,honest,76,purchase,19500,Magnum,merchant
-13,honest,82,in,510000,ТОО QazTech Solutions,employer
-13,honest,87,purchase,14500,Helios,merchant
-13,honest,90,in,510000,ТОО QazTech Solutions,employer
-13,honest,96,out,85000,Айбек Турсунов,person
-13,honest,101,out,125000,КриптоПлатеж KZ,wallet
-13,honest,106,out,175000,КриптоПлатеж KZ,wallet
-13,honest,112,in,22000,Айбек Турсунов,person
-13,honest,118,out,210000,КриптоПлатеж KZ,wallet
-13,honest,126,out,95000,КриптоПлатеж KZ,wallet
-13,honest,139,out,65000,КриптоПлатеж KZ,wallet
-14,honest,2,salary,360000,ТОО ТаразЖылу,employer
-14,honest,6,purchase,17500,Magnum,merchant
-14,honest,10,out,25000,Жанар Абдрахманова,person
-14,honest,14,purchase,11500,Small,merchant
-14,honest,19,in,360000,ТОО ТаразЖылу,employer
-14,honest,24,purchase,22000,Helios,merchant
-14,honest,29,out,18000,Рустем Нурланов,person
-14,honest,34,purchase,14500,Arbuz,merchant
-14,honest,39,in,360000,ТОО ТаразЖылу,employer
-14,honest,44,purchase,19500,Carrefour,merchant
-14,honest,49,out,12000,Жанар Абдрахманова,person
-14,honest,54,purchase,9500,Small,merchant
-14,honest,59,in,360000,ТОО ТаразЖылу,employer
-14,honest,64,purchase,28500,Magnum,merchant
-14,honest,69,out,22000,Рустем Нурланов,person
-14,honest,74,purchase,12500,Helios,merchant
-14,honest,80,in,360000,ТОО ТаразЖылу,employer
-14,honest,85,purchase,16000,Arbuz,merchant
-14,honest,90,in,360000,ТОО ТаразЖылу,employer
-14,honest,96,out,145000,Аренда Керуен,company
-14,honest,103,out,145000,Аренда Керуен,company
-14,honest,110,out,145000,Аренда Керуен,company
-14,honest,117,in,45000,Жанар Абдрахманова,person
-14,honest,124,out,145000,Аренда Керуен,company
-14,honest,132,out,145000,Аренда Керуен,company
-14,honest,140,out,145000,Аренда Керуен,company
-15,honest,1,salary,280000,ТОО Жасыл Ел,employer
-15,honest,5,purchase,15500,Magnum,merchant
-15,honest,9,out,20000,Азамат Сулейменов,person
-15,honest,14,purchase,8500,Small,merchant
-15,honest,18,in,280000,ТОО Жасыл Ел,employer
-15,honest,23,purchase,18000,Helios,merchant
-15,honest,28,out,15000,Мадина Касымова,person
-15,honest,33,purchase,12500,Arbuz,merchant
-15,honest,38,in,280000,ТОО Жасыл Ел,employer
-15,honest,43,purchase,21000,Carrefour,merchant
-15,honest,48,out,18000,Азамат Сулейменов,person
-15,honest,53,purchase,9500,Small,merchant
-15,honest,58,in,280000,ТОО Жасыл Ел,employer
-15,honest,63,purchase,14500,Magnum,merchant
-15,honest,68,out,12000,Мадина Касымова,person
-15,honest,73,purchase,8500,Helios,merchant
-15,honest,79,in,280000,ТОО Жасыл Ел,employer
-15,honest,84,purchase,16500,Arbuz,merchant
-15,honest,90,in,280000,ТОО Жасыл Ел,employer
-15,honest,96,out,100000,Айдар Нуртаев,person
-15,honest,103,out,150000,Айдар Нуртаев,person
-15,honest,110,out,120000,Айдар Нуртаев,person
-15,honest,117,in,80000,Айдар Нуртаев,person
-15,honest,124,out,90000,Айдар Нуртаев,person
-15,honest,132,out,65000,Айдар Нуртаев,person
-15,honest,140,out,55000,Айдар Нуртаев,person
-16,fraud,1,salary,390000,ТОО Номад Трейд,employer
-16,fraud,5,purchase,19500,Magnum,merchant
-16,fraud,9,out,25000,Меруерт Сапарова,person
-16,fraud,14,purchase,12000,Small,merchant
-16,fraud,19,in,390000,ТОО Номад Трейд,employer
-16,fraud,24,purchase,28500,Helios,merchant
-16,fraud,29,out,18000,Болат Кенжебаев,person
-16,fraud,34,purchase,16500,Arbuz,merchant
-16,fraud,39,in,390000,ТОО Номад Трейд,employer
-16,fraud,44,purchase,22000,Carrefour,merchant
-16,fraud,49,out,15000,Меруерт Сапарова,person
-16,fraud,54,purchase,9500,Small,merchant
-16,fraud,59,in,390000,ТОО Номад Трейд,employer
-16,fraud,64,purchase,18000,Magnum,merchant
-16,fraud,69,out,22000,Болат Кенжебаев,person
-16,fraud,74,purchase,14500,Helios,merchant
-16,fraud,80,in,390000,ТОО Номад Трейд,employer
-16,fraud,85,purchase,12500,Arbuz,merchant
-16,fraud,90,in,390000,ТОО Номад Трейд,employer
-16,fraud,95,out,45000,Канат Абилов,person
-16,fraud,99,out,95000,Ринат Жумабеков,person
-16,fraud,103,in,12000,Канат Абилов,person
-16,fraud,107,out,175000,Тимур Оспанов,person
-16,fraud,112,out,260000,Ермек Сапаргалиев,person
-16,fraud,118,out,340000,Нуржан Тлеубергенов,person
-16,fraud,125,out,425000,Алихан Муратов,person
-16,fraud,136,out,580000,Данияр Искаков,person
-17,fraud,2,salary,325000,ТОО Шапағат Логистик,employer
-17,fraud,6,purchase,14500,Small,merchant
-17,fraud,10,out,18000,Жанар Абдрахманова,person
-17,fraud,15,purchase,22000,Magnum,merchant
-17,fraud,20,in,325000,ТОО Шапағат Логистик,employer
-17,fraud,25,purchase,9500,Helios,merchant
-17,fraud,30,out,25000,Рустем Нурланов,person
-17,fraud,35,purchase,13500,Arbuz,merchant
-17,fraud,40,in,325000,ТОО Шапағат Логистик,employer
-17,fraud,45,purchase,18500,Carrefour,merchant
-17,fraud,50,out,15000,Жанар Абдрахманова,person
-17,fraud,55,purchase,12000,Small,merchant
-17,fraud,60,in,325000,ТОО Шапағат Логистик,employer
-17,fraud,65,purchase,24500,Magnum,merchant
-17,fraud,70,out,22000,Рустем Нурланов,person
-17,fraud,75,purchase,8500,Helios,merchant
-17,fraud,81,in,325000,ТОО Шапағат Логистик,employer
-17,fraud,86,purchase,16500,Arbuz,merchant
-17,fraud,90,in,325000,ТОО Шапағат Логистик,employer
-17,fraud,94,out,60000,Марат Кудайбергенов,person
+2,fraud,101,out,450000,P-0186,person
+2,fraud,104,out,390000,P-0135,person
+2,fraud,109,out,520000,P-0055,person
+2,fraud,115,in,35000,P-0127,person
+2,fraud,121,out,275000,P-0236,person
+2,fraud,132,out,160000,P-0197,person
+3,fraud,3,salary,460000,E-0096,employer
+3,fraud,6,purchase,32000,M-0045,merchant
+3,fraud,10,out,40000,P-0219,person
+3,fraud,14,purchase,12500,M-0184,merchant
+3,fraud,18,in,460000,E-0096,employer
+3,fraud,23,purchase,58000,M-0084,merchant
+3,fraud,27,out,30000,P-0136,person
+3,fraud,32,purchase,18000,M-0113,merchant
+3,fraud,36,in,460000,E-0096,employer
+3,fraud,41,out,22000,P-0219,person
+3,fraud,45,purchase,9500,M-0085,merchant
+3,fraud,50,purchase,42000,M-0050,merchant
+3,fraud,54,in,460000,E-0096,employer
+3,fraud,59,out,35000,P-0136,person
+3,fraud,63,purchase,14500,M-0045,merchant
+3,fraud,68,purchase,21000,M-0184,merchant
+3,fraud,72,in,460000,E-0096,employer
+3,fraud,77,out,28000,P-0219,person
+3,fraud,81,purchase,33000,M-0214,merchant
+3,fraud,86,purchase,8500,M-0045,merchant
+3,fraud,90,in,460000,E-0096,employer
+3,fraud,94,out,55000,P-0209,person
+3,fraud,97,loan,1200000,C-0052,licensed
+3,fraud,100,out,180000,P-0115,person
+3,fraud,103,out,220000,P-0139,person
+3,fraud,107,out,310000,P-0251,person
+3,fraud,112,out,260000,P-0247,person
+3,fraud,118,in,45000,P-0209,person
+3,fraud,124,out,190000,P-0081,person
+3,fraud,133,out,145000,P-0109,person
+4,fraud,2,salary,275000,E-0073,employer
+4,fraud,6,purchase,9500,M-0184,merchant
+4,fraud,10,out,12000,P-0118,person
+4,fraud,15,purchase,18500,M-0045,merchant
+4,fraud,19,in,275000,E-0073,employer
+4,fraud,24,purchase,6500,M-0085,merchant
+4,fraud,28,out,20000,P-0212,person
+4,fraud,33,purchase,26000,M-0113,merchant
+4,fraud,37,in,275000,E-0073,employer
+4,fraud,42,purchase,14500,M-0184,merchant
+4,fraud,46,out,18000,P-0118,person
+4,fraud,51,purchase,39000,M-0050,merchant
+4,fraud,55,in,275000,E-0073,employer
+4,fraud,60,out,9000,P-0212,person
+4,fraud,64,purchase,12500,M-0045,merchant
+4,fraud,69,purchase,22000,M-0214,merchant
+4,fraud,73,in,275000,E-0073,employer
+4,fraud,78,out,15000,P-0118,person
+4,fraud,82,purchase,7800,M-0085,merchant
+4,fraud,87,purchase,31000,M-0084,merchant
+4,fraud,90,in,275000,E-0073,employer
+4,fraud,95,out,35000,P-0205,person
+4,fraud,99,out,70000,P-0004,person
+4,fraud,103,out,125000,P-0087,person
+4,fraud,108,in,18000,P-0205,person
+4,fraud,113,out,210000,P-0239,person
+4,fraud,119,out,165000,P-0161,person
+4,fraud,127,out,280000,P-0166,person
+4,fraud,138,out,340000,P-0157,person
+5,fraud,1,salary,520000,E-0229,employer
+5,fraud,4,purchase,24000,M-0184,merchant
+5,fraud,8,out,35000,P-0017,person
+5,fraud,13,purchase,17000,M-0045,merchant
+5,fraud,17,in,520000,E-0229,employer
+5,fraud,21,purchase,45000,M-0084,merchant
+5,fraud,26,out,25000,P-0128,person
+5,fraud,30,purchase,12000,M-0113,merchant
+5,fraud,35,in,520000,E-0229,employer
+5,fraud,39,out,18000,P-0115,person
+5,fraud,44,purchase,19500,M-0085,merchant
+5,fraud,48,purchase,67000,M-0050,merchant
+5,fraud,53,in,520000,E-0229,employer
+5,fraud,57,out,22000,P-0017,person
+5,fraud,62,purchase,13500,M-0045,merchant
+5,fraud,66,purchase,28000,M-0214,merchant
+5,fraud,71,in,520000,E-0229,employer
+5,fraud,75,out,32000,P-0128,person
+5,fraud,80,purchase,8500,M-0184,merchant
+5,fraud,85,purchase,41000,M-0084,merchant
+5,fraud,89,in,520000,E-0229,employer
+5,fraud,93,out,55000,P-0015,person
+5,fraud,97,out,90000,P-0098,person
+5,fraud,101,out,160000,P-0102,person
+5,fraud,105,in,28000,P-0015,person
+5,fraud,110,out,240000,P-0201,person
+5,fraud,116,out,315000,P-0094,person
+5,fraud,123,out,420000,P-0174,person
+5,fraud,134,out,510000,P-0077,person
+6,honest,1,salary,340000,E-0006,employer
+6,honest,4,purchase,18000,M-0184,merchant
+6,honest,8,out,25000,P-0091,person
+6,honest,12,purchase,9500,M-0045,merchant
+6,honest,16,in,340000,E-0006,employer
+6,honest,21,purchase,32000,M-0113,merchant
+6,honest,25,out,18000,P-0163,person
+6,honest,30,purchase,14500,M-0085,merchant
+6,honest,34,in,340000,E-0006,employer
+6,honest,39,purchase,22000,M-0214,merchant
+6,honest,43,out,12000,P-0091,person
+6,honest,48,purchase,8500,M-0045,merchant
+6,honest,52,in,340000,E-0006,employer
+6,honest,57,purchase,27500,M-0184,merchant
+6,honest,61,out,20000,P-0163,person
+6,honest,66,purchase,11500,M-0113,merchant
+6,honest,70,in,340000,E-0006,employer
+6,honest,75,purchase,19000,M-0085,merchant
+6,honest,79,out,15000,P-0091,person
+6,honest,84,purchase,12500,M-0045,merchant
+6,honest,88,in,340000,E-0006,employer
+6,honest,94,out,180000,C-0108,company
+6,honest,99,out,240000,C-0108,company
+6,honest,104,purchase,85000,M-0099,merchant
+6,honest,110,out,310000,C-0108,company
+6,honest,118,out,95000,C-0177,company
+6,honest,126,purchase,42000,M-0099,merchant
+6,honest,139,out,135000,C-0108,company
+7,honest,2,salary,410000,E-0217,employer
+7,honest,6,purchase,22000,M-0184,merchant
+7,honest,10,out,30000,P-0219,person
+7,honest,14,purchase,11500,M-0045,merchant
+7,honest,18,in,410000,E-0217,employer
+7,honest,23,purchase,48000,M-0113,merchant
+7,honest,27,out,25000,P-0136,person
+7,honest,32,purchase,16000,M-0085,merchant
+7,honest,36,in,410000,E-0217,employer
+7,honest,41,purchase,28500,M-0214,merchant
+7,honest,45,out,18000,P-0219,person
+7,honest,50,purchase,9500,M-0045,merchant
+7,honest,54,in,410000,E-0217,employer
+7,honest,59,purchase,34000,M-0184,merchant
+7,honest,63,out,22000,P-0136,person
+7,honest,68,purchase,12500,M-0113,merchant
+7,honest,72,in,410000,E-0217,employer
+7,honest,77,purchase,19500,M-0085,merchant
+7,honest,81,out,15000,P-0219,person
+7,honest,86,purchase,14500,M-0045,merchant
+7,honest,90,in,410000,E-0217,employer
+7,honest,95,out,450000,P-0100,person
+7,honest,101,out,680000,P-0100,person
+7,honest,106,in,250000,P-0100,person
+7,honest,112,out,320000,P-0100,person
+7,honest,119,out,175000,P-0100,person
+7,honest,127,in,180000,P-0100,person
+7,honest,136,out,90000,P-0100,person
+8,honest,3,salary,295000,E-0057,employer
+8,honest,7,purchase,14500,M-0184,merchant
+8,honest,11,out,18000,P-0118,person
+8,honest,15,purchase,8500,M-0045,merchant
+8,honest,19,in,295000,E-0057,employer
+8,honest,24,purchase,27000,M-0193,merchant
+8,honest,28,out,22000,P-0212,person
+8,honest,33,purchase,12000,M-0085,merchant
+8,honest,37,in,295000,E-0057,employer
+8,honest,42,purchase,18500,M-0184,merchant
+8,honest,46,out,15000,P-0118,person
+8,honest,51,purchase,9500,M-0045,merchant
+8,honest,55,in,295000,E-0057,employer
+8,honest,60,purchase,42000,M-0193,merchant
+8,honest,64,out,20000,P-0212,person
+8,honest,69,purchase,13500,M-0113,merchant
+8,honest,73,in,295000,E-0057,employer
+8,honest,78,purchase,16000,M-0085,merchant
+8,honest,82,out,12000,P-0118,person
+8,honest,87,purchase,11500,M-0184,merchant
+8,honest,90,in,295000,E-0057,employer
+8,honest,96,out,120000,P-0024,person
+8,honest,102,out,85000,P-0024,person
+8,honest,108,in,70000,P-0024,person
+8,honest,115,out,150000,P-0024,person
+8,honest,123,out,95000,P-0024,person
+8,honest,131,in,50000,P-0024,person
+8,honest,140,out,60000,P-0024,person
+9,honest,1,salary,560000,E-0083,employer
+9,honest,5,purchase,32000,M-0184,merchant
+9,honest,9,out,45000,P-0174,person
+9,honest,13,purchase,18500,M-0045,merchant
+9,honest,17,in,560000,E-0083,employer
+9,honest,22,purchase,68000,M-0084,merchant
+9,honest,26,out,25000,P-0102,person
+9,honest,31,purchase,24000,M-0113,merchant
+9,honest,35,in,560000,E-0083,employer
+9,honest,40,purchase,15500,M-0085,merchant
+9,honest,44,out,30000,P-0174,person
+9,honest,49,purchase,42000,M-0050,merchant
+9,honest,53,in,560000,E-0083,employer
+9,honest,58,purchase,21500,M-0214,merchant
+9,honest,62,out,18000,P-0102,person
+9,honest,67,purchase,12500,M-0045,merchant
+9,honest,71,in,560000,E-0083,employer
+9,honest,76,purchase,34000,M-0184,merchant
+9,honest,80,out,22000,P-0174,person
+9,honest,85,purchase,19500,M-0113,merchant
+9,honest,89,in,560000,E-0083,employer
+9,honest,94,out,380000,C-0046,company
+9,honest,100,out,520000,C-0046,company
+9,honest,106,in,650000,E-0083,employer
+9,honest,112,out,275000,C-0046,company
+9,honest,119,purchase,145000,M-0099,merchant
+9,honest,127,out,310000,C-0046,company
+9,honest,136,out,185000,C-0046,company
+10,honest,2,salary,370000,E-0078,employer
+10,honest,6,purchase,17500,M-0184,merchant
+10,honest,10,out,25000,P-0115,person
+10,honest,14,purchase,9500,M-0045,merchant
+10,honest,18,in,370000,E-0078,employer
+10,honest,23,purchase,28000,M-0113,merchant
+10,honest,27,out,18000,P-0139,person
+10,honest,32,purchase,14500,M-0085,merchant
+10,honest,36,in,370000,E-0078,employer
+10,honest,41,purchase,22000,M-0214,merchant
+10,honest,45,out,15000,P-0115,person
+10,honest,50,purchase,8500,M-0045,merchant
+10,honest,54,in,370000,E-0078,employer
+10,honest,59,purchase,36000,M-0184,merchant
+10,honest,63,out,22000,P-0139,person
+10,honest,68,purchase,12500,M-0113,merchant
+10,honest,72,in,370000,E-0078,employer
+10,honest,77,purchase,19500,M-0085,merchant
+10,honest,81,out,18000,P-0115,person
+10,honest,86,purchase,11500,M-0045,merchant
+10,honest,90,in,370000,E-0078,employer
+10,honest,95,out,160000,C-0117,company
+10,honest,101,out,230000,C-0117,company
+10,honest,107,in,125000,E-0078,employer
+10,honest,113,out,185000,C-0117,company
+10,honest,120,purchase,95000,M-0075,merchant
+10,honest,129,out,145000,C-0117,company
+10,honest,140,in,85000,E-0078,employer
+11,honest,2,salary,425000,E-0040,employer
+11,honest,5,purchase,18500,M-0184,merchant
+11,honest,9,out,35000,P-0196,person
+11,honest,14,purchase,12000,M-0045,merchant
+11,honest,18,in,425000,E-0040,employer
+11,honest,23,purchase,28000,M-0113,merchant
+11,honest,28,out,45000,P-0070,person
+11,honest,34,purchase,9500,M-0085,merchant
+11,honest,39,in,425000,E-0040,employer
+11,honest,44,purchase,22000,M-0214,merchant
+11,honest,49,out,18000,P-0196,person
+11,honest,54,purchase,16500,M-0184,merchant
+11,honest,59,in,425000,E-0040,employer
+11,honest,64,purchase,8500,M-0045,merchant
+11,honest,69,out,25000,P-0070,person
+11,honest,74,purchase,19500,M-0113,merchant
+11,honest,80,in,425000,E-0040,employer
+11,honest,85,purchase,14000,M-0085,merchant
+11,honest,90,in,425000,E-0040,employer
+11,honest,96,out,180000,P-0021,person
+11,honest,101,out,320000,C-0031,company
+11,honest,106,out,245000,C-0207,company
+11,honest,112,out,160000,P-0019,person
+11,honest,119,in,85000,P-0021,person
+11,honest,127,out,95000,C-0031,company
+11,honest,138,out,65000,C-0207,company
+12,honest,1,salary,295000,E-0009,employer
+12,honest,6,purchase,14500,M-0184,merchant
+12,honest,10,out,22000,P-0051,person
+12,honest,15,purchase,8500,M-0045,merchant
+12,honest,20,in,295000,E-0009,employer
+12,honest,25,purchase,18000,M-0113,merchant
+12,honest,30,out,15000,P-0149,person
+12,honest,35,purchase,12500,M-0085,merchant
+12,honest,40,in,295000,E-0009,employer
+12,honest,45,purchase,21000,M-0214,merchant
+12,honest,50,out,18000,P-0051,person
+12,honest,55,purchase,9500,M-0045,merchant
+12,honest,60,in,295000,E-0009,employer
+12,honest,65,purchase,16000,M-0184,merchant
+12,honest,70,out,12000,P-0149,person
+12,honest,75,purchase,8500,M-0113,merchant
+12,honest,81,in,295000,E-0009,employer
+12,honest,86,purchase,13500,M-0085,merchant
+12,honest,90,in,295000,E-0009,employer
+12,honest,95,out,185000,C-0041,company
+12,honest,101,out,240000,C-0041,company
+12,honest,107,out,175000,C-0169,company
+12,honest,113,in,60000,P-0051,person
+12,honest,120,out,95000,C-0041,company
+12,honest,132,out,125000,C-0169,company
+13,honest,3,salary,510000,E-0008,employer
+13,honest,7,purchase,26000,M-0184,merchant
+13,honest,11,out,30000,P-0246,person
+13,honest,16,purchase,14500,M-0045,merchant
+13,honest,21,in,510000,E-0008,employer
+13,honest,26,purchase,42000,M-0084,merchant
+13,honest,31,out,25000,P-0190,person
+13,honest,36,purchase,18500,M-0113,merchant
+13,honest,41,in,510000,E-0008,employer
+13,honest,46,purchase,22000,M-0085,merchant
+13,honest,51,out,18000,P-0246,person
+13,honest,56,purchase,31000,M-0214,merchant
+13,honest,61,in,510000,E-0008,employer
+13,honest,66,purchase,12500,M-0045,merchant
+13,honest,71,out,22000,P-0190,person
+13,honest,76,purchase,19500,M-0184,merchant
+13,honest,82,in,510000,E-0008,employer
+13,honest,87,purchase,14500,M-0113,merchant
+13,honest,90,in,510000,E-0008,employer
+13,honest,96,out,85000,P-0030,person
+13,honest,101,out,125000,W-0191,wallet
+13,honest,106,out,175000,W-0191,wallet
+13,honest,112,in,22000,P-0030,person
+13,honest,118,out,210000,W-0191,wallet
+13,honest,126,out,95000,W-0191,wallet
+13,honest,139,out,65000,W-0191,wallet
+14,honest,2,salary,360000,E-0195,employer
+14,honest,6,purchase,17500,M-0184,merchant
+14,honest,10,out,25000,P-0063,person
+14,honest,14,purchase,11500,M-0045,merchant
+14,honest,19,in,360000,E-0195,employer
+14,honest,24,purchase,22000,M-0113,merchant
+14,honest,29,out,18000,P-0095,person
+14,honest,34,purchase,14500,M-0085,merchant
+14,honest,39,in,360000,E-0195,employer
+14,honest,44,purchase,19500,M-0214,merchant
+14,honest,49,out,12000,P-0063,person
+14,honest,54,purchase,9500,M-0045,merchant
+14,honest,59,in,360000,E-0195,employer
+14,honest,64,purchase,28500,M-0184,merchant
+14,honest,69,out,22000,P-0095,person
+14,honest,74,purchase,12500,M-0113,merchant
+14,honest,80,in,360000,E-0195,employer
+14,honest,85,purchase,16000,M-0085,merchant
+14,honest,90,in,360000,E-0195,employer
+14,honest,96,out,145000,C-0110,company
+14,honest,103,out,145000,C-0110,company
+14,honest,110,out,145000,C-0110,company
+14,honest,117,in,45000,P-0063,person
+14,honest,124,out,145000,C-0110,company
+14,honest,132,out,145000,C-0110,company
+14,honest,140,out,145000,C-0110,company
+15,honest,1,salary,280000,E-0232,employer
+15,honest,5,purchase,15500,M-0184,merchant
+15,honest,9,out,20000,P-0087,person
+15,honest,14,purchase,8500,M-0045,merchant
+15,honest,18,in,280000,E-0232,employer
+15,honest,23,purchase,18000,M-0113,merchant
+15,honest,28,out,15000,P-0150,person
+15,honest,33,purchase,12500,M-0085,merchant
+15,honest,38,in,280000,E-0232,employer
+15,honest,43,purchase,21000,M-0214,merchant
+15,honest,48,out,18000,P-0087,person
+15,honest,53,purchase,9500,M-0045,merchant
+15,honest,58,in,280000,E-0232,employer
+15,honest,63,purchase,14500,M-0184,merchant
+15,honest,68,out,12000,P-0150,person
+15,honest,73,purchase,8500,M-0113,merchant
+15,honest,79,in,280000,E-0232,employer
+15,honest,84,purchase,16500,M-0085,merchant
+15,honest,90,in,280000,E-0232,employer
+15,honest,96,out,100000,P-0216,person
+15,honest,103,out,150000,P-0216,person
+15,honest,110,out,120000,P-0216,person
+15,honest,117,in,80000,P-0216,person
+15,honest,124,out,90000,P-0216,person
+15,honest,132,out,65000,P-0216,person
+15,honest,140,out,55000,P-0216,person
+16,fraud,1,salary,390000,E-0097,employer
+16,fraud,5,purchase,19500,M-0184,merchant
+16,fraud,9,out,25000,P-0051,person
+16,fraud,14,purchase,12000,M-0045,merchant
+16,fraud,19,in,390000,E-0097,employer
+16,fraud,24,purchase,28500,M-0113,merchant
+16,fraud,29,out,18000,P-0149,person
+16,fraud,34,purchase,16500,M-0085,merchant
+16,fraud,39,in,390000,E-0097,employer
+16,fraud,44,purchase,22000,M-0214,merchant
+16,fraud,49,out,15000,P-0051,person
+16,fraud,54,purchase,9500,M-0045,merchant
+16,fraud,59,in,390000,E-0097,employer
+16,fraud,64,purchase,18000,M-0184,merchant
+16,fraud,69,out,22000,P-0149,person
+16,fraud,74,purchase,14500,M-0113,merchant
+16,fraud,80,in,390000,E-0097,employer
+16,fraud,85,purchase,12500,M-0085,merchant
+16,fraud,90,in,390000,E-0097,employer
+16,fraud,95,out,45000,P-0090,person
+16,fraud,99,out,95000,P-0107,person
+16,fraud,103,in,12000,P-0090,person
+16,fraud,107,out,175000,P-0189,person
+16,fraud,112,out,260000,P-0010,person
+16,fraud,118,out,340000,P-0234,person
+16,fraud,125,out,425000,P-0148,person
+16,fraud,136,out,580000,P-0049,person
+17,fraud,2,salary,325000,E-0170,employer
+17,fraud,6,purchase,14500,M-0045,merchant
+17,fraud,10,out,18000,P-0063,person
+17,fraud,15,purchase,22000,M-0184,merchant
+17,fraud,20,in,325000,E-0170,employer
+17,fraud,25,purchase,9500,M-0113,merchant
+17,fraud,30,out,25000,P-0095,person
+17,fraud,35,purchase,13500,M-0085,merchant
+17,fraud,40,in,325000,E-0170,employer
+17,fraud,45,purchase,18500,M-0214,merchant
+17,fraud,50,out,15000,P-0063,person
+17,fraud,55,purchase,12000,M-0045,merchant
+17,fraud,60,in,325000,E-0170,employer
+17,fraud,65,purchase,24500,M-0184,merchant
+17,fraud,70,out,22000,P-0095,person
+17,fraud,75,purchase,8500,M-0113,merchant
+17,fraud,81,in,325000,E-0170,employer
+17,fraud,86,purchase,16500,M-0085,merchant
+17,fraud,90,in,325000,E-0170,employer
+17,fraud,94,out,60000,P-0171,person
 17,fraud,98,deposit_close,1350000,own,own
-17,fraud,102,out,320000,Айбек Сарсенов,person
-17,fraud,106,out,285000,Нурлан Оразбаев,person
-17,fraud,111,out,410000,Дамир Кенжетаев,person
-17,fraud,116,in,25000,Марат Кудайбергенов,person
-17,fraud,122,out,195000,Ержан Толеуов,person
-17,fraud,134,out,175000,Самат Ибраев,person
-18,fraud,3,salary,475000,ТОО Арай Фудс,employer
-18,fraud,7,purchase,23500,Magnum,merchant
-18,fraud,11,out,30000,Азамат Сулейменов,person
-18,fraud,16,purchase,14500,Small,merchant
-18,fraud,21,in,475000,ТОО Арай Фудс,employer
-18,fraud,26,purchase,36000,Technodom,merchant
-18,fraud,31,out,22000,Мадина Касымова,person
-18,fraud,36,purchase,18500,Helios,merchant
-18,fraud,41,in,475000,ТОО Арай Фудс,employer
-18,fraud,46,purchase,12500,Arbuz,merchant
-18,fraud,51,out,18000,Азамат Сулейменов,person
-18,fraud,56,purchase,29000,Carrefour,merchant
-18,fraud,61,in,475000,ТОО Арай Фудс,employer
-18,fraud,66,purchase,16500,Small,merchant
-18,fraud,71,out,25000,Мадина Касымова,person
-18,fraud,76,purchase,21500,Magnum,merchant
-18,fraud,82,in,475000,ТОО Арай Фудс,employer
-18,fraud,87,purchase,13500,Helios,merchant
-18,fraud,90,in,475000,ТОО Арай Фудс,employer
-18,fraud,95,out,75000,Кайрат Нурбеков,person
-18,fraud,99,loan,1800000,Банк Фридом Финанс,licensed
-18,fraud,103,out,250000,Арман Тлеубаев,person
-18,fraud,107,out,375000,Ерлан Жакыпов,person
-18,fraud,112,out,460000,Нурбек Сейдахметов,person
-18,fraud,117,in,35000,Кайрат Нурбеков,person
-18,fraud,123,out,295000,Данияр Оразбаев,person
-18,fraud,136,out,380000,Самат Куанышев,person
-19,fraud,1,salary,305000,ТОО Керуен Маркет,employer
-19,fraud,5,purchase,16500,Magnum,merchant
-19,fraud,9,out,20000,Айгерим Кудайбергенова,person
-19,fraud,14,purchase,9500,Small,merchant
-19,fraud,19,in,305000,ТОО Керуен Маркет,employer
-19,fraud,24,purchase,18500,Helios,merchant
-19,fraud,29,out,15000,Ерлан Жакыпов,person
-19,fraud,34,purchase,12500,Arbuz,merchant
-19,fraud,39,in,305000,ТОО Керуен Маркет,employer
-19,fraud,44,purchase,22000,Carrefour,merchant
-19,fraud,49,out,18000,Айгерим Кудайбергенова,person
-19,fraud,54,purchase,8500,Small,merchant
-19,fraud,59,in,305000,ТОО Керуен Маркет,employer
-19,fraud,64,purchase,14500,Magnum,merchant
-19,fraud,69,out,22000,Ерлан Жакыпов,person
-19,fraud,74,purchase,11500,Helios,merchant
-19,fraud,80,in,305000,ТОО Керуен Маркет,employer
-19,fraud,85,purchase,16500,Arbuz,merchant
-19,fraud,90,in,305000,ТОО Керуен Маркет,employer
-19,fraud,95,out,50000,Бекзат Алимов,person
-19,fraud,99,out,110000,Саян Муратов,person
-19,fraud,103,in,15000,Бекзат Алимов,person
-19,fraud,107,out,195000,Ермек Касенов,person
-19,fraud,112,out,285000,Ринат Ахметов,person
-19,fraud,118,out,370000,Дамир Нуртаев,person
-19,fraud,125,out,460000,Алихан Садыков,person
-19,fraud,137,out,620000,Талгат Ибраев,person
-20,fraud,2,salary,445000,ТОО Сарыарка Агро,employer
-20,fraud,6,purchase,21500,Magnum,merchant
-20,fraud,10,out,28000,Меруерт Сапарова,person
-20,fraud,15,purchase,12500,Small,merchant
-20,fraud,20,in,445000,ТОО Сарыарка Агро,employer
-20,fraud,25,purchase,32000,Helios,merchant
-20,fraud,30,out,22000,Болат Кенжебаев,person
-20,fraud,35,purchase,18500,Arbuz,merchant
-20,fraud,40,in,445000,ТОО Сарыарка Агро,employer
-20,fraud,45,purchase,24500,Carrefour,merchant
-20,fraud,50,out,18000,Меруерт Сапарова,person
-20,fraud,55,purchase,9500,Small,merchant
-20,fraud,60,in,445000,ТОО Сарыарка Агро,employer
-20,fraud,65,purchase,19500,Magnum,merchant
-20,fraud,70,out,25000,Болат Кенжебаев,person
-20,fraud,75,purchase,14500,Helios,merchant
-20,fraud,81,in,445000,ТОО Сарыарка Агро,employer
-20,fraud,86,purchase,16500,Arbuz,merchant
-20,fraud,90,in,445000,ТОО Сарыарка Агро,employer
-20,fraud,95,out,85000,Ермек Толеуов,person
-20,fraud,99,out,145000,Нурбек Сейдахметов,person
-20,fraud,103,out,230000,Айбек Турсунов,person
-20,fraud,107,in,22000,Ермек Толеуов,person
-20,fraud,112,out,310000,Самат Куанышев,person
-20,fraud,118,out,425000,Данияр Оразбаев,person
-20,fraud,125,out,560000,Рустем Нурланов,person
-20,fraud,138,out,710000,Кайрат Нурбеков,person
+17,fraud,102,out,320000,P-0220,person
+17,fraud,106,out,285000,P-0176,person
+17,fraud,111,out,410000,P-0121,person
+17,fraud,116,in,25000,P-0171,person
+17,fraud,122,out,195000,P-0250,person
+17,fraud,134,out,175000,P-0018,person
+18,fraud,3,salary,475000,E-0230,employer
+18,fraud,7,purchase,23500,M-0184,merchant
+18,fraud,11,out,30000,P-0087,person
+18,fraud,16,purchase,14500,M-0045,merchant
+18,fraud,21,in,475000,E-0230,employer
+18,fraud,26,purchase,36000,M-0084,merchant
+18,fraud,31,out,22000,P-0150,person
+18,fraud,36,purchase,18500,M-0113,merchant
+18,fraud,41,in,475000,E-0230,employer
+18,fraud,46,purchase,12500,M-0085,merchant
+18,fraud,51,out,18000,P-0087,person
+18,fraud,56,purchase,29000,M-0214,merchant
+18,fraud,61,in,475000,E-0230,employer
+18,fraud,66,purchase,16500,M-0045,merchant
+18,fraud,71,out,25000,P-0150,person
+18,fraud,76,purchase,21500,M-0184,merchant
+18,fraud,82,in,475000,E-0230,employer
+18,fraud,87,purchase,13500,M-0113,merchant
+18,fraud,90,in,475000,E-0230,employer
+18,fraud,95,out,75000,P-0153,person
+18,fraud,99,loan,1800000,C-0020,licensed
+18,fraud,103,out,250000,P-0033,person
+18,fraud,107,out,375000,P-0070,person
+18,fraud,112,out,460000,P-0021,person
+18,fraud,117,in,35000,P-0153,person
+18,fraud,123,out,295000,P-0019,person
+18,fraud,136,out,380000,P-0246,person
+19,fraud,1,salary,305000,E-0159,employer
+19,fraud,5,purchase,16500,M-0184,merchant
+19,fraud,9,out,20000,P-0196,person
+19,fraud,14,purchase,9500,M-0045,merchant
+19,fraud,19,in,305000,E-0159,employer
+19,fraud,24,purchase,18500,M-0113,merchant
+19,fraud,29,out,15000,P-0070,person
+19,fraud,34,purchase,12500,M-0085,merchant
+19,fraud,39,in,305000,E-0159,employer
+19,fraud,44,purchase,22000,M-0214,merchant
+19,fraud,49,out,18000,P-0196,person
+19,fraud,54,purchase,8500,M-0045,merchant
+19,fraud,59,in,305000,E-0159,employer
+19,fraud,64,purchase,14500,M-0184,merchant
+19,fraud,69,out,22000,P-0070,person
+19,fraud,74,purchase,11500,M-0113,merchant
+19,fraud,80,in,305000,E-0159,employer
+19,fraud,85,purchase,16500,M-0085,merchant
+19,fraud,90,in,305000,E-0159,employer
+19,fraud,95,out,50000,P-0116,person
+19,fraud,99,out,110000,P-0048,person
+19,fraud,103,in,15000,P-0116,person
+19,fraud,107,out,195000,P-0205,person
+19,fraud,112,out,285000,P-0239,person
+19,fraud,118,out,370000,P-0166,person
+19,fraud,125,out,460000,P-0157,person
+19,fraud,137,out,620000,P-0081,person
+20,fraud,2,salary,445000,E-0165,employer
+20,fraud,6,purchase,21500,M-0184,merchant
+20,fraud,10,out,28000,P-0051,person
+20,fraud,15,purchase,12500,M-0045,merchant
+20,fraud,20,in,445000,E-0165,employer
+20,fraud,25,purchase,32000,M-0113,merchant
+20,fraud,30,out,22000,P-0149,person
+20,fraud,35,purchase,18500,M-0085,merchant
+20,fraud,40,in,445000,E-0165,employer
+20,fraud,45,purchase,24500,M-0214,merchant
+20,fraud,50,out,18000,P-0051,person
+20,fraud,55,purchase,9500,M-0045,merchant
+20,fraud,60,in,445000,E-0165,employer
+20,fraud,65,purchase,19500,M-0184,merchant
+20,fraud,70,out,25000,P-0149,person
+20,fraud,75,purchase,14500,M-0113,merchant
+20,fraud,81,in,445000,E-0165,employer
+20,fraud,86,purchase,16500,M-0085,merchant
+20,fraud,90,in,445000,E-0165,employer
+20,fraud,95,out,85000,P-0128,person
+20,fraud,99,out,145000,P-0021,person
+20,fraud,103,out,230000,P-0030,person
+20,fraud,107,in,22000,P-0128,person
+20,fraud,112,out,310000,P-0246,person
+20,fraud,118,out,425000,P-0019,person
+20,fraud,125,out,560000,P-0095,person
+20,fraud,138,out,710000,P-0153,person
