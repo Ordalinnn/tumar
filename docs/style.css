@@ -16,7 +16,7 @@ body{
     radial-gradient(1200px 600px at 50% 108%,rgba(178,58,58,.42) 0,rgba(178,58,58,0) 68%),
     linear-gradient(180deg,#0b0e2a 0,#10143a 46%,#161544 100%);
   background-attachment:fixed;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
 }
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
@@ -347,3 +347,34 @@ footer a:hover{color:var(--silver);border-color:var(--silver)}
 .reports a:hover{color:var(--silver);border-color:var(--silver)}
 
 @media (max-width:1000px){.shots{grid-template-columns:1fr}}
+
+/* ---------- radar sweep + active nav ---------- */
+.nav a.on{color:var(--silver)}
+.nav a.on::after{transform:scaleX(1)}
+.stage .sweep{position:absolute;width:min(520px,96%);aspect-ratio:1;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(255,90,60,.22),rgba(255,90,60,.05) 14%,rgba(255,90,60,0) 28%);
+  -webkit-mask-image:radial-gradient(closest-side,#000 58%,transparent 100%);
+  mask-image:radial-gradient(closest-side,#000 58%,transparent 100%);
+  animation:sweep 11s linear infinite;pointer-events:none}
+@keyframes sweep{to{transform:rotate(360deg)}}
+
+/* ---------- lightbox ---------- */
+.shot img{cursor:zoom-in}
+.lb{position:fixed;inset:0;margin:auto;width:min(1220px,94vw);max-height:94vh;padding:0;border:1px solid var(--line);
+  border-radius:18px;background:#0b0e2a;box-shadow:0 60px 120px -40px #000;overflow:hidden;z-index:90}
+.lb::backdrop{background:rgba(6,8,24,.84);backdrop-filter:blur(6px)}
+.lb img{display:block;width:100%;height:auto;max-height:94vh;object-fit:contain}
+.lb-x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(11,14,42,.82);color:var(--silver);font:inherit;font-size:20px;line-height:1;cursor:pointer}
+.lb-x:hover{background:var(--silver);color:#141a44}
+
+@media (prefers-reduced-motion:reduce){.stage .sweep{animation:none}}
+
+/* ---------- back to top ---------- */
+.up{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(11,14,42,.82);backdrop-filter:blur(8px);color:var(--silver);display:grid;place-items:center;
+  cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .25s var(--ease),transform .25s var(--ease),border-color .2s;z-index:40;font:inherit;font-size:17px}
+.up.show{opacity:1;pointer-events:auto;transform:none}
+.up:hover{border-color:rgba(230,235,245,.45)}
+@media print{.up{display:none}}

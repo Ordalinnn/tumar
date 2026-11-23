@@ -611,6 +611,25 @@ def page_style():
     .stButton button:disabled {opacity: .4}
     [data-testid="stMetricValue"] {font-size: 42px; font-stretch: 75%; font-weight: 700; line-height: 1}
     @keyframes alarm {from {transform: translateY(24px) scale(.97); opacity: 0}}
+    /* метрики-карточки, вкладки-пилюли, мягче тени */
+    .stApp {background: radial-gradient(900px 420px at 78% -6%, rgba(109,42,92,.55), transparent 62%),
+                              radial-gradient(700px 360px at 8% 2%, rgba(35,32,110,.6), transparent 60%),
+                              linear-gradient(180deg, #0b0e2a 0, #10143a 46%, #161544 100%) fixed}
+    [data-testid="stMetric"] {background: rgba(255,255,255,.045); border: 1px solid rgba(230,235,245,.1);
+                              border-radius: 16px; padding: 14px 16px}
+    [data-testid="stMetricLabel"] p {font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: #aab3d6}
+    [data-testid="stMetricValue"] {font-size: 38px}
+    .stTabs [data-baseweb="tab-list"] {gap: 4px; background: rgba(255,255,255,.045); padding: 5px;
+                                       border-radius: 999px; width: max-content; border: 1px solid rgba(230,235,245,.09)}
+    .stTabs [data-baseweb="tab"] {border-radius: 999px; padding: 4px 20px; height: auto}
+    .stTabs [aria-selected="true"] {background: rgba(255,90,60,.18)}
+    .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {display: none}
+    .card {box-shadow: 0 26px 60px -38px #000, inset 0 1px 0 rgba(255,255,255,.09)}
+    .why {border-bottom: 1px dashed rgba(230,235,245,.1); padding: 9px 0}
+    .why:last-of-type {border-bottom: 0}
+    .stButton button {min-height: 52px}
+    .stButton button:hover {transform: translateY(-1px)}
+    .stButton button[kind="primary"] {box-shadow: 0 14px 28px -16px rgba(255,90,60,.85)}
     @media (prefers-reduced-motion: reduce) {* {animation: none !important}}
     </style>""")
     st.iframe(ROOT / "assets" / "hero.html", height=256)

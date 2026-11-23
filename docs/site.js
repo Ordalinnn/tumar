@@ -1,6 +1,8 @@
 /* Общий скрипт сайта: амулет, появление секций, прогресс чтения,
    копирование команд и тренажёр правила. Строки — на двух языках. */
 (() => {
+  const calm = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const sy = () => (document.scrollingElement || document.documentElement).scrollTop;
   const lang = document.documentElement.lang === "kk" ? "kk" : "ru";
   const T = {
     ru: {
@@ -76,10 +78,10 @@
   // шапка и прогресс чтения
   const hd = document.getElementById("hd"), pg = document.getElementById("pg");
   const onScroll = () => {
-    if (hd) hd.classList.toggle("stuck", scrollY > 12);
+    if (hd) hd.classList.toggle("stuck", sy() > 12);
     if (pg) {
       const h = document.documentElement.scrollHeight - innerHeight;
-      pg.style.width = (h > 0 ? Math.min(1, scrollY / h) * 100 : 0) + "%";
+      pg.style.width = (h > 0 ? Math.min(1, sy() / h) * 100 : 0) + "%";
     }
   };
   onScroll(); addEventListener("scroll", onScroll, { passive: true });
@@ -87,7 +89,6 @@
 
   // мягкий параллакс карточки
   const card = document.getElementById("card");
-  const calm = matchMedia("(prefers-reduced-motion:reduce)").matches;
   if (!calm && card && matchMedia("(hover:hover)").matches) {
     addEventListener("pointermove", e => {
       const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
@@ -103,6 +104,47 @@
     catch { copy.textContent = T.failed; }
     setTimeout(() => (copy.textContent = T.copy), 1600);
   });
+
+
+  // кнопка «наверх»
+  const up = document.getElementById("up");
+  if (up) {
+    const toggleUp = () => up.classList.toggle("show", sy() > innerHeight * 1.2);
+    toggleUp(); addEventListener("scroll", toggleUp, { passive: true });
+    up.addEventListener("click", () => scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" }));
+  }
+
+  // подсветка текущего раздела в шапке
+  const navLinks = [...document.querySelectorAll(".nav a")];
+  if (navLinks.length) {
+    const targets = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+    const spy = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+    }), { rootMargin: "-45% 0px -50% 0px" });
+    targets.forEach(t => spy.observe(t));
+  }
+
+  // лайтбокс для скриншотов приложения
+  const lb = document.getElementById("lb");
+  const shots = [...document.querySelectorAll(".shot img")];
+  if (lb && shots.length) {
+    const big = lb.querySelector("img");
+    const open = img => {
+      big.src = img.src; big.alt = img.alt;
+      if (typeof lb.showModal === "function") lb.showModal(); else lb.setAttribute("open", "");
+    };
+    shots.forEach(img => {
+      img.tabIndex = 0; img.setAttribute("role", "button");
+      img.addEventListener("click", () => open(img));
+      img.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(img); }
+      });
+    });
+    lb.addEventListener("click", e => {
+      if (e.target === lb || e.target.classList.contains("lb-x")) lb.close();
+    });
+  }
 
   // тренажёр правила: 0–1 молчим, 2+ предупреждаем, пауза только по согласию
   const chips = [...document.querySelectorAll(".chip")];
