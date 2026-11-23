@@ -66,6 +66,11 @@
   });
 
   // появление секций
+  // Прячем секции только когда JS работает; через 2,5 с показываем всё, что вдруг не проявилось.
+  document.documentElement.classList.add("js");
+  setTimeout(() => document.querySelectorAll(".rv:not(.in)").forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in");
+  }), 2500);
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   }), { rootMargin: "0px 0px -12% 0px", threshold: .12 });
