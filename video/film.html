@@ -62,7 +62,8 @@
   .node.on{border-color:var(--carn);background:var(--carn);box-shadow:0 0 0 9px rgba(255,90,60,.14)}
   .lblw{position:absolute;top:112px;width:280px;margin-left:-140px;text-align:center}
   .lbl{font-size:20px;color:var(--dim);white-space:nowrap}
-  .lblw.end{width:420px;margin-left:-420px;text-align:right}
+  .lblw.end{width:300px;margin-left:-300px;text-align:right}
+  .lblw.end .lbl{font-size:19px}
   .lblw.end .lbl{color:var(--carn2)}
 
   /* ---------- 3. правила ---------- */
@@ -127,7 +128,7 @@
   <div class="bg"></div><div class="grid"></div>
 
   <!-- 1 -->
-  <section class="sc" data-in="0.4" data-out="5.6" style="padding-top:300px">
+  <section id="s1" class="sc" data-in="0.40" data-out="11.61" style="padding-top:300px">
     <div class="radar" id="radar">
       <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
       <div class="beam"></div>
@@ -141,8 +142,8 @@
   </section>
 
   <!-- 2 -->
-  <section class="sc" data-in="5.72" data-out="16.2" style="padding-top:236px">
-    <div data-t="0.1" data-o="4.7">
+  <section id="s2" class="sc" data-in="11.73" data-out="27.52" style="padding-top:236px">
+    <div data-t="0.1" data-o="7.15">
       <div class="kicker" data-t="0.15" data-an="rise"><i></i>Проблема</div>
       <h2 style="margin-top:34px">Один перевод<br>ничего не значит</h2>
       <div class="pills">
@@ -153,7 +154,7 @@
       <p class="sub" data-t="2.6" data-an="rise" style="margin-top:52px">Каждый по отдельности выглядит нормально. Банк пропускает все три.</p>
     </div>
 
-    <div style="position:absolute;left:132px;right:132px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center" data-t="5.1" data-an="rise">
+    <div style="position:absolute;left:132px;right:132px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center" data-t="6.75" data-an="rise">
       <h2>Пять шагов,<br>четыре месяца</h2>
       <div class="tl">
         <div class="bar" data-t="5.9" data-an="grow" data-dur="1.6"></div>
@@ -174,7 +175,7 @@
   </section>
 
   <!-- 3 -->
-  <section class="sc center" data-in="16.32" data-out="28.2">
+  <section id="s3" class="sc center" data-in="27.64" data-out="40.87">
     <div class="kicker" data-t="0.1" data-an="rise"><i></i>Как это работает</div>
     <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Четыре правила,<br>которые можно объяснить</h2>
     <div class="rules">
@@ -186,38 +187,38 @@
   </section>
 
   <!-- 4 -->
-  <section class="sc" data-in="28.32" data-out="41.0" style="padding:0">
+  <section id="s4" class="sc" data-in="40.99" data-out="55.89" style="padding:0">
     <div class="shot-wrap">
-      <div class="shot" data-t="0.2" data-o="3.9"><img src="../docs/img/app-client.jpg" alt=""></div>
-      <div class="shot" data-t="3.7" data-o="8.1"><img src="../docs/img/app-analyst.jpg" alt=""></div>
-      <div class="shot" data-t="7.9"><img src="../docs/img/app-quality.jpg" alt=""></div>
+      <div class="shot" data-t="0.2" data-o="4.58"><img src="../docs/img/app-client.jpg" alt=""></div>
+      <div class="shot" data-t="3.98" data-o="9.54"><img src="../docs/img/app-analyst.jpg" alt=""></div>
+      <div class="shot" data-t="8.94"><img src="../docs/img/app-quality.jpg" alt=""></div>
     </div>
-    <div class="cap" data-t="0.15" data-o="3.9"><b>Клиент</b><span>что видит человек в приложении, когда схема сходится</span></div>
-    <div class="cap" data-t="3.7" data-o="8.1"><b>Аналитик</b><span>день 116, деньги ещё не ушли — предупреждение сработало раньше</span></div>
-    <div class="cap" data-t="7.9"><b>Качество</b><span>те же слепые тесты внутри приложения, без купюр</span></div>
+    <div class="cap" data-t="0.15" data-o="4.58"><b>Клиент</b><span>что видит человек в приложении, когда схема сходится</span></div>
+    <div class="cap" data-t="3.98" data-o="9.54"><b>Аналитик</b><span>день 116, деньги ещё не ушли — предупреждение сработало раньше</span></div>
+    <div class="cap" data-t="8.94"><b>Качество</b><span>те же слепые тесты внутри приложения, без купюр</span></div>
     <div class="kicker" data-t="0.1" data-an="rise" style="position:absolute;left:132px;top:58px"><i></i>Три экрана, которые можно потрогать</div>
   </section>
 
   <!-- 5 -->
-  <section class="sc center" data-in="41.12" data-out="57.0">
+  <section id="s5" class="sc center" data-in="56.01" data-out="76.77">
     <div class="kicker" data-t="0.1" data-an="rise"><i></i>Краш-тест</div>
     <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Три слепых теста,<br>без купюр</h2>
     <div class="tests">
-      <div class="test fail" data-t="0.9" data-an="rise">
+      <div class="test fail" data-t="0.9" data-an="rise" data-ga="0.50" data-go="6.30">
         <div class="h">Тест 1 · 10 историй</div>
         <div class="big num"><span data-count="0" data-t="1.2">0</span><small> / 5</small></div>
         <div class="row"><span>поймано схем</span><b class="num">0 / 5</b></div>
         <div class="row"><span>ложных тревог</span><b class="num">0 / 5</b></div>
         <div class="verdict">Не поймал ничего. Молчит и не мешает.</div>
       </div>
-      <div class="test warn" data-t="1.3" data-an="rise">
+      <div class="test warn" data-t="1.3" data-an="rise" data-ga="6.40" data-go="12.70">
         <div class="h">Тест 2 · 20 историй</div>
         <div class="big num"><span data-count="8" data-t="1.7">8</span><small> / 10</small></div>
         <div class="row"><span>поймано схем</span><b class="num">8 / 10</b></div>
         <div class="row"><span>честных с тревогой</span><b class="num">9 / 10</b></div>
         <div class="verdict">Ловит — но шумит на честных.</div>
       </div>
-      <div class="test t3" data-t="1.7" data-an="rise">
+      <div class="test t3" data-t="1.7" data-an="rise" data-ga="12.80" data-glow="mint">
         <div class="h">Тест 3 · 20 историй</div>
         <div class="big num"><span data-count="10" data-t="2.1">10</span><small> / 10</small></div>
         <div class="row"><span>поймано схем</span><b class="num">10 / 10</b></div>
@@ -229,7 +230,7 @@
   </section>
 
   <!-- 6 -->
-  <section class="sc center" data-in="57.12" data-out="65.2">
+  <section id="s6" class="sc center" data-in="76.89" data-out="88.84">
     <div class="kicker" data-t="0.1" data-an="rise"><i></i>Чего пока нет</div>
     <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Не прячем<br>слабые места</h2>
     <div class="lim">
@@ -240,7 +241,7 @@
   </section>
 
   <!-- 7 -->
-  <section class="sc center" data-in="65.32" data-out="71.6">
+  <section id="s7" class="sc center" data-in="88.97" data-out="99.52">
     <div class="kicker" data-t="0.1" data-an="rise"><i></i>Стек</div>
     <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Один файл,<br>ноль зависимостей от сети</h2>
     <div class="chips">
@@ -254,7 +255,7 @@
   </section>
 
   <!-- 8 -->
-  <section class="sc end" data-in="71.72" data-out="120">
+  <section id="s8" class="sc end" data-in="99.64" data-out="106.71">
     <div>
       <div class="mark" data-t="0.1" data-an="pop"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a3c" stroke-width="1.8"><path d="M12 3.2 20.2 12 12 20.8 3.8 12Z"/><circle cx="12" cy="12" r="2.6"/></svg></div>
       <h2 data-t="0.35" data-an="mask">Тұмар — радар<br><em>медленных схем</em></h2>
@@ -268,7 +269,7 @@
 
 <script>
 (function(){
-  const TOTAL = 78;
+  const TOTAL = 106.91;
   const stage = document.getElementById('stage');
   const hud = document.getElementById('hud');
   const scenes = [...document.querySelectorAll('.sc')];
@@ -294,6 +295,15 @@
       sc.style.transform = 'translateY(' + ((1-easeOut(a)) * 16).toFixed(2) + 'px)';
       if (p <= 0) continue;
       const lt = t - i;
+      for (const g of sc.querySelectorAll('[data-ga]')){
+        const ga = +g.dataset.ga;
+        const go = g.dataset.go !== undefined ? +g.dataset.go : 1e4;
+        const gk = Math.min(clamp((lt - ga) / 0.5), clamp((go - lt) / 0.4));
+        const rgb = g.dataset.glow === 'mint' ? '94,200,180' : '255,90,60';
+        g.style.borderColor = 'rgba(' + rgb + ',' + (0.13 + 0.52 * gk).toFixed(3) + ')';
+        g.style.background = 'rgba(' + rgb + ',' + (0.026 + 0.05 * gk).toFixed(3) + ')';
+        g.style.boxShadow = '0 30px 70px -50px rgba(' + rgb + ',' + (0.95 * gk).toFixed(3) + ')';
+      }
       for (const el of sc.querySelectorAll('[data-t]')){
         const st = +el.dataset.t;
         const dur = +el.dataset.dur || 0.7;

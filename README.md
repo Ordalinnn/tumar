@@ -13,7 +13,8 @@
 Сайт и слайды делят один стиль: `docs/style.css` и `docs/site.js`, поэтому правки не расходятся.
 
 **Видео для защиты:** [`docs/media/tumar-radar-demo.mp4`](docs/media/tumar-radar-demo.mp4) —
-78 секунд, 1920×1080, без звука. Исходник фильма и рендер: `video/film.html`, `video/render.mjs`.
+107 секунд, 1920×1080, с озвучкой. Голос синтезируется локально (Windows, `Microsoft Pavel`),
+без облачных сервисов: сценарий в `video/cues.json`, сборка — `video/build_audio.py` и `video/build_video.sh`.
 
 ## Запуск
 
@@ -39,8 +40,8 @@ pytest -q
 | `docs/index.html`, `docs/kz.html` | сайт на русском и казахском, общие `style.css` и `site.js` |
 | `docs/slides.html`, `docs/slides.pdf` | 9 слайдов для защиты и PDF из них |
 | `docs/img/` | скриншоты приложения для сайта и слайдов, постер видео |
-| `docs/media/` | фильм о проекте (78 с, 1080p) |
-| `video/` | исходник фильма: таймлайн в `film.html` и рендер кадров `render.mjs` |
+| `docs/media/` | фильм о проекте (107 с, 1080p, с озвучкой) |
+| `video/` | фильм: таймлайн `film.html`, кадры `render.mjs`, озвучка `cues.json` + `build_audio.py`, сборка `build_video.sh` |
 
 ## Как работает радар
 
