@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тұмар — фильм</title>
+<style>
+  :root{
+    --night:#080a12; --ink:#0b0e17; --line:rgba(233,242,238,.12);
+    --silver:#eef4f1; --dim:#93a09b; --dim2:#67736f;
+    --carn:#ff5a3c; --carn2:#ff8a6d; --mint:#5ec8b4; --amber:#f0b862;
+    --font:"Segoe UI Variable Display","Segoe UI","Inter",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#000;overflow:hidden}
+  body{font-family:var(--font);color:var(--silver);-webkit-font-smoothing:antialiased}
+  #wrap{position:fixed;inset:0;display:grid;place-items:center;background:#000}
+  #stage{
+    position:relative;width:1920px;height:1080px;flex:none;overflow:hidden;
+    transform-origin:center center;background:var(--night);
+  }
+  .bg{position:absolute;inset:0;
+    background:
+      radial-gradient(980px 560px at 84% -12%,rgba(255,90,60,.14),transparent 62%),
+      radial-gradient(820px 460px at 2% 4%,rgba(94,200,180,.07),transparent 60%),
+      radial-gradient(1200px 680px at 46% 114%,rgba(255,90,60,.17),transparent 66%),
+      linear-gradient(180deg,#080a12 0,#090c14 52%,#0a0d15 100%);}
+  .grid{position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:240px 100%;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+  .sc{position:absolute;inset:0;padding:112px 132px;opacity:0;visibility:hidden}
+  .kicker{font-size:19px;letter-spacing:.26em;text-transform:uppercase;color:var(--carn2);font-weight:600}
+  .kicker i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--carn);margin-right:14px;vertical-align:2px;box-shadow:0 0 0 6px rgba(255,90,60,.16)}
+  h1{font-size:128px;line-height:.94;letter-spacing:-.042em;font-weight:600}
+  h1 em{font-style:normal;color:var(--carn2)}
+  h2{font-size:76px;line-height:1.02;letter-spacing:-.034em;font-weight:600}
+  h2 em{font-style:normal;color:var(--carn2)}
+  .sub{font-size:30px;line-height:1.45;color:var(--dim);max-width:1080px}
+  .sub b{color:var(--silver);font-weight:600}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+  /* ---------- 1. заставка ---------- */
+  .radar{position:absolute;left:1290px;top:170px;width:740px;height:740px;pointer-events:none}
+  .radar .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(233,242,238,.09)}
+  .radar .ring:nth-child(2){inset:96px}
+  .radar .ring:nth-child(3){inset:192px}
+  .radar .ring:nth-child(4){inset:288px}
+  .beam{position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 0deg,rgba(255,90,60,0) 300deg,rgba(255,90,60,.22) 352deg,rgba(255,120,90,.46) 359deg,rgba(255,90,60,0) 360deg);
+    filter:blur(1px)}
+  .blip{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--carn);box-shadow:0 0 0 8px rgba(255,90,60,.14)}
+
+  /* ---------- 2. переводы ---------- */
+  .pills{display:flex;gap:22px;margin-top:74px}
+  .pill{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;
+    padding:22px 34px;font-size:27px;display:flex;gap:14px;align-items:baseline}
+  .pill span{color:var(--dim);font-size:20px;letter-spacing:.04em}
+  .pill b{font-size:32px;font-weight:600}
+  .tl{margin-top:96px;position:relative;height:200px}
+  .tl .bar{position:absolute;left:0;right:0;top:64px;height:1px;background:var(--line);transform-origin:0 50%}
+  .tl .fill{position:absolute;left:0;top:63px;height:3px;background:linear-gradient(90deg,var(--carn),var(--amber));transform-origin:0 50%;border-radius:2px}
+  .node{position:absolute;top:52px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(233,242,238,.28);background:var(--night);transform:translateX(-13px)}
+  .node.on{border-color:var(--carn);background:var(--carn);box-shadow:0 0 0 9px rgba(255,90,60,.14)}
+  .lblw{position:absolute;top:112px;width:280px;margin-left:-140px;text-align:center}
+  .lbl{font-size:20px;color:var(--dim);white-space:nowrap}
+  .lblw.end{width:420px;margin-left:-420px;text-align:right}
+  .lblw.end .lbl{color:var(--carn2)}
+
+  /* ---------- 3. правила ---------- */
+  .rules{margin-top:56px}
+  .rule{display:grid;grid-template-columns:96px 460px 1fr;align-items:baseline;gap:26px;
+    padding:34px 0;border-top:1px solid var(--line)}
+  .rule:last-child{border-bottom:1px solid var(--line)}
+  .rule i{font-style:normal;font-size:20px;letter-spacing:.12em;color:var(--carn2)}
+  .rule b{font-size:38px;font-weight:600;letter-spacing:-.02em}
+  .rule p{font-size:24px;color:var(--dim);line-height:1.35}
+
+  /* ---------- 4. экраны ---------- */
+  .shot-wrap{position:absolute;left:132px;right:132px;top:200px;bottom:56px}
+  .shot{position:absolute;inset:0;display:grid;place-items:start center}
+  .shot img{width:1060px;height:auto;border-radius:14px;border:1px solid var(--line);
+    box-shadow:0 50px 100px -40px #000;display:block}
+  .cap{position:absolute;left:132px;top:114px;right:132px;display:flex;align-items:baseline;gap:22px}
+  .cap b{font-size:44px;font-weight:600;letter-spacing:-.02em}
+  .cap span{font-size:24px;color:var(--dim)}
+  .sc.center{display:flex;flex-direction:column;justify-content:center;padding-top:88px;padding-bottom:88px}
+
+  /* ---------- 5. тесты ---------- */
+  .tests{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:68px}
+  .test{border:1px solid var(--line);border-radius:20px;padding:38px 36px 34px;background:rgba(255,255,255,.028)}
+  .test .h{font-size:19px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim2)}
+  .test .big{font-size:76px;line-height:1;margin:26px 0 8px;font-weight:600;letter-spacing:-.03em}
+  .test .big small{font-size:34px;color:var(--dim);font-weight:500;letter-spacing:0}
+  .test .row{display:flex;justify-content:space-between;font-size:22px;color:var(--dim);padding:12px 0;border-top:1px solid rgba(233,242,238,.07)}
+  .test .row b{color:var(--silver);font-weight:600}
+  .test .verdict{margin-top:22px;font-size:21px;color:var(--mint)}
+  .test.warn .verdict{color:var(--carn2)}
+  .test.fail .verdict{color:var(--dim)}
+  .test.t3{border-color:rgba(94,200,180,.42);background:rgba(94,200,180,.05)}
+  .foot{margin-top:44px;font-size:22px;color:var(--dim2)}
+
+  /* ---------- 6. ограничения ---------- */
+  .lim{margin-top:64px;display:grid;gap:0}
+  .lim div{display:grid;grid-template-columns:44px 1fr;gap:22px;padding:30px 0;border-top:1px solid var(--line);font-size:34px;letter-spacing:-.015em}
+  .lim div:last-child{border-bottom:1px solid var(--line)}
+  .lim s{text-decoration:none;color:var(--carn2);font-size:22px;line-height:1.7}
+  .lim span{color:var(--silver)}
+
+  /* ---------- 7. стек ---------- */
+  .chips{display:flex;gap:16px;flex-wrap:wrap;margin-top:56px}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:16px 28px;font-size:24px;color:var(--silver)}
+  .chip.on{border-color:rgba(94,200,180,.45);color:#c9f5ea;background:rgba(94,200,180,.08)}
+  .note{margin-top:52px;font-size:27px;color:var(--dim);max-width:1300px;line-height:1.5}
+
+  /* ---------- 8. финал ---------- */
+  .end{display:grid;place-items:center;text-align:center;padding:0}
+  .end .mark{width:92px;height:92px;border-radius:50%;border:1px solid rgba(255,90,60,.5);
+    display:grid;place-items:center;margin-bottom:36px;box-shadow:0 0 0 18px rgba(255,90,60,.06)}
+  .end .mark svg{width:36px;height:36px}
+  .end h2{font-size:92px}
+  .end .url{margin-top:34px;font-size:30px;color:var(--mint);letter-spacing:.02em}
+  .end .meta{margin-top:22px;font-size:22px;color:var(--dim2);letter-spacing:.14em;text-transform:uppercase}
+  #hud{position:fixed;left:0;bottom:0;font:12px/1.4 ui-monospace,monospace;color:#fff;opacity:.25;padding:6px}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+  <div class="bg"></div><div class="grid"></div>
+
+  <!-- 1 -->
+  <section class="sc" data-in="0.4" data-out="5.6" style="padding-top:300px">
+    <div class="radar" id="radar">
+      <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      <div class="beam"></div>
+      <div class="blip" style="left:62%;top:30%"></div>
+      <div class="blip" style="left:34%;top:58%"></div>
+      <div class="blip" style="left:70%;top:72%"></div>
+    </div>
+    <div class="kicker" data-t="0.15" data-an="rise"><i></i>Учебный прототип · Python + Streamlit</div>
+    <h1 data-t="0.35" data-an="mask" style="margin-top:34px">Радар медленных<br><em>схем</em></h1>
+    <p class="sub" data-t="1.05" data-an="rise" style="margin-top:44px">Тұмар видит, как отдельные переводы складываются в схему,<br>и <b>предупреждает до того</b>, как клиент закроет депозит.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="sc" data-in="5.72" data-out="16.2" style="padding-top:236px">
+    <div data-t="0.1" data-o="4.7">
+      <div class="kicker" data-t="0.15" data-an="rise"><i></i>Проблема</div>
+      <h2 style="margin-top:34px">Один перевод<br>ничего не значит</h2>
+      <div class="pills">
+        <div class="pill" data-t="1.0" data-an="rise"><b class="num">3 000 ₸</b><span>новому получателю</span></div>
+        <div class="pill" data-t="1.5" data-an="rise"><b class="num">3 100 ₸</b><span>новому получателю</span></div>
+        <div class="pill" data-t="2.0" data-an="rise"><b class="num">2 950 ₸</b><span>новому получателю</span></div>
+      </div>
+      <p class="sub" data-t="2.6" data-an="rise" style="margin-top:52px">Каждый по отдельности выглядит нормально. Банк пропускает все три.</p>
+    </div>
+
+    <div style="position:absolute;left:132px;right:132px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center" data-t="5.1" data-an="rise">
+      <h2>Пять шагов,<br>четыре месяца</h2>
+      <div class="tl">
+        <div class="bar" data-t="5.9" data-an="grow" data-dur="1.6"></div>
+        <div class="node" data-t="5.9" data-an="pop" style="left:2%"></div>
+        <div class="node" data-t="6.5" data-an="pop" style="left:26%"></div>
+        <div class="node" data-t="6.8" data-an="pop" style="left:50%"></div>
+        <div class="node" data-t="7.1" data-an="pop" style="left:74%"></div>
+        <div class="node on" data-t="7.4" data-an="pop" style="left:98%"></div>
+        <div class="lblw" style="left:2%"><div class="lbl" data-t="5.9" data-an="rise">день 12</div></div>
+        <div class="lblw" style="left:26%"><div class="lbl" data-t="6.5" data-an="rise">день 41</div></div>
+        <div class="lblw" style="left:50%"><div class="lbl" data-t="6.8" data-an="rise">день 74</div></div>
+        <div class="lblw" style="left:74%"><div class="lbl" data-t="7.1" data-an="rise">день 103</div></div>
+        <div class="lblw end" style="left:98%"><div class="lbl" data-t="7.4" data-an="rise">день 116 · заявка на депозит</div></div>
+        <div class="fill" data-t="5.9" data-an="growx" data-dur="1.9" style="width:98%"></div>
+      </div>
+      <p class="sub" data-t="8.3" data-an="rise">Схема видна только на горизонте месяцев. <b>Отдельную операцию ловить бесполезно.</b></p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="sc center" data-in="16.32" data-out="28.2">
+    <div class="kicker" data-t="0.1" data-an="rise"><i></i>Как это работает</div>
+    <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Четыре правила,<br>которые можно объяснить</h2>
+    <div class="rules">
+      <div class="rule" data-t="0.9" data-an="rise"><i>01</i><b>Окно суммы</b><p>Сколько ушло новым получателям за 90 дней — и растёт ли темп.</p></div>
+      <div class="rule" data-t="1.25" data-an="rise"><i>02</i><b>Новые получатели</b><p>Первый платёж человеку, а не карте. Лесенка, наживка, опустошение.</p></div>
+      <div class="rule" data-t="1.6" data-an="rise"><i>03</i><b>Порог</b><p>0–1 сигнал: молчим. 2 и больше: предупреждаем клиента.</p></div>
+      <div class="rule" data-t="1.95" data-an="rise"><i>04</i><b>Пауза</b><p>Остановить переводы — только по согласию клиента.</p></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="sc" data-in="28.32" data-out="41.0" style="padding:0">
+    <div class="shot-wrap">
+      <div class="shot" data-t="0.2" data-o="3.9"><img src="../docs/img/app-client.jpg" alt=""></div>
+      <div class="shot" data-t="3.7" data-o="8.1"><img src="../docs/img/app-analyst.jpg" alt=""></div>
+      <div class="shot" data-t="7.9"><img src="../docs/img/app-quality.jpg" alt=""></div>
+    </div>
+    <div class="cap" data-t="0.15" data-o="3.9"><b>Клиент</b><span>что видит человек в приложении, когда схема сходится</span></div>
+    <div class="cap" data-t="3.7" data-o="8.1"><b>Аналитик</b><span>день 116, деньги ещё не ушли — предупреждение сработало раньше</span></div>
+    <div class="cap" data-t="7.9"><b>Качество</b><span>те же слепые тесты внутри приложения, без купюр</span></div>
+    <div class="kicker" data-t="0.1" data-an="rise" style="position:absolute;left:132px;top:58px"><i></i>Три экрана, которые можно потрогать</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="sc center" data-in="41.12" data-out="57.0">
+    <div class="kicker" data-t="0.1" data-an="rise"><i></i>Краш-тест</div>
+    <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Три слепых теста,<br>без купюр</h2>
+    <div class="tests">
+      <div class="test fail" data-t="0.9" data-an="rise">
+        <div class="h">Тест 1 · 10 историй</div>
+        <div class="big num"><span data-count="0" data-t="1.2">0</span><small> / 5</small></div>
+        <div class="row"><span>поймано схем</span><b class="num">0 / 5</b></div>
+        <div class="row"><span>ложных тревог</span><b class="num">0 / 5</b></div>
+        <div class="verdict">Не поймал ничего. Молчит и не мешает.</div>
+      </div>
+      <div class="test warn" data-t="1.3" data-an="rise">
+        <div class="h">Тест 2 · 20 историй</div>
+        <div class="big num"><span data-count="8" data-t="1.7">8</span><small> / 10</small></div>
+        <div class="row"><span>поймано схем</span><b class="num">8 / 10</b></div>
+        <div class="row"><span>честных с тревогой</span><b class="num">9 / 10</b></div>
+        <div class="verdict">Ловит — но шумит на честных.</div>
+      </div>
+      <div class="test t3" data-t="1.7" data-an="rise">
+        <div class="h">Тест 3 · 20 историй</div>
+        <div class="big num"><span data-count="10" data-t="2.1">10</span><small> / 10</small></div>
+        <div class="row"><span>поймано схем</span><b class="num">10 / 10</b></div>
+        <div class="row"><span>ложных тревог</span><b class="num">0 / 10</b></div>
+        <div class="verdict">10 из 10 и ни одной ложной тревоги.</div>
+      </div>
+    </div>
+    <p class="foot" data-t="2.8" data-an="rise">Пороги не подбирались под слепые наборы. В тесте 3 медиана денег до предупреждения — <b class="num" style="color:#c9f5ea">19%</b>.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="sc center" data-in="57.12" data-out="65.2">
+    <div class="kicker" data-t="0.1" data-an="rise"><i></i>Чего пока нет</div>
+    <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Не прячем<br>слабые места</h2>
+    <div class="lim">
+      <div data-t="0.9" data-an="rise"><s>—</s><span>Пауза в защите срабатывала <b>0 из 4</b> в третьем тесте.</span></div>
+      <div data-t="1.3" data-an="rise"><s>—</s><span>Во втором тесте радар беспокоил <b>9 из 10</b> честных клиентов.</span></div>
+      <div data-t="1.7" data-an="rise"><s>—</s><span>Это <b>учебный прототип</b>, а не банковский продукт и не совет по деньгам.</span></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="sc center" data-in="65.32" data-out="71.6">
+    <div class="kicker" data-t="0.1" data-an="rise"><i></i>Стек</div>
+    <h2 data-t="0.3" data-an="rise" style="margin-top:30px">Один файл,<br>ноль зависимостей от сети</h2>
+    <div class="chips">
+      <div class="chip" data-t="0.9" data-an="rise">Python 3.12</div>
+      <div class="chip" data-t="1.05" data-an="rise">Streamlit</div>
+      <div class="chip" data-t="1.2" data-an="rise">pandas</div>
+      <div class="chip" data-t="1.35" data-an="rise">Altair</div>
+      <div class="chip on" data-t="1.5" data-an="rise">45 тестов зелёные</div>
+    </div>
+    <p class="note" data-t="2.0" data-an="rise">Только операции, которые банк уже видит. Без внешних API, ключей и интернета — модель не уходит из контура.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="sc end" data-in="71.72" data-out="120">
+    <div>
+      <div class="mark" data-t="0.1" data-an="pop"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a3c" stroke-width="1.8"><path d="M12 3.2 20.2 12 12 20.8 3.8 12Z"/><circle cx="12" cy="12" r="2.6"/></svg></div>
+      <h2 data-t="0.35" data-an="mask">Тұмар — радар<br><em>медленных схем</em></h2>
+      <div class="url" data-t="1.1" data-an="rise">ordalinnn.github.io/tumar</div>
+      <div class="meta" data-t="1.4" data-an="rise">Слайды · PDF · RU / KZ</div>
+    </div>
+  </section>
+
+</div></div>
+<div id="hud">0.00</div>
+
+<script>
+(function(){
+  const TOTAL = 78;
+  const stage = document.getElementById('stage');
+  const hud = document.getElementById('hud');
+  const scenes = [...document.querySelectorAll('.sc')];
+  const clamp = v => v < 0 ? 0 : v > 1 ? 1 : v;
+  const easeOut = p => 1 - Math.pow(1 - p, 3);
+  const easeInOut = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2;
+
+  function fit(){
+    const s = Math.min(innerWidth/1920, innerHeight/1080);
+    stage.style.transform = 'scale(' + s + ')';
+  }
+  addEventListener('resize', fit);
+
+  function render(t){
+    document.getElementById('radar').querySelector('.beam').style.transform = 'rotate(' + (t*46) + 'deg)';
+    for (const sc of scenes){
+      const i = +sc.dataset.in, o = +sc.dataset.out || 1e4;
+      const a = clamp((t - i) / 0.40);
+      const b = clamp((o - t) / 0.26);
+      const p = Math.min(a, b);
+      sc.style.opacity = p;
+      sc.style.visibility = p > 0.001 ? 'visible' : 'hidden';
+      sc.style.transform = 'translateY(' + ((1-easeOut(a)) * 16).toFixed(2) + 'px)';
+      if (p <= 0) continue;
+      const lt = t - i;
+      for (const el of sc.querySelectorAll('[data-t]')){
+        const st = +el.dataset.t;
+        const dur = +el.dataset.dur || 0.7;
+        const outAt = el.dataset.o ? +el.dataset.o : 1e4;
+        const pIn = easeOut(clamp((lt - st) / dur));
+        const pOut = clamp((outAt - lt) / 0.4);
+        const k = Math.min(pIn, pOut);
+        const an = el.dataset.an;
+        if (an === 'count'){
+          const to = +el.dataset.count;
+          el.textContent = String(Math.round(to * pIn));
+          el.style.opacity = 1;
+          continue;
+        }
+        el.style.opacity = k;
+        if (an === 'rise') el.style.transform = 'translateY(' + ((1-pIn) * 24).toFixed(2) + 'px)';
+        else if (an === 'pop') el.style.transform = 'scale(' + (0.55 + 0.45*easeOut(pIn)).toFixed(3) + ')';
+        else if (an === 'mask') el.style.clipPath = 'inset(0 0 ' + ((1-pIn)*100).toFixed(2) + '% 0)';
+        else if (an === 'grow' || an === 'growx'){
+          const e = easeInOut(clamp((lt - st) / dur));
+          el.style.transform = 'scaleX(' + e.toFixed(3) + ')';
+          el.style.opacity = 1;
+        }
+      }
+    }
+    hud.textContent = t.toFixed(2);
+  }
+
+  const params = new URLSearchParams(location.search);
+  fit();
+
+  if (params.has('t')){ render(parseFloat(params.get('t')) || 0); return; }
+
+  // ждём внешнего старта, чтобы запись началась ровно с нуля
+  let t0 = null, raf = null;
+  window.__start = function(){
+    t0 = null;
+    if (raf) cancelAnimationFrame(raf);
+    const tick = now => {
+      if (t0 === null) t0 = now;
+      const t = (now - t0) / 1000;
+      render(Math.min(t, TOTAL));
+      if (t < TOTAL) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+  };
+  window.__seek = t => render(t);
+  render(0);
+  if (params.has('rec')) { /* ждём __start() из консоли */ }
+  window.__ready = true;
+})();
+</script>
+</body>
+</html>

@@ -12,6 +12,9 @@
 стрелки, пробел или клик. PDF: [`docs/slides.pdf`](docs/slides.pdf) (9 слайдов, 6.9 МБ).
 Сайт и слайды делят один стиль: `docs/style.css` и `docs/site.js`, поэтому правки не расходятся.
 
+**Видео для защиты:** [`docs/media/tumar-radar-demo.mp4`](docs/media/tumar-radar-demo.mp4) —
+78 секунд, 1920×1080, без звука. Исходник фильма и рендер: `video/film.html`, `video/render.mjs`.
+
 ## Запуск
 
 ```bash
@@ -35,7 +38,9 @@ pytest -q
 | `docs/metrics_A.md` | отчёт по набору A со всеми цифрами, включая плохие |
 | `docs/index.html`, `docs/kz.html` | сайт на русском и казахском, общие `style.css` и `site.js` |
 | `docs/slides.html`, `docs/slides.pdf` | 9 слайдов для защиты и PDF из них |
-| `docs/img/` | скриншоты приложения для сайта и слайдов |
+| `docs/img/` | скриншоты приложения для сайта и слайдов, постер видео |
+| `docs/media/` | фильм о проекте (78 с, 1080p) |
+| `video/` | исходник фильма: таймлайн в `film.html` и рендер кадров `render.mjs` |
 
 ## Как работает радар
 
