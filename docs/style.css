@@ -92,6 +92,8 @@ h1 em{font-style:normal;color:var(--carn);text-shadow:0 0 42px rgba(255,90,60,.3
 .lede{margin-top:28px;font-size:clamp(18px,1.45vw,21px);line-height:1.5;color:var(--dim);max-width:36ch;font-weight:300}
 .lede b{color:var(--silver);font-weight:600}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.cta-note{align-self:center;font-size:15px;color:var(--dim)}
+.hero .cta-row{max-width:520px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px;font-size:15px;color:var(--faint)}
 .hero-meta span{display:inline-flex;align-items:center;gap:9px}
 .hero-meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--turq);box-shadow:0 0 10px rgba(94,200,180,.8)}
