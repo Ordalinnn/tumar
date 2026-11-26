@@ -1,9 +1,24 @@
 [theme]
+# ночная степь, как на сайте и слайдах: серебро на чёрном, сердолик как главный цвет
 base = "dark"
-primaryColor = "#5ec8b4"
-backgroundColor = "#07090a"
-secondaryBackgroundColor = "#111719"
+primaryColor = "#ff5a3c"
+backgroundColor = "#06080a"
+secondaryBackgroundColor = "#0f1517"
 textColor = "#e9f2ee"
+linkColor = "#ff8a70"
+font = "Bahnschrift, 'Roboto Condensed', 'Arial Narrow', 'Segoe UI', system-ui, sans-serif"
+headingFont = "Bahnschrift, 'DIN Alternate', 'Roboto Condensed', 'Arial Narrow', system-ui, sans-serif"
+borderColor = "#243032"
+dataframeBorderColor = "#1b2426"
+dataframeHeaderBackgroundColor = "#0c1214"
+baseRadius = "14px"
+buttonRadius = "999px"
+showWidgetBorder = true
+redColor = "#ff5a3c"
+orangeColor = "#ffc45c"
+yellowColor = "#ffc45c"
+greenColor = "#5ec8b4"
+blueColor = "#969fcd"
 
 [client]
 toolbarMode = "minimal"

@@ -1,17 +1,105 @@
-<style>*{margin:0;box-sizing:border-box}body{overflow:hidden;font-family:Bahnschrift,"Segoe UI",sans-serif;color:#e6ebf5}
-.h{position:relative;height:250px;border-radius:26px 26px 26px 6px;overflow:hidden;background:radial-gradient(820px 240px at 74% 118%,rgba(255,90,60,.40),transparent 74%),radial-gradient(620px 220px at 26% -30%,rgba(94,200,180,.20),transparent 72%),linear-gradient(180deg,#06080a,#080d0f 60%,#0a1012)}
-canvas{position:absolute;inset:0;width:100%;height:100%}.t{position:absolute;left:44px;top:50px;font-size:118px;font-weight:700;font-stretch:75%;line-height:.8;letter-spacing:-3px}.p{position:absolute;left:48px;bottom:34px;font-size:22px}
-@media(max-width:620px){.t{font-size:72px;left:24px}.p{left:26px;font-size:17px}}</style>
-<div class="h"><canvas></canvas><div class="t">Тұмар</div><div class="p">Радар медленных мошеннических схем</div></div>
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--silver:#e9f2ee;--dim:#a3b0ab;--carn:#ff5a3c;--display:Bahnschrift,"DIN Alternate","Roboto Condensed","Arial Narrow","Segoe UI",system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:transparent;overflow:hidden}
+body{font-family:var(--display);color:var(--silver);-webkit-font-smoothing:antialiased}
+/* первый экран сайта: ночная степь, сердоликовое зарево снизу, бирюза сверху */
+.h{position:relative;height:100%;border-radius:30px 30px 30px 8px;overflow:hidden;isolation:isolate;
+  border:1px solid rgba(233,242,238,.09);
+  box-shadow:0 40px 80px -50px #000,inset 0 1px 0 rgba(255,255,255,.05);
+  background:
+    radial-gradient(1100px 360px at 66% 128%,rgba(255,90,60,.42) 0,rgba(120,52,72,.26) 36%,rgba(24,30,32,.45) 64%,transparent 82%),
+    radial-gradient(700px 300px at 88% -30%,rgba(94,200,180,.16),transparent 66%),
+    radial-gradient(500px 260px at 8% -20%,rgba(94,200,180,.06),transparent 70%),
+    linear-gradient(180deg,#06080a 0,#070a0c 58%,#090c0e 100%)}
+/* горизонт из точек, как под первым экраном сайта */
+.h::after{content:"";position:absolute;left:0;right:0;bottom:18px;height:8px;opacity:.5;z-index:1;
+  background:radial-gradient(circle,rgba(150,160,205,.9) 1.1px,transparent 1.6px) 0 50%/9px 8px repeat-x}
+canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.tx{position:absolute;left:clamp(22px,4.4vw,56px);top:0;bottom:0;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vw,22px);padding-bottom:8px;max-width:60%}
+.t{font-size:clamp(76px,12vw,140px);font-weight:700;font-stretch:75%;line-height:.82;letter-spacing:-.015em;margin-left:-.04em;
+  text-shadow:0 0 60px rgba(255,90,60,.18),0 2px 24px rgba(6,8,10,.6)}
+.p{font-size:clamp(17px,1.7vw,22px);font-weight:300;line-height:1.3;color:var(--dim);display:flex;align-items:center;gap:12px}
+.p::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--carn);box-shadow:0 0 0 5px rgba(255,90,60,.18),0 0 18px rgba(255,90,60,.9)}
+@media (max-width:640px){
+  .tx{max-width:none;right:22px;justify-content:flex-end;padding-bottom:40px;gap:12px}
+  .t{font-size:80px}
+  .p{font-size:17px;text-shadow:0 1px 12px #06080a}
+}
+</style></head>
+<body>
+<div class="h" id="hero"><canvas id="sky" aria-hidden="true"></canvas>
+<div class="tx"><div class="t">Тұмар</div><div class="p">Радар медленных мошеннических схем</div></div></div>
 <script>
-const c=document.querySelector("canvas"),g=c.getContext("2d"),calm=matchMedia("(prefers-reduced-motion:reduce)").matches;let W,H,q,s,P=[];
-const L=(a,b,x,y,n,k)=>Array.from({length:n},(_,i)=>[a+(x-a)*i/(n-1),b+(y-b)*i/(n-1),k]),D=(x,y,r,n,k)=>Array.from({length:n},(_,i)=>{const z=Math.sqrt((i+.5)/n)*r,t=i*2.4;return[x+Math.cos(t)*z,y+Math.sin(t)*z,k]});
-function build(){q=devicePixelRatio;W=c.clientWidth;H=c.clientHeight;c.width=W*q;c.height=H*q;const X=W-170;let o=[];
-if(W>620){o.push(...L(X,16,X+112,160,52,0),...L(X,16,X-112,160,52,0),...L(X-112,160,X+112,160,60,0),...L(X,26,X+101,154,44,0),...L(X,26,X-101,154,44,0),...L(X-101,154,X+101,154,52,0),...L(X,0,X,14,5,0));
-for(let i=0;i<170;i++){let u=(.5+i*.75488)%1,v=(.5+i*.56984)%1;if(u+v>1){u=1-u;v=1-v}o.push([X+38*u-38*v,66+(u+v)*68,1])}
-[[-92,26],[-46,36],[0,46],[46,36],[92,26]].forEach(([x,l])=>o.push(...L(X+x,162,X+x,160+l,7,0),...D(X+x,170+l,9,26,0)))}
-const R=Math.random;P=o.map(([x,y,k])=>({x,y,k,a:.95,r:1.35,fx:R()*W,fy:R()*H*1.4-H*.2,d:R()*.5}));for(let i=0;i<150;i++)P.push({x:R()*W,y:R()*H,k:2,a:.12+R()*.35,r:.5+R()*.8,fx:R()*W,fy:R()*H,d:0});s=performance.now()}
-const C=["#e6ebf5","#ff5a3c","#96a0cd"];
-function f(n){g.setTransform(q,0,0,q,0,0);g.clearRect(0,0,W,H);const e=(n-s)/1700;P.forEach((p,i)=>{let u=calm?1:Math.max(0,Math.min(1,(e-p.d)/.9));u=u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;g.globalAlpha=p.a*(p.k==2?1:.85+.15*Math.sin(n/600+i));g.fillStyle=C[p.k];g.beginPath();g.arc(p.fx+(p.x-p.fx)*u,p.fy+(p.y-p.fy)*u+(p.k==2?Math.sin(n/3000+i)*4:0),p.r,0,7);g.fill()});if(!calm||e<1)requestAnimationFrame(f)}
-build();addEventListener("resize",build);requestAnimationFrame(f);
+/* Точки слетаются в амулет: тот же рисунок, что в docs/site.js и на слайдах. Украшение: любая ошибка не ломает страницу. */
+try{(function(){
+const motion=matchMedia("(prefers-reduced-motion:reduce)");let calm=motion.matches;
+const COL=["230,235,245","255,90,60","69,214,200","255,196,92","150,160,205"];
+let seed=7;const R=()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
+const P=(x,y,c=0,r=2.2,a=1)=>({x,y,c,r,a});
+const line=(x1,y1,x2,y2,n,c,r)=>Array.from({length:n},(_,i)=>{const t=n>1?i/(n-1):0;return P(x1+(x2-x1)*t,y1+(y2-y1)*t,c,r)});
+const disc=(x,y,rad,n,c,r)=>Array.from({length:n},(_,i)=>{const q=Math.sqrt((i+.5)/n)*rad,t=i*2.39996;return P(x+Math.cos(t)*q,y+Math.sin(t)*q,c,r)});
+function tri(ax,ay,bx,by,cx,cy,n,c,r){const o=[];for(let i=0;i<n;i++){let u=(.5+i*.7548776662)%1,v=(.5+i*.569840291)%1;if(u+v>1){u=1-u;v=1-v}o.push(P(ax+(bx-ax)*u+(cx-ax)*v,ay+(by-ay)*u+(cy-ay)*v,c,r))}return o}
+const NS="http://www.w3.org/2000/svg";
+const CURL=(()=>{const host=document.createElementNS(NS,"svg"),e=document.createElementNS(NS,"path");
+  host.setAttribute("width","0");host.setAttribute("height","0");host.style.cssText="position:absolute;left:-9999px;top:0";
+  e.setAttribute("d","M0 0 c-30 40 -96 32 -92 -16 c4 -36 56 -34 50 2 c-3 16 -24 14 -22 0");host.append(e);document.body.append(host);
+  const L=e.getTotalLength(),n=100,pts=Array.from({length:n},(_,i)=>{const p=e.getPointAtLength(L*i/(n-1));return{x:p.x,y:p.y}});host.remove();return pts})();
+function amulet(cx,top,k){
+  const X=x=>cx+(x-350)*k,Y=y=>top+y*k;let o=[];
+  for(const g of[0,9]){o.push(...line(X(350),Y(92+g*1.6),X(684-g*1.9),Y(560-g),150,0,2.3),...line(X(350),Y(92+g*1.6),X(16+g*1.9),Y(560-g),150,0,2.3),...line(X(16+g*1.9),Y(560-g),X(684-g*1.9),Y(560-g),170,0,2.3))}
+  for(let i=1;i<20;i++){const a=i/20;o.push(...disc(X(350-304*a),Y(160+366*a),5.5*k,6,0,2),...disc(X(350+304*a),Y(160+366*a),5.5*k,6,0,2),...disc(X(46+608*a),Y(526),5.5*k,6,0,2))}
+  o.push(...line(X(350),Y(226),X(452),Y(412),60,3,2.4),...line(X(350),Y(226),X(248),Y(412),60,3,2.4),...line(X(248),Y(412),X(452),Y(412),60,3,2.4),...tri(X(350),Y(244),X(438),Y(402),X(262),Y(402),330,1,2.8));
+  for(const m of[1,-1])o.push(...CURL.map(p=>P(X(350+p.x*m),Y(486+p.y),3,2.2)));
+  o.push(...line(X(350),Y(-10),X(350),Y(88),22,0,2.2));
+  [[70,120],[210,150],[350,184],[490,150],[630,120]].forEach(([x,l])=>{
+    o.push(...line(X(x),Y(566),X(x),Y(560+l),Math.round(l/7),0,1.9));const y=560+l;
+    o.push(...line(X(x),Y(y),X(x-25),Y(y+44),9,0,2.2),...line(X(x),Y(y),X(x+25),Y(y+44),9,0,2.2),...tri(X(x),Y(y+8),X(x-19),Y(y+42),X(x+19),Y(y+42),16,0,2.2),...disc(X(x),Y(y+58),30*k,96,0,2.2))});
+  return o}
+const SP=COL.map(c=>{const k=document.createElement("canvas");k.width=k.height=48;const g=k.getContext("2d"),q=g.createRadialGradient(24,24,0,24,24,24);
+  q.addColorStop(0,`rgba(${c},1)`);q.addColorStop(.3,`rgba(${c},.95)`);q.addColorStop(.42,`rgba(${c},.28)`);q.addColorStop(1,`rgba(${c},0)`);g.fillStyle=q;g.fillRect(0,0,48,48);return k});
+const dot=(g,x,y,c,r,a)=>{g.globalAlpha=a;const z=r*5.2;g.drawImage(SP[c],x-z/2,y-z/2,z,z)};
+const AW=700,AH=860,sky=document.getElementById("sky"),hero=document.getElementById("hero");
+const LIFE=20000,FADE=3000;
+let W=0,H=0,g,halo,hx=0,hy=0,hr=0,pts=[],from=[],dl=[],sw=[],ph=[],cx=0,top=0,t0=0,raf=0,last=0,seen=true,intro=!calm,dim=1;
+function layout(){
+  W=hero.clientWidth;H=hero.clientHeight;if(!W||!H)return;
+  const q=Math.min(2,devicePixelRatio||1);sky.width=Math.round(W*q);sky.height=Math.round(H*q);g=sky.getContext("2d");g.setTransform(q,0,0,q,0,0);
+  const small=W<=640,bh=small?H*.5:H-44,bw=small?W*.42:Math.min(W*.42,420);
+  const k=Math.min(bw/AW,bh/AH);cx=small?W-AW*k/2-14:W-Math.max(bw/2+28,W*.2);top=(small?16:(H-AH*k)/2)+10*k;dim=small?.9:1;
+  hx=cx;hy=top+330*k;hr=430*k;halo=g.createRadialGradient(hx,hy,0,hx,hy,hr);
+  halo.addColorStop(0,"rgba(255,90,60,.46)");halo.addColorStop(.42,"rgba(255,90,60,.16)");halo.addColorStop(1,"rgba(255,90,60,0)");
+  seed=7;const m=Math.max(.42,Math.min(1,k*1.05));
+  const shape=amulet(cx,top,k);shape.forEach(p=>{p.r*=m;p.a*=dim});
+  const dust=Array.from({length:Math.round(W*H/2000)},()=>P(R()*W,Math.pow(R(),.8)*H,4,.7+R()*1.1,.12+R()*.34));
+  pts=shape.concat(dust);
+  from=pts.map(p=>({x:p.x+(R()-.5)*W*1.1,y:p.y+(R()-.5)*H*1.4}));
+  dl=pts.map(()=>R()*.42);sw=pts.map(()=>(R()-.5)*220);ph=pts.map(()=>R()*6.28)}
+const ez=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const amp=now=>calm?0:Math.max(0,Math.min(1,(t0+LIFE-now)/FADE));
+function paint(now){
+  if(!g)return;g.clearRect(0,0,W,H);
+  const el=intro?(now-t0)/1650:9,A=amp(now),sway=Math.sin(now/1900)*.013*A;
+  const hA=Math.max(0,Math.min(1,(el-.3)/.9))*(.86+.14*Math.sin(now/1700)*A)*dim;
+  if(hA>0){g.globalAlpha=hA;g.fillStyle=halo;g.fillRect(hx-hr,hy-hr,hr*2,hr*2)}
+  for(let j=0;j<pts.length;j++){
+    const b=pts[j];let x=b.x,y=b.y,a=b.a;const u=Math.max(0,Math.min(1,(el-dl[j])/.95));
+    if(u<1){const f=from[j],e=ez(u),w=Math.sin(u*3.1416);x=f.x+(b.x-f.x)*e+w*sw[j];y=f.y+(b.y-f.y)*e-w*Math.abs(sw[j])*.7;a=b.a*e}
+    else if(b.c===4){x+=Math.sin(now/5200+ph[j])*4*A;y+=Math.cos(now/6100+ph[j])*3*A}
+    else if(sway){const ox=x-cx,oy=y-top;x=cx+ox-sway*oy;y=top+oy+sway*ox}
+    const tw=b.c===4?1:1-A*(.14-.14*Math.sin(now/640+ph[j]+x*.012));dot(g,x,y,b.c,b.r,a*tw)}
+  if(intro&&el>1.5)intro=false}
+function loop(now){raf=0;if(calm||!seen||document.hidden)return;
+  if(intro||now-last>40){last=now;paint(now)}            // после сборки не чаще 25 кадров в секунду
+  if(intro||amp(now)>0)raf=requestAnimationFrame(loop)}
+const kick=()=>{if(!calm&&!raf&&seen&&!document.hidden&&(intro||amp(performance.now())>0))raf=requestAnimationFrame(loop)};
+layout();if(calm)paint(0);else{t0=performance.now();kick()}
+let rt,was=W+"x"+H;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{const now=hero.clientWidth+"x"+hero.clientHeight;if(now!==was){was=now;layout();if(!raf)paint(performance.now());kick()}},120)},{passive:true});
+if("IntersectionObserver"in window)new IntersectionObserver(es=>{seen=es[0].isIntersecting;kick()}).observe(hero);
+document.addEventListener("visibilitychange",kick);
+motion.addEventListener&&motion.addEventListener("change",()=>{calm=motion.matches;if(calm){if(raf)cancelAnimationFrame(raf);raf=0;intro=false;paint(performance.now())}else{t0=performance.now();kick()}});
+})()}catch(e){}
 </script>
+</body></html>
