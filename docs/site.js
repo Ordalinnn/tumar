@@ -104,13 +104,15 @@
   if (sky && art) {
     const hero = sky.parentElement;
     const LIFE = 20000, FADE = 3000; // через 20 с покачивание и мерцание плавно затихают, цикл останавливается
-    let W = 0, H = 0, g, pts = [], from = [], dl = [], sw = [], ph = [], cx = 0, top = 0, t0 = 0, raf = 0, last = 0, seen = true, intro = !calm;
+    let W = 0, H = 0, g, halo, hx = 0, hy = 0, hr = 0, pts = [], from = [], dl = [], sw = [], ph = [], cx = 0, top = 0, t0 = 0, raf = 0, last = 0, seen = true, intro = !calm;
     // положение рамки амулета без учёта transform (анимация появления сдвигает .stage на 28px)
     const box = () => { let x = 0, y = 0, e = art; while (e && e !== hero) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x, y, w: art.offsetWidth, h: art.offsetHeight }; };
     const key = () => { const b = box(); return [hero.clientWidth, hero.clientHeight, b.x, b.y, b.w, b.h].join(); };
     const layout = () => {
       W = hero.clientWidth; H = hero.clientHeight; g = sizeCanvas(sky, W, H);
       const b = box(), k = fit(b.w, b.h); cx = b.x + b.w / 2; top = b.y + (b.h - AH * k) / 2 + 10 * k;
+      hx = cx; hy = top + 330 * k; hr = 430 * k; halo = g.createRadialGradient(hx, hy, 0, hx, hy, hr);
+      halo.addColorStop(0, "rgba(255,90,60,.46)"); halo.addColorStop(.42, "rgba(255,90,60,.16)"); halo.addColorStop(1, "rgba(255,90,60,0)");
       seed = 7;
       const shape = scaleR(amulet(cx, top, k), k);
       const dust = Array.from({ length: Math.round(W * H / 2400) }, () => P(R() * W, Math.pow(R(), .7) * H, 4, .7 + R() * 1.1, .12 + R() * .34));
@@ -123,6 +125,8 @@
     const paint = now => {
       g.clearRect(0, 0, W, H);
       const el = intro ? (now - t0) / 1650 : 9, A = amp(now), sway = Math.sin(now / 1900) * .013 * A;
+      const hA = Math.max(0, Math.min(1, (el - .3) / .9)) * (.86 + .14 * Math.sin(now / 1700) * A);
+      if (hA > 0) { g.globalAlpha = hA; g.fillStyle = halo; g.fillRect(hx - hr, hy - hr, hr * 2, hr * 2); }
       for (let j = 0; j < pts.length; j++) {
         const b = pts[j]; let x = b.x, y = b.y, a = b.a;
         const u = Math.max(0, Math.min(1, (el - dl[j]) / .95));
@@ -153,7 +157,73 @@
       else { t0 = performance.now(); kick(); }
     });
   }
+
+  // радар в «признаках»: луч обходит круг и по очереди зажигает цепочку переводов
+  const rbox = document.getElementById("radar");
+  if (rbox) {
+    const cv = document.createElement("canvas"), st = document.createElement("canvas"); rbox.append(cv); rbox.classList.add("live");
+    const CH = [[22, .56], [33, .64], [45, .69], [57, .71], [69, .7], [80, .66]]; // угол от севера по часовой, доля радиуса
+    let S = 0, g, sg, c = 0, RM = 0, dust = [], beads = [], raf = 0, last = 0, seen = false;
+    const t0 = performance.now(), TURN = 4600, TAU = Math.PI * 2;
+    const pol = (a, r) => ({ x: c + Math.sin(a) * r, y: c - Math.cos(a) * r });
+    const layout = () => {
+      S = rbox.clientWidth; if (!S) return; g = sizeCanvas(cv, S, S); sg = sizeCanvas(st, S, S);
+      c = S / 2; RM = c - 6; const s = S / 420; seed = 23;
+      sg.clearRect(0, 0, S, S);
+      [.25, .5, .75, 1].forEach(f => { const r = RM * f, n = Math.round(TAU * r / 7); for (let i = 0; i < n; i++) { const p = pol(i / n * TAU, r); dot(sg, p.x, p.y, 0, 1.05 * Math.max(.8, s), f === 1 ? .5 : .32); } });
+      for (let i = -RM; i <= RM; i += 9) { dot(sg, c + i, c, 0, .9, .16); dot(sg, c, c + i, 0, .9, .16); }
+      dust = Array.from({ length: Math.round(70 * s * s) + 30 }, () => { const a = R() * TAU, r = Math.sqrt(R()) * RM * .97; return { a, ...pol(a, r), r: .8 + R() * .9 }; });
+      dust.forEach(d => dot(sg, d.x, d.y, 4, d.r, .32));
+      beads = CH.map(([deg, f], i) => { const a = deg / 180 * Math.PI, p = pol(a, RM * f), end = i === CH.length - 1; return { a, x: p.x, y: p.y, c: end ? 3 : 1, pts: disc(0, 0, (end ? 14 : 10) * s, end ? 26 : 16, end ? 3 : 1, 1.5 * Math.max(.8, s)) }; });
+    };
+    const since = (th, a) => ((th - a) % TAU + TAU) % TAU; // сколько луч прошёл после точки
+    const paint = th => {
+      g.clearRect(0, 0, S, S); g.globalAlpha = 1; g.drawImage(st, 0, 0, S, S);
+      for (let k = 0; k < 16; k++) { // луч и затухающий след из точек
+        const a = th - k * .07, al = .6 * Math.pow(1 - k / 16, 2);
+        for (let r = 8 + (k % 2) * 5; r <= RM; r += 10) { const p = pol(a, r); dot(g, p.x, p.y, 1, k ? 1 : 1.25, al); }
+      }
+      dust.forEach(d => { const q = since(th, d.a); if (q < .7) dot(g, d.x, d.y, 0, d.r * 1.3, (1 - q / .7) * .85); });
+      const lit = beads.map(b => .34 + .66 * Math.exp(-since(th, b.a) / 2.4));
+      for (let i = 1; i < beads.length; i++) { const A = beads[i - 1], B = beads[i], al = Math.min(lit[i - 1], lit[i]) * .7; line(A.x, A.y, B.x, B.y, 6, 1, 1).forEach((p, j) => j && j < 5 && dot(g, p.x, p.y, 1, 1, al)); }
+      beads.forEach((b, i) => b.pts.forEach(p => dot(g, b.x + p.x, b.y + p.y, b.c, p.r, lit[i])));
+    };
+    const loop = now => {
+      raf = 0; if (calm || !seen || document.hidden) return;
+      if (now - last > 33) { last = now; paint(((now - t0) / TURN) * TAU); } // ≈30 кадров в секунду
+      raf = requestAnimationFrame(loop);
+    };
+    const kick = () => { if (!calm && !raf && seen && !document.hidden) raf = requestAnimationFrame(loop); };
+    const rest = () => paint(CH[CH.length - 1][0] / 180 * Math.PI + .35); // без движения — цепочка уже горит
+    layout(); rest();
+    onResize(() => { layout(); rest(); }, () => rbox.clientWidth);
+    if ("IntersectionObserver" in window) new IntersectionObserver(es => { seen = es[0].isIntersecting; kick(); }).observe(rbox);
+    document.addEventListener("visibilitychange", kick);
+    motion.addEventListener?.("change", () => { if (calm) { if (raf) cancelAnimationFrame(raf); raf = 0; rest(); } else kick(); });
+  }
   } catch (err) { /* украшение не нарисовалось — остальное работает */ }
+
+
+  // большие цифры демо досчитывают до итога при появлении; итог уже стоит в разметке
+  if (!calm && "IntersectionObserver" in window) {
+    document.querySelectorAll("#demo .stat .v").forEach(v => {
+      const tn = v.firstChild; if (!tn || tn.nodeType !== 3) return;
+      const fin = tn.nodeValue, n = +fin.replace(/\D/g, ""), sep = (fin.match(/\d(\D)\d/) || [, " "])[1];
+      if (!n) return;
+      const io = new IntersectionObserver(es => {
+        if (!es[0].isIntersecting) return; io.disconnect();
+        v.style.minWidth = v.offsetWidth + "px"; // ширина не прыгает, пока цифры растут
+        const s0 = performance.now(), D = 1500;
+        const step = now => {
+          const u = Math.min(1, (now - s0) / D), e = 1 - Math.pow(1 - u, 4);
+          tn.nodeValue = u < 1 ? String(Math.round(n * e / 100) * 100).replace(/\B(?=(\d{3})+(?!\d))/g, sep) : fin;
+          if (u < 1 && !calm) requestAnimationFrame(step); else { tn.nodeValue = fin; v.style.minWidth = ""; }
+        };
+        requestAnimationFrame(step);
+      }, { threshold: .5 });
+      io.observe(v);
+    });
+  }
 
   // точки в строках тестов уже в разметке; на случай пустых — дорисовываем
   document.querySelectorAll(".dots[data-dots]").forEach(box => {
