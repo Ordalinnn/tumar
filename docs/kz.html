@@ -2,23 +2,29 @@
 <html lang="kk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Тұмар — баяу схемалар радары</title>
 <meta name="description" content="Оқу прототипі: аударымдар тарихы бойынша баяу схеманы байқап, клиентті депозитті жабуға немесе кредит алуға дейін ескертеді.">
-<meta name="theme-color" content="#06080a">
+<meta name="theme-color" content="#05070a">
+<meta name="color-scheme" content="dark">
 <meta property="og:title" content="Тұмар — баяу схемалар радары">
 <meta property="og:description" content="Бес белгі, түсіндіруге болатын ереже және үш соқыр тест.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23e6ebf5' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="alternate" hreflang="ru" href="index.html">
+<link rel="alternate" hreflang="kk" href="kz.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23ecf3ef' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@700;800&family=Golos+Text:wght@400..700&family=Fira+Code:wght@400&display=swap">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <a class="skip" href="#main">Мазмұнға өту</a>
 
 <header class="hd" id="hd">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Тұмар — басты бет">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 29.5 28H2.5Z" fill="none" stroke="#e6ebf5" stroke-width="1.5" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M16 11.5 22.5 24h-13Z" fill="#ff5a3c"/></svg>
+    <a class="brand" href="#top" aria-label="Тұмар&nbsp;— басты бет">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 29.5 28H2.5Z" fill="none" stroke="#ecf3ef" stroke-width="1.5" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M16 11.5 22.5 24h-13Z" fill="#ff5a3c"/></svg>
       Тұмар
     </a>
     <nav class="nav" id="nav" aria-label="Бөлімдер">
@@ -26,10 +32,14 @@
       <a href="#signs">Белгілер</a>
       <a href="#tests">Тесттер</a>
       <a href="#run">Іске қосу</a>
+      <a class="nav-extra" href="slides.html">Слайдтар</a>
     </nav>
-    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Мәзір">☰</button>
-    <div class="lang" aria-label="Тіл"><a href="index.html" lang="ru" hreflang="ru">RU</a><a class="on" href="kz.html" lang="kk">KZ</a></div>
-    <a class="btn pri sm" href="slides.html">Слайдтар <span class="ar" aria-hidden="true">↗</span></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Мәзір">
+      <svg class="i m" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13"/></svg>
+      <svg class="i x" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg>
+    </button>
+    <div class="lang" aria-label="Тіл"><a href="index.html" lang="ru" hreflang="ru">RU</a><a class="on" href="kz.html" lang="kk" aria-current="page">KZ</a></div>
+    <a class="btn pri sm" href="slides.html">Слайдтар <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
   </div>
   <div class="pg" id="pg" aria-hidden="true"></div>
 </header>
@@ -39,25 +49,25 @@
     <canvas class="sky" id="sky" aria-hidden="true"></canvas>
     <div class="wrap">
       <div>
-        <p class="eyebrow rv"><i></i>Оқу прототипі<span class="hide-sm">&nbsp;· Python + Streamlit</span></p>
-        <h1 class="rv" style="--d:.06s">Баяу <br>схемалар <em>радары</em></h1>
-        <p class="lede rv" style="--d:.12s">Клиентті апталап жалған брокерге тартады. Тұмар жекелеген аударымдардың схемаға айналғанын көріп, <b>депозитті жабуға немесе кредит алуға дейін</b> ескертеді.</p>
-        <div class="cta-row rv" style="--d:.18s">
-          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Демоны ашу <span class="ar" aria-hidden="true">↗</span></a>
-          <a class="btn" href="slides.html">Слайдтарды көру <span class="ar" aria-hidden="true">↗</span></a>
-          <a class="btn" href="#scheme">Бұл қалай көрінеді</a>
+        <h1 data-enter>Баяу <br>схемалар <em>радары</em></h1>
+        <p class="lede" data-enter style="--d:90ms">Клиентті апталап жалған брокерге тартады. Тұмар жекелеген аударымдардың схемаға айналғанын көріп, <b>депозитті жабуға немесе кредит алуға дейін</b> ескертеді.</p>
+        <div class="cta-row" data-enter style="--d:160ms">
+          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Демоны ашу <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+          <a class="btn" href="slides.html">Слайдтарды көру <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
         </div>
-        <p class="hero-meta rv" style="--d:.24s">
+        <a class="tlink" href="#scheme" data-enter style="--d:200ms">Бұл қалай көрінеді <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4"/></svg></a>
+        <p class="hero-meta" data-enter style="--d:240ms">
+          <span>Оқу прототипі · Python + Streamlit</span>
           <span>Тек банк көріп отырған операциялар</span>
           <span>Сыртқы API мен кілттер жоқ</span>
         </p>
       </div>
 
-      <div class="stage rv" style="--d:.1s">
+      <div class="stage">
         <div class="art" id="art" aria-hidden="true"></div>
-        <div class="card" id="card">
-          <div class="top"><span>Жаңа алушыға аударым</span><span class="chip">116-күн</span></div>
-          <div class="amt">175 000<small>₸</small></div>
+        <div class="card" id="card" data-enter>
+          <div class="top"><span>Жаңа алушыға аударым</span><span class="day">116-күн</span></div>
+          <div class="amt">175&nbsp;000<small>₸</small></div>
           <div class="warn">
             <b>Баяу схемаға ұқсайды</b>
             <p>Жаңа алушыларға сомалар өсіп барады. Сенім тудыру үшін сізге аздап ақша қайтарған сияқты.</p>
@@ -73,120 +83,117 @@
     </div>
   </section>
 
-  <section id="scheme">
+  <section id="scheme" aria-labelledby="scheme-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Шын мәнінде не болып жатыр</p>
-        <h2 class="rv" style="--d:.05s">Бес қадам, төрт ай,<br>бір тарих</h2>
-        <p class="sub rv" style="--d:.1s">Баяу схема банк көзімен осылай көрінеді. Жеке әрекеттердің ешқайсысы күдікті емес — <b>тек уақыт бойынша аударымдар сомасы</b>.</p>
+        <h2 id="scheme-h">Бес қадам, төрт ай,<br>бір тарих</h2>
+        <p class="sub">Баяу схема банк көзімен осылай көрінеді. Жеке әрекеттердің ешқайсысы күдікті емес&nbsp;— <b>тек уақыт бойынша аударымдар сомасы</b>.</p>
       </div>
 
       <div class="tl">
-        <article class="st rv" style="--d:.02s">
+        <article class="st">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">65-күн</p>
           <h3>«Кеңесші»</h3>
           <p>Мессенджерде жазып, табыс уәде етіп, азғантайдан бастауды сұрайды.</p>
         </article>
-        <article class="st rv" style="--d:.06s">
+        <article class="st">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">75-күн</p>
           <h3>Жалған кабинет</h3>
           <p>Экранда «пайда» өседі, бірақ ақша еш жерге салынбаған.</p>
         </article>
-        <article class="st hot rv" style="--d:.1s">
+        <article class="st hot">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">101–107-күн</p>
           <h3>Аударымдар өседі</h3>
-          <p>11 100 → 29 800 ₸ бір алушыға.</p>
+          <p>11&nbsp;100 → 29&nbsp;800&nbsp;₸ бір алушыға.</p>
           <span class="sg">Белгі: баспалдақ</span>
         </article>
-        <article class="st hot rv" style="--d:.14s">
+        <article class="st hot">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">111-күн</p>
-          <h3>10 100 ₸ қайтарды</h3>
-          <p>«Аздап шығарып көріңіз» — ақша шынымен бар екеніне сену үшін.</p>
+          <h3>10&nbsp;100&nbsp;₸ қайтарды</h3>
+          <p>«Аздап шығарып көріңіз»&nbsp;— ақша шынымен бар екеніне сену үшін.</p>
           <span class="sg">Белгі: жем</span>
         </article>
-        <article class="st end rv" style="--d:.18s">
+        <article class="st end">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">116-күн</p>
-          <h3>175 000 ₸</h3>
-          <p>Ал алда — <b>2 154 900 ₸</b> депозитті жабу өтінімі.</p>
+          <h3>175&nbsp;000&nbsp;₸</h3>
+          <p>Ал алда&nbsp;— <b>2&nbsp;154&nbsp;900&nbsp;₸</b> депозитті жабу өтінімі.</p>
           <span class="sg">Белгілер: босату, қосымша төлем</span>
         </article>
       </div>
-      <p class="tl-note rv" style="--d:.2s">Күндер мен сомалар Мейрамбектің демо-тарихынан. Бір аударым ештеңені дәлелдемейді: мән белгілер қосылғанда ғана пайда болады.</p>
+      <p class="aside-note tl-note">Күндер мен сомалар Мейрамбектің демо-тарихынан. Бір аударым ештеңені дәлелдемейді: мән белгілер қосылғанда ғана пайда болады.</p>
     </div>
   </section>
 
-  <section id="signs">
+  <section id="signs" aria-labelledby="signs-h">
     <div class="wrap">
       <div class="radar" id="radar" aria-hidden="true"></div>
       <div class="sec-head">
-        <p class="kicker rv">Бес белгі</p>
-        <h2 class="rv" style="--d:.05s">Бір белгі — үндемейміз.<br>Екеу және одан көп — ескертеміз.</h2>
-        <p class="sub rv" style="--d:.1s">Радар тек өткенді және ағымдағы операцияны қарайды. Ол алдау белгісін білмейді: сигналдарды қосып, санайды.</p>
+        <h2 id="signs-h">Бір белгі&nbsp;— үндемейміз.<br>Екеу және одан көп&nbsp;— ескертеміз.</h2>
+        <p class="sub">Радар тек өткенді және ағымдағы операцияны қарайды. Ол алдау белгісін білмейді: сигналдарды қосып, санайды.</p>
       </div>
       <div class="grid5">
-        <article class="sig rv" style="--d:.02s"><span class="n">01</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M12 30V24M20 30V18M28 30V11" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M8 33h24" stroke="#e6ebf5" stroke-width="1.4" stroke-linecap="round" opacity=".45"/></svg>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M12 30V24M20 30V18M28 30V11" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M8 33h24" stroke="#ecf3ef" stroke-width="1.4" stroke-linecap="round" opacity=".45"/></svg>
           <h3>Баспалдақ</h3><p>Жаңа алушыларға сомалар аударым сайын өседі.</p>
         </article>
-        <article class="sig rv" style="--d:.06s"><span class="n">02</span>
+        <article class="sig">
           <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 7v13a7 7 0 0 0 14 0v-7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M28 15l-4.6-1.8M28 15l-1.6 4.6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
-          <h3>Жем</h3><p>Алушы бір рет ақша қайтарды — сақтықты ұйықтату үшін.</p>
+          <h3>Жем</h3><p>Алушы бір рет ақша қайтарды&nbsp;— сақтықты ұйықтату үшін.</p>
         </article>
-        <article class="sig rv" style="--d:.1s"><span class="n">03</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="5" fill="none" stroke="#e6ebf5" stroke-width="1.6" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M20 14.5v11m0 0 4.6-4.6M20 25.5l-4.6-4.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="5" fill="none" stroke="#ecf3ef" stroke-width="1.6" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M20 14.5v11m0 0 4.6-4.6M20 25.5l-4.6-4.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Босату</h3><p>Депозитті жабу немесе кредит өтінімі осындай аударымдармен қатар.</p>
         </article>
-        <article class="sig rv" style="--d:.14s"><span class="n">04</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="4.2" fill="currentColor"/><g fill="#e6ebf5" opacity=".8"><circle cx="20" cy="9" r="2"/><circle cx="20" cy="31" r="2"/><circle cx="9" cy="20" r="2"/><circle cx="31" cy="20" r="2"/><circle cx="12.5" cy="12.5" r="1.5"/><circle cx="27.5" cy="27.5" r="1.5"/><circle cx="27.5" cy="12.5" r="1.5"/><circle cx="12.5" cy="27.5" r="1.5"/></g></svg>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="4.2" fill="currentColor"/><g fill="#ecf3ef" opacity=".8"><circle cx="20" cy="9" r="2"/><circle cx="20" cy="31" r="2"/><circle cx="9" cy="20" r="2"/><circle cx="31" cy="20" r="2"/><circle cx="12.5" cy="12.5" r="1.5"/><circle cx="27.5" cy="27.5" r="1.5"/><circle cx="27.5" cy="12.5" r="1.5"/><circle cx="12.5" cy="27.5" r="1.5"/></g></svg>
           <h3>Ортақ алушы</h3><p>Ол жаққа банктің басқа клиенттері де алғаш рет төлейді.</p>
         </article>
-        <article class="sig rv" style="--d:.18s"><span class="n">05</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="19" r="7.6" fill="currentColor"/><circle cx="27" cy="27" r="5" fill="#ffc45c"/><path d="M9.4 19h15.2" stroke="#0c0f2c" stroke-width="2.6" stroke-linecap="round"/></svg>
-          <h3>Қосымша төлем</h3><p>Үлкен аударымнан кейін шығару үшін «салық» сұрайды — кері ештеңе келмейді.</p>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="19" r="7.6" fill="currentColor"/><circle cx="27" cy="27" r="5" fill="#ffc45c"/><path d="M9.4 19h15.2" stroke="#05070a" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <h3>Қосымша төлем</h3><p>Үлкен аударымнан кейін шығару үшін «салық» сұрайды&nbsp;— кері ештеңе келмейді.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="logic">
+  <section id="logic" aria-labelledby="logic-h">
     <div class="wrap">
       <div class="logic">
         <div>
-          <p class="kicker rv">Шешім қалай қабылданады</p>
-          <h2 class="rv" style="--d:.05s">Түсіндіруге болатын ережелер</h2>
+          <h2 id="logic-h">Түсіндіруге болатын ережелер</h2>
           <div class="rules">
-            <div class="rule rv" style="--d:.08s"><span class="num">01</span><div><h3>Әр операциядағы белгілер</h3>
+            <div class="rule"><span class="num">01</span><div><h3>Әр операциядағы белгілер</h3>
               <p>Бес ереже клиенттің тарихы бойынша тексеріледі. Банк әлдеқашан көріп отырған операциялардан басқа ештеңе қажет емес.</p>
               <div class="thresh"><span class="pill">баспалдақ</span><span class="pill">жем</span><span class="pill">босату</span><span class="pill">ортақ алушы</span><span class="pill">қосымша төлем</span></div>
             </div></div>
-            <div class="rule rv" style="--d:.12s"><span class="num">02</span><div><h3>Шекті мән</h3>
+            <div class="rule"><span class="num">02</span><div><h3>Шекті мән</h3>
               <p><b>0–1 белгі:</b> үндемейміз. <b>2 және одан көп:</b> ескертеміз және нені байқағанымызды айтамыз.</p>
-              <div class="thresh"><span class="pill">0–1 — үнсіздік</span><span class="pill hot">2+ — ескерту</span></div>
+              <div class="thresh"><span class="pill">0–1&nbsp;— үнсіздік</span><span class="pill hot">2+&nbsp;— ескерту</span></div>
             </div></div>
-            <div class="rule rv" style="--d:.16s"><span class="num">03</span><div><h3>Кідірту — тек келісіммен</h3>
-              <p>Тек депозит немесе кредит өтінімінде, тек клиент қорғау режимін алдын ала қосқан болса, және тек босату белгісі жеммен немесе ортақ алушымен қатар келсе — не 3+ белгі болса.</p>
+            <div class="rule"><span class="num">03</span><div><h3>Кідірту&nbsp;— тек келісіммен</h3>
+              <p>Тек депозит немесе кредит өтінімінде, тек клиент қорғау режимін алдын ала қосқан болса, және тек босату белгісі жеммен немесе ортақ алушымен қатар келсе&nbsp;— не 3+ белгі болса.</p>
             </div></div>
           </div>
         </div>
-        <aside class="bars rv" style="--d:.1s" id="bars" aria-label="Белгілер ескертуге қалай қосылады">
+        <aside class="bars panel" id="bars" aria-label="Белгілер ескертуге қалай қосылады">
           <p class="title">Мейрамбектің тарихы</p>
-          <div class="row"><span class="lbl">101-күн</span><div class="rail"><span class="fill carn" style="--w:7%"></span></div><span class="val">11 100</span></div>
-          <div class="row"><span class="lbl">107-күн</span><div class="rail"><span class="fill carn" style="--w:14%"></span></div><span class="val">29 800</span></div>
-          <div class="row"><span class="lbl">қайтарды</span><div class="rail"><span class="fill turq" style="--w:5%"></span></div><span class="val">10 100</span></div>
-          <div class="row"><span class="lbl">116-күн</span><div class="rail"><span class="fill carn" style="--w:64%"></span></div><span class="val">175 000</span></div>
-          <div class="row"><span class="lbl">өтінім</span><div class="rail"><span class="fill amber" style="--w:96%"></span></div><span class="val">2 154 900</span></div>
+          <div class="row"><span class="lbl">101-күн</span><div class="rail"><span class="fill carn" style="--w:7%"></span></div><span class="val">11&nbsp;100</span></div>
+          <div class="row"><span class="lbl">107-күн</span><div class="rail"><span class="fill carn" style="--w:14%"></span></div><span class="val">29&nbsp;800</span></div>
+          <div class="row"><span class="lbl">қайтарды</span><div class="rail"><span class="fill turq" style="--w:5%"></span></div><span class="val">10&nbsp;100</span></div>
+          <div class="row"><span class="lbl">116-күн</span><div class="rail"><span class="fill carn" style="--w:64%"></span></div><span class="val">175&nbsp;000</span></div>
+          <div class="row"><span class="lbl">өтінім</span><div class="rail"><span class="fill amber" style="--w:96%"></span></div><span class="val">2&nbsp;154&nbsp;900</span></div>
           <p class="cap">Сомалар теңгемен. Шкала шартты: жаңа алушыға аударымдардың өсуі және ескертусіз не болатыны көрсетілген.</p>
         </aside>
       </div>
 
-      <div class="sim rv" style="--d:.06s">
+      <div class="sim">
         <div>
-          <p class="title">Ережені өзіңіз тексеріңіз</p>
+          <h3 class="title">Ережені өзіңіз тексеріңіз</h3>
           <p class="lead">Радар байқаған белгілерді белгілеңіз. Шешім кодтағы ережемен бірдей қабылданады.</p>
           <div class="chips" role="group" aria-label="Белгілер">
             <button class="chip" type="button" data-sig="les" aria-pressed="false">Баспалдақ</button>
@@ -195,91 +202,94 @@
             <button class="chip" type="button" data-sig="obsh" aria-pressed="false">Ортақ алушы</button>
             <button class="chip" type="button" data-sig="dop" aria-pressed="false">Қосымша төлем</button>
           </div>
-          <label class="switch"><input type="checkbox" id="prot"><span>Клиент қорғау режимін алдын ала қосты — кідірту мүмкін</span></label>
+          <label class="switch"><input type="checkbox" id="prot"><span>Клиент қорғау режимін алдын ала қосты&nbsp;— кідірту мүмкін</span></label>
         </div>
         <div class="out" aria-live="polite">
           <div class="out-row"><span>Белгілер</span><b id="cnt">0</b></div>
           <div class="out-row"><span>Ескерту</span><b id="warnv" class="no">жоқ</b></div>
           <div class="out-row"><span>Өтінімді кідірту</span><b id="pausev" class="no">жоқ</b></div>
-          <p class="why" id="why">Белгілер жоқ — қарапайым операция, радар үндемейді.</p>
+          <p class="why" id="why">Белгілер жоқ&nbsp;— қарапайым операция, радар үндемейді.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="demo">
+  <section id="demo" class="horizon" aria-labelledby="demo-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Демо сандармен</p>
-        <h2 class="rv" style="--d:.05s">Радар іске қосылғанда не болады</h2>
+        <h2 id="demo-h">Радар іске қосылғанда не болады</h2>
       </div>
-      <div class="stats">
-        <div class="stat rv" style="--d:.05s"><div class="v">175 000<small>₸</small></div><p class="k">Ескерту шыққан <b>116-күнгі</b> аударым: баспалдақ және жем.</p></div>
-        <div class="stat a rv" style="--d:.1s"><div class="v">47 900<small>₸</small></div><p class="k">Клиент <b>«Аударымдарды тоқтатуды»</b> басқанға дейін алаяқтарға кетті.</p></div>
-        <div class="stat t rv" style="--d:.15s"><div class="v">2 038 000<small>₸</small></div><p class="k">Шоттарда қалды: келесі аударым және депозитті жабу өтінімі.</p></div>
+      <div class="ledger">
+        <div class="stats">
+          <div class="stat"><div class="v">175&nbsp;000<small>₸</small></div><p class="k">Ескерту шыққан <b>116-күнгі</b> аударым: баспалдақ және жем.</p></div>
+          <div class="stat a"><div class="v">47&nbsp;900<small>₸</small></div><p class="k">Клиент <b>«Аударымдарды тоқтатуды»</b> басқанға дейін алаяқтарға кетті.</p></div>
+          <div class="stat t"><div class="v">2&nbsp;038&nbsp;000<small>₸</small></div><p class="k">Шоттарда қалды: келесі аударым және депозитті жабу өтінімі.</p></div>
+        </div>
+        <figure class="field-wrap" aria-label="47 900 ₸ кетті, 2 038 000 ₸ қалды: бір нүкте&nbsp;— 10 000 ₸">
+          <div class="field" id="field" data-lost="5" data-kept="204" aria-hidden="true"></div>
+          <p class="field-key" aria-hidden="true"><span class="l">кетті ≈ 50&nbsp;000&nbsp;₸</span><span class="k">қалды ≈ 2&nbsp;040&nbsp;000&nbsp;₸</span><span class="s">бір нүкте&nbsp;— 10&nbsp;000&nbsp;₸</span></p>
+        </figure>
       </div>
-      <p class="demo-note rv" style="--d:.2s">Қолданбадағы сценарий: Мейрамбек, 116-күн, алушы «Карта ···9963». «Аударымдарды тоқтату» 116-күнгі 175 000 ₸ аударымды, келесі 1 863 000 ₸ аударымды және 2 154 900 ₸ өтінімді ұстап қалады.</p>
+      <p class="aside-note demo-note">Қолданбадағы сценарий: Мейрамбек, 116-күн, алушы «Карта ···9963». «Аударымдарды тоқтату» 116-күнгі 175&nbsp;000&nbsp;₸ аударымды, келесі 1&nbsp;863&nbsp;000&nbsp;₸ аударымды және 2&nbsp;154&nbsp;900&nbsp;₸ өтінімді ұстап қалады.</p>
     </div>
   </section>
 
-  <section id="app">
+  <section id="app" aria-labelledby="app-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Қолданба</p>
-        <h2 class="rv" style="--d:.05s">Ұстап көруге болатын үш экран</h2>
-        <p class="sub rv" style="--d:.1s">Бұл макет емес: скриншоттар жергілікті Streamlit-тен түсірілген. Қолданба бір командамен, желісіз және кілтсіз қосылады.</p>
+        <h2 id="app-h">Ұстап көруге болатын үш экран</h2>
+        <p class="sub">Бұл макет емес: скриншоттар жергілікті Streamlit-тен түсірілген. Қолданба бір командамен, желісіз және кілтсіз қосылады.</p>
       </div>
       <div class="shots">
-        <figure class="shot rv" style="--d:.03s">
-          <img src="img/app-client.jpg" width="1284" height="956" loading="lazy"
-               alt="Клиент экраны: операциялар графигі, 116-күнгі ескерту, себептер және төрт шешім түймесі">
-          <figcaption><b>Клиент</b>Күндер бойынша операциялар, себептерімен ескерту және төрт шешім. «Көрсету» тарихты өзі ескертуге дейін жеткізеді.</figcaption>
+        <figure class="shot">
+          <figcaption><b>Клиент</b>Себептерімен ескерту, төрт шешім және екі белгісі байқалған радар. «Көрсету» тарихты өзі ескертуге дейін жеткізеді.</figcaption>
+          <img src="img/app-client.jpg" width="1279" height="970" loading="lazy" decoding="async"
+               alt="Клиент экраны: 116-күнгі ескерту, себептер, төрт шешім түймесі және екі белгісі байқалған радар">
         </figure>
-        <figure class="shot rv" style="--d:.07s">
-          <img src="img/app-analyst.jpg" width="1284" height="974" loading="lazy"
-               alt="Талдаушы экраны: 160 клиент, белгілер бойынша сүзгі және ескерту күні бар істер кестесі">
-          <figcaption><b>Талдаушы</b>160 клиент, белгілер бойынша сүзгі және таңдалған іс — анықтаманы жүктеп алуға болады.</figcaption>
+        <figure class="shot">
+          <figcaption><b>Талдаушы</b>160 клиент, белгілер бойынша сүзгі және іс карточкалары: радар қашан және қандай белгілермен ескертті.</figcaption>
+          <img src="img/app-analyst.jpg" width="1284" height="974" loading="lazy" decoding="async"
+               alt="Талдаушы экраны: 160 клиент, белгілер бойынша сүзгі және ескерту күні бар іс карточкалары">
         </figure>
-        <figure class="shot rv" style="--d:.11s">
-          <img src="img/app-quality.jpg" width="1284" height="974" loading="lazy"
-               alt="Сапа экраны: моншақтармен көрсетілген үш соқыр тест және толық есептер">
-          <figcaption><b>Сапа</b>Сол үш тест және есептер толық — бізге ұнамайтын сандар да бар.</figcaption>
+        <figure class="shot">
+          <figcaption><b>Сапа</b>Сол үш тест және бүркемесіз қорытынды&nbsp;— бізге ұнамайтын сандар да бар.</figcaption>
+          <img src="img/app-quality.jpg" width="1284" height="966" loading="lazy" decoding="async"
+               alt="Сапа экраны: моншақтармен көрсетілген үш соқыр тест және «2 шегі — ымыра» қорытындысы">
         </figure>
       </div>
     </div>
   </section>
 
-  <section id="tests">
+  <section id="tests" aria-labelledby="tests-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Тексеру</p>
-        <h2 class="rv" style="--d:.05s">Үш соқыр тест, қысқартусыз</h2>
-        <p class="sub rv" style="--d:.1s">Шекті мәндер тек A жинағында таңдалды. Соқыр жинақтарда ештеңе таңдалған жоқ — <b>жалған дабылдармен бірге</b> қалай болса солай көрсетеміз.</p>
+        <h2 id="tests-h">Үш соқыр тест, қысқартусыз</h2>
+        <p class="sub">Шекті мәндер тек A жинағында таңдалды. Соқыр жинақтарда ештеңе таңдалған жоқ&nbsp;— <b>жалған дабылдармен бірге</b> қалай болса солай көрсетеміз.</p>
       </div>
       <div class="tests">
-        <article class="test bad rv" style="--d:.04s">
+        <article class="test bad">
           <div class="h"><b>1-тест</b><span>5 алдау / 5 адал</span></div>
           <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>5-тен 0</b></div><div class="dots carn" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
           <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>5-тен 0</b></div><div class="dots amber" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
           <p class="note">Бұл тарихтарда депозит те, кредит те болған жоқ. Кідірту іске қосылмады.</p>
         </article>
-        <article class="test bad rv" style="--d:.09s">
+        <article class="test bad">
           <div class="h"><b>2-тест</b><span>10 алдау / 10 адал</span></div>
           <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>10-нан 8</b></div><div class="dots carn" data-dots="10:8" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
           <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>10-нан 9</b></div><div class="dots amber" data-dots="10:9" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
           <p class="note">«Ортақ алушыны» түзедік. Ескерту өтінімге дейін келді, бірақ <b>адал клиенттерді дерлік әрдайым мазаладық</b>.</p>
         </article>
-        <article class="test rv" style="--d:.14s">
+        <article class="test">
           <div class="h"><b>3-тест</b><span>10 алдау / 10 адал</span></div>
           <div class="meter"><div class="cap"><span>Алдауды байқады</span><b>10-нан 10</b></div><div class="dots carn" data-dots="10:10" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
           <div class="meter"><div class="cap"><span>Жалған дабылдар</span><b>10-нан 0</b></div><div class="dots amber" data-dots="10:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <p class="note">Баспалдақ пен жемді түзедік. Бірақ <b>өтінімге дейін — 4-тен 0</b>, ескертуге дейінгі ақша медианасы 19%.</p>
+          <p class="note">Баспалдақ пен жемді түзедік. Бірақ <b>өтінімге дейін&nbsp;— 4-тен 0</b>, ескертуге дейінгі ақша медианасы 19%.</p>
         </article>
       </div>
-      <p class="legend rv" style="--d:.16s"><b>Қалай оқу керек:</b> «алдауды байқады» — ескерту тарих бойы кемінде бір рет шықты; «жалған дабылдар» — адал клиент ескерту алды. «Өтінімге дейін» бөлек саналады және кестеде көрінеді.</p>
+      <p class="aside-note legend"><span><b>Қалай оқу керек:</b> «алдауды байқады»&nbsp;— ескерту тарих бойы кемінде бір рет шықты; «жалған дабылдар»&nbsp;— адал клиент ескерту алды. «Өтінімге дейін» бөлек саналады және кестеде көрінеді.</span></p>
 
-      <div class="cmp rv" style="--d:.1s">
-        <div class="scroll">
+      <div class="cmp panel">
+        <div class="scroll" tabindex="0" role="region" aria-label="Үш тестті салыстыру">
           <table>
             <thead><tr><th scope="col">Жинақ</th><th scope="col">Алдауды байқады</th><th scope="col">Өтінімге дейін үлгерді</th><th scope="col">Жалған дабылдар</th><th scope="col">Кідірту іске қосылды</th></tr></thead>
             <tbody>
@@ -290,55 +300,53 @@
           </table>
         </div>
       </div>
-      <p class="scroll-hint">Кесте бүйірге жылжиды →</p>
+      <p class="scroll-hint">Кесте бүйірге жылжиды <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></p>
 
       <div class="verdict">
-        <div class="vd rv" style="--d:.03s"><b>Ұстаймыз — бірақ кеш</b>Үшінші тестте ескерту өтінімнен кейін келді: ол кезде ақшаның 19%-ы кетіп үлгерген.</div>
-        <div class="vd rv" style="--d:.06s"><b>Ерте — бірақ дабылмен</b>Екінші тестте өтінімге дейін үлгердік, бірақ 10 адал клиенттің 9-ын мазаладық.</div>
-        <div class="vd rv" style="--d:.09s"><b>Демек 2 шегі — ымыра</b>Жеңіс емес. Ілгері жүру үшін банктің иесіздендірілген деректері керек, өз мысалдарымызға жаңа реттеу емес.</div>
+        <div class="vd"><b>Ұстаймыз&nbsp;— бірақ кеш</b>Үшінші тестте ескерту өтінімнен кейін келді: ол кезде ақшаның 19%-ы кетіп үлгерген.</div>
+        <div class="vd"><b>Ерте&nbsp;— бірақ дабылмен</b>Екінші тестте өтінімге дейін үлгердік, бірақ 10 адал клиенттің 9-ын мазаладық.</div>
+        <div class="vd statement"><b>Демек 2&nbsp;шегі&nbsp;— ымыра</b>Жеңіс емес. Ілгері жүру үшін банктің иесіздендірілген деректері керек, өз мысалдарымызға жаңа реттеу емес.</div>
       </div>
-      <p class="reports rv" style="--d:.12s">Толық есептер: <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_A.md">A жинағы</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind1.md">1-тест</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind2.md">2-тест</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind3.md">3-тест</a> · бастапқы тарихтар мен генератор — репозиторийде.</p>
+      <p class="reports">Толық есептер: <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_A.md">A жинағы</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind1.md">1-тест</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind2.md">2-тест</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind3.md">3-тест</a> · бастапқы тарихтар мен генератор&nbsp;— репозиторийде.</p>
     </div>
   </section>
 
-  <section id="limits">
+  <section id="limits" aria-labelledby="limits-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Шектеулер</p>
-        <h2 class="rv" style="--d:.05s">Тұмар әзірге не істей алмайды</h2>
-        <p class="sub rv" style="--d:.1s">Адал тізім әдемі сандардан маңыздырақ: дәл сол не тексеру керегін көрсетеді.</p>
+        <h2 id="limits-h">Тұмар әзірге не істей алмайды</h2>
+        <p class="sub">Адал тізім әдемі сандардан маңыздырақ: дәл сол не тексеру керегін көрсетеді.</p>
       </div>
       <div class="fray" id="fray" aria-hidden="true"></div>
       <div class="limits">
-        <p class="limit rv">Депозитті ерте жапса, ескерту кеш келеді.</p>
-        <p class="limit rv" style="--d:.04s">Лицензиясы бар биржа арқылы алдауды көрмейміз.</p>
-        <p class="limit rv" style="--d:.08s">Адал клиент — құрылысқа төлем, досқа қарыз, криптовалюта саудасы — зардап шеккенге ұқсайды.</p>
-        <p class="limit rv" style="--d:.12s">Барлық тарих ойдан құрастырылған: бұл логиканы тексеру, банктегі нәтиже емес.</p>
+        <p class="limit">Депозитті ерте жапса, ескерту кеш келеді.</p>
+        <p class="limit">Лицензиясы бар биржа арқылы алдауды көрмейміз.</p>
+        <p class="limit">Адал клиент&nbsp;— құрылысқа төлем, досқа қарыз, криптовалюта саудасы&nbsp;— зардап шеккенге ұқсайды.</p>
+        <p class="limit">Барлық тарих ойдан құрастырылған: бұл логиканы тексеру, банктегі нәтиже емес.</p>
       </div>
       <div class="next">
-        <div class="nx rv" style="--d:.04s"><i>1-қадам</i><b>Депозиттен ерте</b>Белгілерді өтінім жанында емес, оған дейін іздеу.</div>
-        <div class="nx rv" style="--d:.07s"><i>2-қадам</i><b>Банк деректері</b>Ойдан құрастырылған тарихтарда емес, иесіздендірілген операцияларда тексеру.</div>
-        <div class="nx rv" style="--d:.1s"><i>3-қадам</i><b>Шек және дабылдар</b>Ерте ескертуді жоғалтпай, жалған дабылдарды азайту.</div>
-        <div class="nx rv" style="--d:.13s"><i>4-қадам</i><b>Қазақ тілі</b>Интерфейс пен ескерту мәтіні — екі тілде.</div>
+        <div class="nx"><i>1-қадам</i><b>Депозиттен ерте</b>Белгілерді өтінім жанында емес, оған дейін іздеу.</div>
+        <div class="nx"><i>2-қадам</i><b>Банк деректері</b>Ойдан құрастырылған тарихтарда емес, иесіздендірілген операцияларда тексеру.</div>
+        <div class="nx"><i>3-қадам</i><b>Шек және дабылдар</b>Ерте ескертуді жоғалтпай, жалған дабылдарды азайту.</div>
+        <div class="nx"><i>4-қадам</i><b>Қазақ тілі</b>Интерфейс пен ескерту мәтіні&nbsp;— екі тілде.</div>
       </div>
     </div>
   </section>
 
-  <section id="run">
+  <section id="run" aria-labelledby="run-h">
     <div class="wrap run-grid">
       <div>
-        <p class="kicker rv">Іске қосу</p>
-        <h2 class="rv" style="--d:.05s">Бір файл, желіге тәуелділік жоқ</h2>
-        <p class="sub rv" style="--d:.1s">Қолданба жергілікті қосылады: 160 тарихтан тұратын демо, талдаушы панелі және осы тесттері бар сапа экраны.</p>
-        <div class="req rv" style="--d:.14s">
-          <span>Python 3.12+</span><span>Streamlit 1.56+</span><span>pandas</span><span>Altair</span><span>pytest 45 тексеру</span>
+        <h2 id="run-h">Бір файл, желіге тәуелділік жоқ</h2>
+        <p class="sub">Қолданба жергілікті қосылады: 160 тарихтан тұратын демо, талдаушы панелі және осы тесттері бар сапа экраны.</p>
+        <div class="req">
+          <span class="pill">Python 3.12+</span><span class="pill">Streamlit 1.56+</span><span class="pill">pandas</span><span class="pill">Altair</span><span class="pill">pytest 45 тексеру</span>
         </div>
-        <div class="cta-row rv" style="--d:.18s">
-          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Демоны ашу <span class="ar" aria-hidden="true">↗</span></a>
+        <div class="cta-row">
+          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Демоны ашу <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
           <span class="cta-note">Браузерде, орнатусыз</span>
         </div>
       </div>
-      <div class="term rv" style="--d:.08s">
+      <div class="term panel">
         <div class="bar"><i></i><i></i><i></i><span>tumar</span><button id="copy" type="button">Көшіру</button></div>
         <pre><span class="p">$</span> python -m pip install -r requirements.txt
 <span class="p">$</span> streamlit run app.py
@@ -348,15 +356,15 @@
     </div>
   </section>
 
-  <section class="final">
+  <section class="final horizon" aria-labelledby="final-h">
     <div class="wrap">
-      <div class="amulet rv" id="amulet2" aria-hidden="true"></div>
-      <h2 class="rv" style="--d:.05s">Қорғауға арналған слайдтар</h2>
-      <p class="sub rv" style="--d:.1s">Он бір слайд: схема, белгілер, логика, соқыр тесттер және шектеулер. Басқару — бағыттауыштар, бос орын немесе тінтуір.</p>
-      <div class="cta-row rv" style="--d:.15s">
-        <a class="btn pri" href="slides.html">Слайдтарды ашу <span class="ar" aria-hidden="true">↗</span></a>
+      <div class="amulet" id="amulet2" aria-hidden="true"></div>
+      <h2 id="final-h">Қорғауға арналған слайдтар</h2>
+      <p class="sub">Он бір слайд: схема, белгілер, логика, соқыр тесттер және шектеулер. Басқару&nbsp;— бағыттауыштар, бос орын немесе тінтуір.</p>
+      <div class="cta-row">
+        <a class="btn pri" href="slides.html">Слайдтарды ашу <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
         <a class="btn" href="slides.pdf">PDF</a>
-        <a class="btn" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Демоны ашу <span class="ar" aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Демоны ашу <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
       </div>
     </div>
   </section>
@@ -369,10 +377,10 @@
   </div>
 </footer>
 
-<button class="up" id="up" type="button" aria-label="Наверх">↑</button>
+<button class="up" id="up" type="button" aria-label="Жоғары"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"/></svg></button>
 
-<dialog class="lb" id="lb" aria-label="Скриншот приложения"><button class="lb-x" type="button" aria-label="Закрыть">×</button><img src="img/app-client.jpg" alt=""></dialog>
+<dialog class="lb" id="lb" aria-label="Қолданба скриншоты"><button class="lb-x" type="button" aria-label="Жабу"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg></button><img src="img/app-client.jpg" alt=""></dialog>
 
-<script src="site.js?v=6"></script>
+<script src="site.js?v=7"></script>
 </body>
 </html>

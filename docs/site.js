@@ -30,7 +30,7 @@
   /* ---------- амулет из точек: та же техника, что в slides.html ----------
      Это украшение: любая ошибка здесь не должна ломать меню, копирование и тренажёр. */
   try {
-  const COL = ["230,235,245", "255,90,60", "69,214,200", "255,196,92", "150,160,205"]; // серебро, сердолик, бирюза, янтарь, пыль
+  const COL = ["236,243,239", "255,90,60", "94,200,180", "255,196,92", "159,176,200"]; // серебро, сердолик, мята, янтарь, пыль — как токены в style.css
   let seed = 7;
   const R = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
   const P = (x, y, c = 0, r = 2.2, a = 1) => ({ x, y, c, r, a });
@@ -103,7 +103,7 @@
   const sky = document.getElementById("sky"), art = document.getElementById("art");
   if (sky && art) {
     const hero = sky.parentElement;
-    const LIFE = 20000, FADE = 3000; // через 20 с покачивание и мерцание плавно затихают, цикл останавливается
+    const LIFE = 4200, FADE = 1200; // сборка ~1.7 с, затем мерцание затихает: всё движение укладывается в 5 с (WCAG 2.2.2)
     let W = 0, H = 0, g, halo, hx = 0, hy = 0, hr = 0, pts = [], from = [], dl = [], sw = [], ph = [], cx = 0, top = 0, t0 = 0, raf = 0, last = 0, seen = true, intro = !calm;
     // положение рамки амулета без учёта transform (анимация появления сдвигает .stage на 28px)
     const box = () => { let x = 0, y = 0, e = art; while (e && e !== hero) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x, y, w: art.offsetWidth, h: art.offsetHeight }; };
@@ -164,7 +164,7 @@
     const cv = document.createElement("canvas"), st = document.createElement("canvas"); rbox.append(cv); rbox.classList.add("live");
     const CH = [[22, .56], [33, .64], [45, .69], [57, .71], [69, .7], [80, .66]]; // угол от севера по часовой, доля радиуса
     let S = 0, g, sg, c = 0, RM = 0, dust = [], beads = [], raf = 0, last = 0, seen = false;
-    const t0 = performance.now(), TURN = 4600, TAU = Math.PI * 2;
+    const TURN = 3200, TAU = Math.PI * 2;
     const pol = (a, r) => ({ x: c + Math.sin(a) * r, y: c - Math.cos(a) * r });
     const layout = () => {
       S = rbox.clientWidth; if (!S) return; g = sizeCanvas(cv, S, S); sg = sizeCanvas(st, S, S);
@@ -188,41 +188,39 @@
       for (let i = 1; i < beads.length; i++) { const A = beads[i - 1], B = beads[i], al = Math.min(lit[i - 1], lit[i]) * .7; line(A.x, A.y, B.x, B.y, 6, 1, 1).forEach((p, j) => j && j < 5 && dot(g, p.x, p.y, 1, 1, al)); }
       beads.forEach((b, i) => b.pts.forEach(p => dot(g, b.x + p.x, b.y + p.y, b.c, p.r, lit[i])));
     };
+    // один оборот луча при первом появлении, затем покой: цепочка уже горит
+    const REST = CH[CH.length - 1][0] / 180 * Math.PI + .35;
+    let swept = false, s0 = 0;
     const loop = now => {
       raf = 0; if (calm || !seen || document.hidden) return;
-      if (now - last > 33) { last = now; paint(((now - t0) / TURN) * TAU); } // ≈30 кадров в секунду
-      raf = requestAnimationFrame(loop);
+      const u = Math.min(1, (now - s0) / TURN), e = 1 - Math.pow(1 - u, 2);
+      if (now - last > 30 || u === 1) { last = now; paint(REST - TAU + e * TAU); }
+      if (u < 1) raf = requestAnimationFrame(loop); else swept = true;
     };
-    const kick = () => { if (!calm && !raf && seen && !document.hidden) raf = requestAnimationFrame(loop); };
-    const rest = () => paint(CH[CH.length - 1][0] / 180 * Math.PI + .35); // без движения — цепочка уже горит
+    const kick = () => { if (!calm && !raf && !swept && seen && !document.hidden) { if (!s0) s0 = performance.now(); raf = requestAnimationFrame(loop); } };
+    const rest = () => paint(REST);
     layout(); rest();
     onResize(() => { layout(); rest(); }, () => rbox.clientWidth);
     if ("IntersectionObserver" in window) new IntersectionObserver(es => { seen = es[0].isIntersecting; kick(); }).observe(rbox);
     document.addEventListener("visibilitychange", kick);
-    motion.addEventListener?.("change", () => { if (calm) { if (raf) cancelAnimationFrame(raf); raf = 0; rest(); } else kick(); });
+    motion.addEventListener?.("change", () => { if (calm) { if (raf) cancelAnimationFrame(raf); raf = 0; swept = true; rest(); } });
   }
   } catch (err) { /* украшение не нарисовалось — остальное работает */ }
 
 
-  // большие цифры демо досчитывают до итога при появлении; итог уже стоит в разметке
-  if (!calm && "IntersectionObserver" in window) {
-    document.querySelectorAll("#demo .stat .v").forEach(v => {
-      const tn = v.firstChild; if (!tn || tn.nodeType !== 3) return;
-      const fin = tn.nodeValue, n = +fin.replace(/\D/g, ""), sep = (fin.match(/\d(\D)\d/) || [, " "])[1];
-      if (!n) return;
-      const io = new IntersectionObserver(es => {
-        if (!es[0].isIntersecting) return; io.disconnect();
-        v.style.minWidth = v.offsetWidth + "px"; // ширина не прыгает, пока цифры растут
-        const s0 = performance.now(), D = 1500;
-        const step = now => {
-          const u = Math.min(1, (now - s0) / D), e = 1 - Math.pow(1 - u, 4);
-          tn.nodeValue = u < 1 ? String(Math.round(n * e / 100) * 100).replace(/\B(?=(\d{3})+(?!\d))/g, sep) : fin;
-          if (u < 1 && !calm) requestAnimationFrame(step); else { tn.nodeValue = fin; v.style.minWidth = ""; }
-        };
-        requestAnimationFrame(step);
-      }, { threshold: .5 });
-      io.observe(v);
-    });
+  // поле из точек в «Демо»: одна точка — 10 000 ₸; ушедшие загораются первыми, затем волной спасённые
+  const field = document.getElementById("field");
+  if (field) {
+    const lost = +field.dataset.lost || 0, kept = +field.dataset.kept || 0, n = lost + kept;
+    field.innerHTML = Array.from({ length: n }, (_, i) => {
+      const fd = i < lost ? i * 60 : 360 + Math.round(Math.pow((i - lost) / kept, .8) * 900); // волна замедляется к концу
+      return `<i class="${i < lost ? "lost" : "kept"}" style="--fd:${fd}ms"></i>`;
+    }).join("");
+    if (calm || !("IntersectionObserver" in window)) field.classList.add("lit");
+    else {
+      const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { field.classList.add("lit"); io.disconnect(); } }, { threshold: .25 });
+      io.observe(field);
+    }
   }
 
   // точки в строках тестов уже в разметке; на случай пустых — дорисовываем
@@ -240,21 +238,11 @@
     if (hd) hd.classList.toggle("stuck", sy() > 12);
     if (pg) {
       const h = document.documentElement.scrollHeight - innerHeight;
-      pg.style.width = (h > 0 ? Math.min(1, sy() / h) * 100 : 0) + "%";
+      pg.style.transform = `scaleX(${h > 0 ? Math.min(1, sy() / h) : 0})`;
     }
   };
   onScroll(); addEventListener("scroll", onScroll, { passive: true });
   addEventListener("resize", onScroll, { passive: true });
-
-  // мягкий параллакс карточки
-  const card = document.getElementById("card");
-  if (card && matchMedia("(hover:hover)").matches) {
-    addEventListener("pointermove", e => {
-      if (calm) { card.style.transform = ""; return; }
-      const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
-      card.style.transform = `translate3d(${x * 10}px,${y * 8}px,0) rotate(${x * 1.6}deg)`;
-    }, { passive: true });
-  }
 
   // копировать команды
   const copy = document.getElementById("copy");
@@ -276,7 +264,7 @@
     };
     burger.addEventListener("click", () => setMenu(!navEl.classList.contains("open")));
     navEl.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
-    addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+    addEventListener("keydown", e => { if (e.key === "Escape" && navEl.classList.contains("open")) { setMenu(false); burger.focus(); } });
   }
 
   // кнопка «наверх»
@@ -288,7 +276,7 @@
   }
 
   // подсветка текущего раздела в шапке
-  const navLinks = [...document.querySelectorAll(".nav a")];
+  const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
   if (navLinks.length) {
     const targets = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
     const spy = new IntersectionObserver(es => es.forEach(e => {

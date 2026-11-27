@@ -227,15 +227,15 @@ NTH = {"ru": ("", "первый", "второй", "третий", "четвёр�
 REQ = {"ru": {"deposit_close": "заявка на закрытие вклада", "loan": "заявка на кредит"},
        "kz": {"deposit_close": "салымды жабуға өтінім", "loan": "кредитке өтінім"}}
 
-GROUP = {  # группы на графике: ключ, русский, казахский, цвет (палитра сайта: сердолик, пыль, бирюза, янтарь, серебро)
+GROUP = {  # группы на графике: ключ, русский, казахский, цвет (токены DESIGN.md: сердолик, серебро, мята, янтарь)
     "new": ("новым получателям", "жаңа алушыларға", "#ff5a3c"),
-    "known": ("знакомым", "таныстарға", "#969fcd"),
+    "known": ("знакомым", "таныстарға", "#aab6b1"),
     "in": ("поступление", "түсім", "#5ec8b4"),
-    "buy": ("покупка", "сатып алу", "#59618f"),
+    "buy": ("покупка", "сатып алу", "#6f7b77"),
     "req": ("депозит или кредит", "депозит не кредит", "#ffc45c"),
-    "held": ("остановлено", "тоқтатылды", "#e9f2ee"),
+    "held": ("остановлено", "тоқтатылды", "#ecf3ef"),
 }
-FONT = 'Bahnschrift, "Roboto Condensed", "Arial Narrow", "Segoe UI", system-ui, sans-serif'
+FONT = '"Golos Text", system-ui, "Segoe UI", Roboto, sans-serif'
 
 STORY_RU = {
     "fraud_classic": "Обман: классическая схема (лесенка и наживка)",
@@ -363,7 +363,7 @@ LANES = ("new", "back", "req", "known", "buy", "in")
 BACK = ("вернули новые получатели", "жаңа алушылар қайтарды")
 LOOK = {  # цвет, наименьший и наибольший радиус точки, непрозрачность
     "new": ("#ff5a3c", 5, 15, 1), "back": ("#5ec8b4", 5, 13, 1), "req": ("#ffc45c", 5, 15, 1),
-    "known": ("#969fcd", 3, 7, .6), "buy": ("#7d86b8", 3, 7, .6), "in": ("#5ec8b4", 3, 7, .55),
+    "known": ("#aab6b1", 3, 7, .6), "buy": ("#8b9792", 3, 7, .6), "in": ("#5ec8b4", 3, 7, .55),
 }
 HOT = ("new", "back", "req")
 
@@ -578,7 +578,7 @@ def feed_chart(ops, held, day, warn_day, lang, key="feed", today=True, verdicts=
     ring = max(hit, key=lambda it: it["amount"])["n"] if hit else None
     body = "".join(timeline_svg([dict(it) for it in items], lanes, signs, span, day, warn_day, ring,
                                 t, lang, narrow, today, scale, calls) for narrow in (False, True))
-    held_pill = (f'<div class="legend"><span><i style="--c:#e9f2ee"></i>{GROUP["held"][lang != "ru"]}</span></div>'
+    held_pill = (f'<div class="legend"><span><i style="--c:#ecf3ef"></i>{GROUP["held"][lang != "ru"]}</span></div>'
                  if any(it["held"] for it in items) else "")
     with st.container(key=key):
         st.html(f'<div class="tlhead"><b>{t["tl"]}</b></div>{held_pill}')
@@ -969,9 +969,9 @@ def case_text(sid, result):
 
 def shared_dot(shared):
     """Схема общих получателей: то же правило, что в радаре (6 и больше клиентов за 30 дней)."""
-    lines = ["digraph g {", 'rankdir=LR; bgcolor=transparent; node [shape=box, style="rounded,filled", fontname="Bahnschrift", '
-             'fontsize=12, color="#3c4a4c", fillcolor="#0f1517", fontcolor="#e9f2ee", penwidth=1.2, margin="0.18,0.08"];',
-             'edge [color="#969fcd80", arrowsize=.6, penwidth=1.1, fontname="Bahnschrift", fontsize=10, fontcolor="#a3b0ab"];']
+    lines = ["digraph g {", 'rankdir=LR; bgcolor=transparent; node [shape=box, style="rounded,filled", fontname="Golos Text", '
+             'fontsize=12, color="#2a3438", fillcolor="#10171a", fontcolor="#ecf3ef", penwidth=1.2, margin="0.18,0.08"];',
+             'edge [color="#aab6b166", arrowsize=.6, penwidth=1.1, fontname="Golos Text", fontsize=10, fontcolor="#8b9792"];']
     n = 0
     for cp, pays in shared.items():
         fresh = [(d, c) for d, c in pays if d > KNOWN_DAYS and d - pays[0][0] <= 30]
@@ -1134,7 +1134,11 @@ def footer():
 def page_style():
     """Оформление: ночная степь и тұмар из точек, как на слайдах."""
     st.html(f"<style>{(ROOT / 'assets' / 'app.css').read_text(encoding='utf-8')}</style>")
-    st.iframe(ROOT / "assets" / "hero.html", height=270)
+    hero = (ROOT / "assets" / "hero.html").read_text(encoding="utf-8")
+    if st.session_state.get("lang") == "kz":   # переключатель ниже, но его значение уже в session_state
+        hero = (hero.replace('<html lang="ru">', '<html lang="kk">', 1)
+                    .replace("Радар медленных мошеннических схем", "Баяу схемалар радары", 1))
+    st.iframe(hero, height=270)
 
 
 def start_demo():

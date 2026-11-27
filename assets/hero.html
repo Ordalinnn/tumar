@@ -1,32 +1,33 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@800&family=Golos+Text:wght@400..600&display=swap">
 <style>
-:root{--silver:#e9f2ee;--dim:#a3b0ab;--carn:#ff5a3c;--display:Bahnschrift,"DIN Alternate","Roboto Condensed","Arial Narrow","Segoe UI",system-ui,sans-serif}
+/* та же ночь, что на первом экране сайта (docs/style.css §6): токены из DESIGN.md */
+:root{--silver:#ecf3ef;--silver-2:#aab6b1;--carn:#ff5a3c;
+  --display:"Fira Sans Extra Condensed","Arial Narrow",system-ui,sans-serif;--text:"Golos Text",system-ui,"Segoe UI",Roboto,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;background:transparent;overflow:hidden}
-body{font-family:var(--display);color:var(--silver);-webkit-font-smoothing:antialiased}
-/* первый экран сайта: ночная степь, сердоликовое зарево снизу, бирюза сверху */
-.h{position:relative;height:100%;border-radius:30px 30px 30px 8px;overflow:hidden;isolation:isolate;
-  border:1px solid rgba(233,242,238,.09);
-  box-shadow:0 40px 80px -50px #000,inset 0 1px 0 rgba(255,255,255,.05);
+body{font-family:var(--text);color:var(--silver);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.h{position:relative;height:100%;border-radius:24px;overflow:hidden;isolation:isolate;
+  border:1px solid rgba(236,243,239,.09);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.95),inset 0 1px 0 rgba(236,243,239,.06);
   background:
-    radial-gradient(1100px 360px at 66% 128%,rgba(255,90,60,.42) 0,rgba(120,52,72,.26) 36%,rgba(24,30,32,.45) 64%,transparent 82%),
-    radial-gradient(700px 300px at 88% -30%,rgba(94,200,180,.16),transparent 66%),
-    radial-gradient(500px 260px at 8% -20%,rgba(94,200,180,.06),transparent 70%),
-    linear-gradient(180deg,#06080a 0,#070a0c 58%,#090c0e 100%)}
-/* горизонт из точек, как под первым экраном сайта */
-.h::after{content:"";position:absolute;left:0;right:0;bottom:18px;height:8px;opacity:.5;z-index:1;
-  background:radial-gradient(circle,rgba(150,160,205,.9) 1.1px,transparent 1.6px) 0 50%/9px 8px repeat-x}
+    radial-gradient(1100px 380px at 66% 128%,rgba(255,90,60,.4) 0,rgba(120,52,72,.26) 34%,rgba(24,30,32,.45) 62%,transparent 80%),
+    radial-gradient(700px 300px at 88% -30%,rgba(94,200,180,.12),transparent 66%),
+    linear-gradient(180deg,#05070a 0,#070a0c 58%,#080b0d 100%)}
+/* горизонт — линия из точек цвета звёздной пыли, как под первым экраном сайта */
+.h::after{content:"";position:absolute;left:0;right:0;bottom:22px;height:8px;opacity:.55;z-index:1;
+  background:radial-gradient(circle,rgba(159,176,200,.9) 1.1px,transparent 1.6px) 0 50%/9px 8px repeat-x}
 canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.tx{position:absolute;left:clamp(22px,4.4vw,56px);top:0;bottom:0;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vw,22px);padding-bottom:8px;max-width:60%}
-.t{font-size:clamp(76px,12vw,140px);font-weight:700;font-stretch:75%;line-height:.82;letter-spacing:-.015em;margin-left:-.04em;
-  text-shadow:0 0 60px rgba(255,90,60,.18),0 2px 24px rgba(6,8,10,.6)}
-.p{font-size:clamp(17px,1.7vw,22px);font-weight:300;line-height:1.3;color:var(--dim);display:flex;align-items:center;gap:12px}
-.p::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--carn);box-shadow:0 0 0 5px rgba(255,90,60,.18),0 0 18px rgba(255,90,60,.9)}
+.tx{position:absolute;left:clamp(22px,4.4vw,56px);top:0;bottom:0;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2vw,20px);padding-bottom:10px;max-width:60%}
+.t{font-family:var(--display);font-size:clamp(72px,10vw,120px);font-weight:800;line-height:.92;letter-spacing:0;margin-left:-.03em}
+.p{font-size:clamp(17px,1.5vw,21px);font-weight:400;line-height:1.4;color:var(--silver-2);display:flex;align-items:center;gap:12px;text-wrap:balance}
+.p::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--carn)}
 @media (max-width:640px){
-  .tx{max-width:none;right:22px;justify-content:flex-end;padding-bottom:40px;gap:12px}
-  .t{font-size:80px}
-  .p{font-size:17px;text-shadow:0 1px 12px #06080a}
+  .tx{max-width:none;right:22px;justify-content:flex-end;padding-bottom:42px;gap:10px}
+  .t{font-size:72px}
+  .p{font-size:16px}
 }
 </style></head>
 <body>
@@ -36,7 +37,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
 /* Точки слетаются в амулет: тот же рисунок, что в docs/site.js и на слайдах. Украшение: любая ошибка не ломает страницу. */
 try{(function(){
 const motion=matchMedia("(prefers-reduced-motion:reduce)");let calm=motion.matches;
-const COL=["230,235,245","255,90,60","69,214,200","255,196,92","150,160,205"];
+const COL=["236,243,239","255,90,60","94,200,180","255,196,92","159,176,200"]; // серебро, сердолик, мята, янтарь, пыль — токены DESIGN.md
 let seed=7;const R=()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
 const P=(x,y,c=0,r=2.2,a=1)=>({x,y,c,r,a});
 const line=(x1,y1,x2,y2,n,c,r)=>Array.from({length:n},(_,i)=>{const t=n>1?i/(n-1):0;return P(x1+(x2-x1)*t,y1+(y2-y1)*t,c,r)});
@@ -62,7 +63,7 @@ const SP=COL.map(c=>{const k=document.createElement("canvas");k.width=k.height=4
   q.addColorStop(0,`rgba(${c},1)`);q.addColorStop(.3,`rgba(${c},.95)`);q.addColorStop(.42,`rgba(${c},.28)`);q.addColorStop(1,`rgba(${c},0)`);g.fillStyle=q;g.fillRect(0,0,48,48);return k});
 const dot=(g,x,y,c,r,a)=>{g.globalAlpha=a;const z=r*5.2;g.drawImage(SP[c],x-z/2,y-z/2,z,z)};
 const AW=700,AH=860,sky=document.getElementById("sky"),hero=document.getElementById("hero");
-const LIFE=20000,FADE=3000;
+const LIFE=4200,FADE=1200;                 // как на сайте: сборка ~1.7 с, мерцание стихает за 5 с
 let W=0,H=0,g,halo,hx=0,hy=0,hr=0,pts=[],from=[],dl=[],sw=[],ph=[],cx=0,top=0,t0=0,raf=0,last=0,seen=true,intro=!calm,dim=1;
 function layout(){
   W=hero.clientWidth;H=hero.clientHeight;if(!W||!H)return;

@@ -2,23 +2,29 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Тұмар — радар медленных мошеннических схем</title>
 <meta name="description" content="Учебный прототип: замечает медленную схему по истории переводов и предупреждает клиента до закрытия депозита или кредита.">
-<meta name="theme-color" content="#06080a">
+<meta name="theme-color" content="#05070a">
+<meta name="color-scheme" content="dark">
 <meta property="og:title" content="Тұмар — радар медленных мошеннических схем">
 <meta property="og:description" content="Пять признаков, объяснимое правило и три слепых теста без купюр.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23e6ebf5' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="alternate" hreflang="ru" href="index.html">
+<link rel="alternate" hreflang="kk" href="kz.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 29 27H3Z' fill='none' stroke='%23ecf3ef' stroke-width='1.6' stroke-dasharray='0 4' stroke-linecap='round'/%3E%3Cpath d='M16 12 22 24H10Z' fill='%23ff5a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@700;800&family=Golos+Text:wght@400..700&family=Fira+Code:wght@400&display=swap">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
 
 <header class="hd" id="hd">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Тұмар — на главную">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 29.5 28H2.5Z" fill="none" stroke="#e6ebf5" stroke-width="1.5" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M16 11.5 22.5 24h-13Z" fill="#ff5a3c"/></svg>
+    <a class="brand" href="#top" aria-label="Тұмар&nbsp;— на главную">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 29.5 28H2.5Z" fill="none" stroke="#ecf3ef" stroke-width="1.5" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M16 11.5 22.5 24h-13Z" fill="#ff5a3c"/></svg>
       Тұмар
     </a>
     <nav class="nav" id="nav" aria-label="Разделы">
@@ -26,10 +32,14 @@
       <a href="#signs">Признаки</a>
       <a href="#tests">Тесты</a>
       <a href="#run">Запуск</a>
+      <a class="nav-extra" href="slides.html">Слайды</a>
     </nav>
-    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Меню">☰</button>
-    <div class="lang" aria-label="Язык"><a class="on" href="index.html" lang="ru">RU</a><a href="kz.html" lang="kk" hreflang="kk">KZ</a></div>
-    <a class="btn pri sm" href="slides.html">Слайды <span class="ar" aria-hidden="true">↗</span></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Меню">
+      <svg class="i m" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13"/></svg>
+      <svg class="i x" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg>
+    </button>
+    <div class="lang" aria-label="Язык"><a class="on" href="index.html" lang="ru" aria-current="page">RU</a><a href="kz.html" lang="kk" hreflang="kk">KZ</a></div>
+    <a class="btn pri sm" href="slides.html">Слайды <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
   </div>
   <div class="pg" id="pg" aria-hidden="true"></div>
 </header>
@@ -39,25 +49,25 @@
     <canvas class="sky" id="sky" aria-hidden="true"></canvas>
     <div class="wrap">
       <div>
-        <p class="eyebrow rv"><i></i>Учебный прототип<span class="hide-sm">&nbsp;· Python + Streamlit</span></p>
-        <h1 class="rv" style="--d:.06s">Радар <br>медленных <em>схем</em></h1>
-        <p class="lede rv" style="--d:.12s">Клиента неделями втягивают в лже-брокера. Тұмар видит, как отдельные переводы складываются в схему, и <b>предупреждает до того</b>, как он закроет депозит или возьмёт кредит.</p>
-        <div class="cta-row rv" style="--d:.18s">
-          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Открыть демо <span class="ar" aria-hidden="true">↗</span></a>
-          <a class="btn" href="slides.html">Смотреть слайды <span class="ar" aria-hidden="true">↗</span></a>
-          <a class="btn" href="#scheme">Как это выглядит</a>
+        <h1 data-enter>Радар <br>медленных <em>схем</em></h1>
+        <p class="lede" data-enter style="--d:90ms">Клиента неделями втягивают в лже-брокера. Тұмар видит, как отдельные переводы складываются в схему, и <b>предупреждает до того</b>, как он закроет депозит или возьмёт кредит.</p>
+        <div class="cta-row" data-enter style="--d:160ms">
+          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Открыть демо <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+          <a class="btn" href="slides.html">Смотреть слайды <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
         </div>
-        <p class="hero-meta rv" style="--d:.24s">
+        <a class="tlink" href="#scheme" data-enter style="--d:200ms">Как это выглядит <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4"/></svg></a>
+        <p class="hero-meta" data-enter style="--d:240ms">
+          <span>Учебный прототип · Python + Streamlit</span>
           <span>Только операции, которые банк уже видит</span>
           <span>Без внешних API и ключей</span>
         </p>
       </div>
 
-      <div class="stage rv" style="--d:.1s">
+      <div class="stage">
         <div class="art" id="art" aria-hidden="true"></div>
-        <div class="card" id="card">
-          <div class="top"><span>Перевод новому получателю</span><span class="chip">день 116</span></div>
-          <div class="amt">175 000<small>₸</small></div>
+        <div class="card" id="card" data-enter>
+          <div class="top"><span>Перевод новому получателю</span><span class="day">день 116</span></div>
+          <div class="amt">175&nbsp;000<small>₸</small></div>
           <div class="warn">
             <b>Похоже на медленную схему</b>
             <p>Суммы новым получателям растут. Похоже, вам вернули немного денег, чтобы вызвать доверие.</p>
@@ -73,120 +83,117 @@
     </div>
   </section>
 
-  <section id="scheme">
+  <section id="scheme" aria-labelledby="scheme-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Что происходит на самом деле</p>
-        <h2 class="rv" style="--d:.05s">Пять шагов, четыре месяца,<br>одна история</h2>
-        <p class="sub rv" style="--d:.1s">Так выглядит медленная схема глазами банка. Ни одного подозрительного действия в отдельности — <b>только сумма переводов во времени</b>.</p>
+        <h2 id="scheme-h">Пять шагов, четыре месяца,<br>одна история</h2>
+        <p class="sub">Так выглядит медленная схема глазами банка. Ни одного подозрительного действия в отдельности&nbsp;— <b>только сумма переводов во времени</b>.</p>
       </div>
 
       <div class="tl">
-        <article class="st rv" style="--d:.02s">
+        <article class="st">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">День 65</p>
           <h3>«Консультант»</h3>
           <p>Пишет в мессенджере, обещает доход и просит начать с малого.</p>
         </article>
-        <article class="st rv" style="--d:.06s">
+        <article class="st">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">День 75</p>
           <h3>Фальшивый кабинет</h3>
           <p>На экране «прибыль» растёт, но деньги никуда не вложены.</p>
         </article>
-        <article class="st hot rv" style="--d:.1s">
+        <article class="st hot">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">День 101–107</p>
           <h3>Переводы растут</h3>
-          <p>11 100 → 29 800 ₸ одному и тому же получателю.</p>
+          <p>11&nbsp;100 → 29&nbsp;800&nbsp;₸ одному и тому же получателю.</p>
           <span class="sg">Сигнал: лесенка</span>
         </article>
-        <article class="st hot rv" style="--d:.14s">
+        <article class="st hot">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">День 111</p>
-          <h3>Вернули 10 100 ₸</h3>
-          <p>«Выведите немного» — чтобы клиент поверил, что деньги настоящие.</p>
+          <h3>Вернули 10&nbsp;100&nbsp;₸</h3>
+          <p>«Выведите немного»&nbsp;— чтобы клиент поверил, что деньги настоящие.</p>
           <span class="sg">Сигнал: наживка</span>
         </article>
-        <article class="st end rv" style="--d:.18s">
+        <article class="st end">
           <span class="dot" aria-hidden="true"></span>
           <p class="day">День 116</p>
-          <h3>175 000 ₸</h3>
-          <p>А впереди — заявка на закрытие вклада на <b>2 154 900 ₸</b>.</p>
+          <h3>175&nbsp;000&nbsp;₸</h3>
+          <p>А впереди&nbsp;— заявка на закрытие вклада на <b>2&nbsp;154&nbsp;900&nbsp;₸</b>.</p>
           <span class="sg">Сигналы: опустошение, доплата</span>
         </article>
       </div>
-      <p class="tl-note rv" style="--d:.2s">Дни и суммы — из демо-истории Мейрамбека. Один перевод здесь ничего не доказывает: смысл появляется, только когда сигналы складываются.</p>
+      <p class="aside-note tl-note">Дни и суммы&nbsp;— из демо-истории Мейрамбека. Один перевод здесь ничего не доказывает: смысл появляется, только когда сигналы складываются.</p>
     </div>
   </section>
 
-  <section id="signs">
+  <section id="signs" aria-labelledby="signs-h">
     <div class="wrap">
       <div class="radar" id="radar" aria-hidden="true"></div>
       <div class="sec-head">
-        <p class="kicker rv">Пять признаков</p>
-        <h2 class="rv" style="--d:.05s">Один сигнал — молчим.<br>Два и больше — предупреждаем.</h2>
-        <p class="sub rv" style="--d:.1s">Радар смотрит только прошлое и текущую операцию. Метку обмана он не знает: складывает сигналы и считает их.</p>
+        <h2 id="signs-h">Один сигнал&nbsp;— молчим.<br>Два и больше&nbsp;— предупреждаем.</h2>
+        <p class="sub">Радар смотрит только прошлое и текущую операцию. Метку обмана он не знает: складывает сигналы и считает их.</p>
       </div>
       <div class="grid5">
-        <article class="sig rv" style="--d:.02s"><span class="n">01</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M12 30V24M20 30V18M28 30V11" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M8 33h24" stroke="#e6ebf5" stroke-width="1.4" stroke-linecap="round" opacity=".45"/></svg>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M12 30V24M20 30V18M28 30V11" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M8 33h24" stroke="#ecf3ef" stroke-width="1.4" stroke-linecap="round" opacity=".45"/></svg>
           <h3>Лесенка</h3><p>Суммы новым получателям растут от перевода к переводу.</p>
         </article>
-        <article class="sig rv" style="--d:.06s"><span class="n">02</span>
+        <article class="sig">
           <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 7v13a7 7 0 0 0 14 0v-7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M28 15l-4.6-1.8M28 15l-1.6 4.6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
-          <h3>Наживка</h3><p>Получатель один раз вернул деньги — чтобы усыпить осторожность.</p>
+          <h3>Наживка</h3><p>Получатель один раз вернул деньги&nbsp;— чтобы усыпить осторожность.</p>
         </article>
-        <article class="sig rv" style="--d:.1s"><span class="n">03</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="5" fill="none" stroke="#e6ebf5" stroke-width="1.6" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M20 14.5v11m0 0 4.6-4.6M20 25.5l-4.6-4.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="5" fill="none" stroke="#ecf3ef" stroke-width="1.6" stroke-dasharray="0 4.2" stroke-linecap="round"/><path d="M20 14.5v11m0 0 4.6-4.6M20 25.5l-4.6-4.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Опустошение</h3><p>Заявка на закрытие вклада или кредит рядом с такими переводами.</p>
         </article>
-        <article class="sig rv" style="--d:.14s"><span class="n">04</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="4.2" fill="currentColor"/><g fill="#e6ebf5" opacity=".8"><circle cx="20" cy="9" r="2"/><circle cx="20" cy="31" r="2"/><circle cx="9" cy="20" r="2"/><circle cx="31" cy="20" r="2"/><circle cx="12.5" cy="12.5" r="1.5"/><circle cx="27.5" cy="27.5" r="1.5"/><circle cx="27.5" cy="12.5" r="1.5"/><circle cx="12.5" cy="27.5" r="1.5"/></g></svg>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="4.2" fill="currentColor"/><g fill="#ecf3ef" opacity=".8"><circle cx="20" cy="9" r="2"/><circle cx="20" cy="31" r="2"/><circle cx="9" cy="20" r="2"/><circle cx="31" cy="20" r="2"/><circle cx="12.5" cy="12.5" r="1.5"/><circle cx="27.5" cy="27.5" r="1.5"/><circle cx="27.5" cy="12.5" r="1.5"/><circle cx="12.5" cy="27.5" r="1.5"/></g></svg>
           <h3>Общий получатель</h3><p>Туда же впервые платят другие клиенты банка.</p>
         </article>
-        <article class="sig rv" style="--d:.18s"><span class="n">05</span>
-          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="19" r="7.6" fill="currentColor"/><circle cx="27" cy="27" r="5" fill="#ffc45c"/><path d="M9.4 19h15.2" stroke="#0c0f2c" stroke-width="2.6" stroke-linecap="round"/></svg>
-          <h3>Доплата</h3><p>После крупного перевода просят «налог» за вывод — назад ничего не приходит.</p>
+        <article class="sig">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="19" r="7.6" fill="currentColor"/><circle cx="27" cy="27" r="5" fill="#ffc45c"/><path d="M9.4 19h15.2" stroke="#05070a" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <h3>Доплата</h3><p>После крупного перевода просят «налог» за вывод&nbsp;— назад ничего не приходит.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="logic">
+  <section id="logic" aria-labelledby="logic-h">
     <div class="wrap">
       <div class="logic">
         <div>
-          <p class="kicker rv">Как принимается решение</p>
-          <h2 class="rv" style="--d:.05s">Правила, которые можно объяснить</h2>
+          <h2 id="logic-h">Правила, которые можно объяснить</h2>
           <div class="rules">
-            <div class="rule rv" style="--d:.08s"><span class="num">01</span><div><h3>Сигналы на каждой операции</h3>
+            <div class="rule"><span class="num">01</span><div><h3>Сигналы на каждой операции</h3>
               <p>Пять правил проверяются по истории клиента. Ничего, кроме операций, которые банк и так видит.</p>
               <div class="thresh"><span class="pill">лесенка</span><span class="pill">наживка</span><span class="pill">опустошение</span><span class="pill">общий получатель</span><span class="pill">доплата</span></div>
             </div></div>
-            <div class="rule rv" style="--d:.12s"><span class="num">02</span><div><h3>Порог</h3>
+            <div class="rule"><span class="num">02</span><div><h3>Порог</h3>
               <p><b>0–1 сигнал:</b> молчим. <b>2 и больше:</b> предупреждаем и объясняем, что именно заметили.</p>
-              <div class="thresh"><span class="pill">0–1 — тишина</span><span class="pill hot">2+ — предупреждение</span></div>
+              <div class="thresh"><span class="pill">0–1&nbsp;— тишина</span><span class="pill hot">2+&nbsp;— предупреждение</span></div>
             </div></div>
-            <div class="rule rv" style="--d:.16s"><span class="num">03</span><div><h3>Пауза — только по согласию</h3>
-              <p>Только на заявке на депозит или кредит, только если клиент включил режим защиты заранее, и только при опустошении вместе с наживкой или общим получателем — либо при 3+ сигналах.</p>
+            <div class="rule"><span class="num">03</span><div><h3>Пауза&nbsp;— только по согласию</h3>
+              <p>Только на заявке на депозит или кредит, только если клиент включил режим защиты заранее, и только при опустошении вместе с наживкой или общим получателем&nbsp;— либо при 3+ сигналах.</p>
             </div></div>
           </div>
         </div>
-        <aside class="bars rv" style="--d:.1s" id="bars" aria-label="Как сигналы складываются в предупреждение">
+        <aside class="bars panel" id="bars" aria-label="Как сигналы складываются в предупреждение">
           <p class="title">История Мейрамбека</p>
-          <div class="row"><span class="lbl">день 101</span><div class="rail"><span class="fill carn" style="--w:7%"></span></div><span class="val">11 100</span></div>
-          <div class="row"><span class="lbl">день 107</span><div class="rail"><span class="fill carn" style="--w:14%"></span></div><span class="val">29 800</span></div>
-          <div class="row"><span class="lbl">вернули</span><div class="rail"><span class="fill turq" style="--w:5%"></span></div><span class="val">10 100</span></div>
-          <div class="row"><span class="lbl">день 116</span><div class="rail"><span class="fill carn" style="--w:64%"></span></div><span class="val">175 000</span></div>
-          <div class="row"><span class="lbl">заявка</span><div class="rail"><span class="fill amber" style="--w:96%"></span></div><span class="val">2 154 900</span></div>
+          <div class="row"><span class="lbl">день 101</span><div class="rail"><span class="fill carn" style="--w:7%"></span></div><span class="val">11&nbsp;100</span></div>
+          <div class="row"><span class="lbl">день 107</span><div class="rail"><span class="fill carn" style="--w:14%"></span></div><span class="val">29&nbsp;800</span></div>
+          <div class="row"><span class="lbl">вернули</span><div class="rail"><span class="fill turq" style="--w:5%"></span></div><span class="val">10&nbsp;100</span></div>
+          <div class="row"><span class="lbl">день 116</span><div class="rail"><span class="fill carn" style="--w:64%"></span></div><span class="val">175&nbsp;000</span></div>
+          <div class="row"><span class="lbl">заявка</span><div class="rail"><span class="fill amber" style="--w:96%"></span></div><span class="val">2&nbsp;154&nbsp;900</span></div>
           <p class="cap">Суммы в тенге. Шкала условная: показано, как растут переводы новому получателю и чем всё заканчивается без предупреждения.</p>
         </aside>
       </div>
 
-      <div class="sim rv" style="--d:.06s">
+      <div class="sim">
         <div>
-          <p class="title">Проверьте правило сами</p>
+          <h3 class="title">Проверьте правило сами</h3>
           <p class="lead">Отметьте сигналы, которые заметил радар. Решение принимается по тому же правилу, что в коде.</p>
           <div class="chips" role="group" aria-label="Сигналы">
             <button class="chip" type="button" data-sig="les" aria-pressed="false">Лесенка</button>
@@ -195,92 +202,94 @@
             <button class="chip" type="button" data-sig="obsh" aria-pressed="false">Общий получатель</button>
             <button class="chip" type="button" data-sig="dop" aria-pressed="false">Доплата</button>
           </div>
-          <label class="switch"><input type="checkbox" id="prot"><span>Клиент заранее включил режим защиты — пауза возможна</span></label>
+          <label class="switch"><input type="checkbox" id="prot"><span>Клиент заранее включил режим защиты&nbsp;— пауза возможна</span></label>
         </div>
         <div class="out" aria-live="polite">
           <div class="out-row"><span>Сигналов</span><b id="cnt">0</b></div>
           <div class="out-row"><span>Предупреждение</span><b id="warnv" class="no">нет</b></div>
           <div class="out-row"><span>Пауза на заявку</span><b id="pausev" class="no">нет</b></div>
-          <p class="why" id="why">Сигналов нет — обычная операция, радар молчит.</p>
+          <p class="why" id="why">Сигналов нет&nbsp;— обычная операция, радар молчит.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="demo">
+  <section id="demo" class="horizon" aria-labelledby="demo-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Демо в цифрах</p>
-        <h2 class="rv" style="--d:.05s">Что происходит, когда радар срабатывает</h2>
+        <h2 id="demo-h">Что происходит, когда радар срабатывает</h2>
       </div>
-      <div class="stats">
-        <div class="stat rv" style="--d:.05s"><div class="v">175 000<small>₸</small></div><p class="k">Перевод на <b>116-й день</b>, на котором появилось предупреждение: лесенка и наживка.</p></div>
-        <div class="stat a rv" style="--d:.1s"><div class="v">47 900<small>₸</small></div><p class="k">Ушло мошенникам до того, как клиент нажал <b>«Остановить переводы»</b>.</p></div>
-        <div class="stat t rv" style="--d:.15s"><div class="v">2 038 000<small>₸</small></div><p class="k">Осталось на счетах: следующий перевод и заявка на закрытие вклада.</p></div>
+      <div class="ledger">
+        <div class="stats">
+          <div class="stat"><div class="v">175&nbsp;000<small>₸</small></div><p class="k">Перевод на <b>116-й день</b>, на котором появилось предупреждение: лесенка и наживка.</p></div>
+          <div class="stat a"><div class="v">47&nbsp;900<small>₸</small></div><p class="k">Ушло мошенникам до того, как клиент нажал <b>«Остановить переводы»</b>.</p></div>
+          <div class="stat t"><div class="v">2&nbsp;038&nbsp;000<small>₸</small></div><p class="k">Осталось на счетах: следующий перевод и заявка на закрытие вклада.</p></div>
+        </div>
+        <figure class="field-wrap" aria-label="Ушло 47 900 ₸, осталось 2 038 000 ₸: одна точка&nbsp;— 10 000 ₸">
+          <div class="field" id="field" data-lost="5" data-kept="204" aria-hidden="true"></div>
+          <p class="field-key" aria-hidden="true"><span class="l">ушло ≈ 50&nbsp;000&nbsp;₸</span><span class="k">осталось ≈ 2&nbsp;040&nbsp;000&nbsp;₸</span><span class="s">одна точка&nbsp;— 10&nbsp;000&nbsp;₸</span></p>
+        </figure>
       </div>
-      <p class="demo-note rv" style="--d:.2s">Сценарий из приложения: Мейрамбек, 116-й день, получатель «Карта ···9963». Кнопка «Остановить переводы» держит перевод дня 116 на 175 000 ₸, следующий — на 1 863 000 ₸ и заявку на 2 154 900 ₸.</p>
+      <p class="aside-note demo-note">Сценарий из приложения: Мейрамбек, 116-й день, получатель «Карта ···9963». Кнопка «Остановить переводы» держит перевод дня 116 на 175&nbsp;000&nbsp;₸, следующий&nbsp;— на 1&nbsp;863&nbsp;000&nbsp;₸ и заявку на 2&nbsp;154&nbsp;900&nbsp;₸.</p>
     </div>
   </section>
 
-  <section id="app">
+  <section id="app" aria-labelledby="app-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Приложение</p>
-        <h2 class="rv" style="--d:.05s">Три экрана, которые можно потрогать</h2>
-        <p class="sub rv" style="--d:.1s">Это не макеты: скриншоты сняты с локального Streamlit. Приложение поднимается одной командой, без сети и ключей.</p>
+        <h2 id="app-h">Три экрана, которые можно потрогать</h2>
+        <p class="sub">Это не макеты: скриншоты сняты с локального Streamlit. Приложение поднимается одной командой, без сети и ключей.</p>
       </div>
       <div class="shots">
-        <figure class="shot rv" style="--d:.03s">
-          <img src="img/app-client.jpg" width="1284" height="956" loading="lazy"
-               alt="Экран клиента: график операций, предупреждение на 116-й день, причины и четыре кнопки решения">
-          <figcaption><b>Клиент</b>Лента операций по дням, предупреждение с причинами и четыре решения. «Проиграть» само доводит историю до тревоги.</figcaption>
+        <figure class="shot">
+          <figcaption><b>Клиент</b>Предупреждение с причинами, четыре решения и радар с двумя сработавшими признаками. «Проиграть» само доводит историю до тревоги.</figcaption>
+          <img src="img/app-client.jpg" width="1279" height="970" loading="lazy" decoding="async"
+               alt="Экран клиента: предупреждение на 116-й день, причины, четыре кнопки решения и радар с двумя сработавшими признаками">
         </figure>
-        <figure class="shot rv" style="--d:.07s">
-          <img src="img/app-analyst.jpg" width="1284" height="974" loading="lazy"
-               alt="Экран аналитика: 160 клиентов, фильтр по признакам и таблица дел с днём предупреждения">
-          <figcaption><b>Аналитик</b>160 клиентов, фильтр по признакам и дело выбранного клиента со справкой на скачивание.</figcaption>
+        <figure class="shot">
+          <figcaption><b>Аналитик</b>160 клиентов, фильтр по признакам и карточки дел: когда и по каким признакам радар предупредил.</figcaption>
+          <img src="img/app-analyst.jpg" width="1284" height="974" loading="lazy" decoding="async"
+               alt="Экран аналитика: 160 клиентов, фильтр по признакам и карточки дел с днём предупреждения">
         </figure>
-        <figure class="shot rv" style="--d:.11s">
-          <img src="img/app-quality.jpg" width="1284" height="974" loading="lazy"
-               alt="Экран качества: три слепых теста бусинами и подробные отчёты">
-          <figcaption><b>Качество</b>Те же три теста и отчёты целиком — включая те цифры, которые нам не нравятся.</figcaption>
+        <figure class="shot">
+          <figcaption><b>Качество</b>Те же три теста и вывод без прикрас&nbsp;— включая те цифры, которые нам не нравятся.</figcaption>
+          <img src="img/app-quality.jpg" width="1284" height="966" loading="lazy" decoding="async"
+               alt="Экран качества: три слепых теста бусинами и вывод «порог 2 — компромисс»">
         </figure>
       </div>
     </div>
   </section>
 
-  <section id="tests">
+  <section id="tests" aria-labelledby="tests-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Проверка</p>
-        <h2 class="rv" style="--d:.05s">Три слепых теста, без купюр</h2>
-        <p class="sub rv" style="--d:.1s">Пороги подбирались только на наборе A. На слепых наборах ничего не подбиралось — показываем как есть, <b>вместе с ложными тревогами</b>.</p>
+        <h2 id="tests-h">Три слепых теста, без купюр</h2>
+        <p class="sub">Пороги подбирались только на наборе A. На слепых наборах ничего не подбиралось&nbsp;— показываем как есть, <b>вместе с ложными тревогами</b>.</p>
       </div>
       <div class="tests">
-        <article class="test bad rv" style="--d:.04s">
+        <article class="test bad">
           <div class="h"><b>Тест 1</b><span>5 обман / 5 честных</span></div>
           <div class="meter"><div class="cap"><span>Заметили обман</span><b>0 из 5</b></div><div class="dots carn" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
           <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 5</b></div><div class="dots amber" data-dots="5:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
           <p class="note">В этих историях не было ни депозита, ни кредита. Пауза не сработала.</p>
         </article>
-        <article class="test bad rv" style="--d:.09s">
+        <article class="test bad">
           <div class="h"><b>Тест 2</b><span>10 обман / 10 честных</span></div>
           <div class="meter"><div class="cap"><span>Заметили обман</span><b>8 из 10</b></div><div class="dots carn" data-dots="10:8" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
           <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>9 из 10</b></div><div class="dots amber" data-dots="10:9" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
           <p class="note">Исправили «общего получателя». Предупреждение приходило до заявки, но <b>честных беспокоили почти всегда</b>.</p>
         </article>
-        <article class="test rv" style="--d:.14s">
+        <article class="test">
           <div class="h"><b>Тест 3</b><span>10 обман / 10 честных</span></div>
           <div class="meter"><div class="cap"><span>Заметили обман</span><b>10 из 10</b></div><div class="dots carn" data-dots="10:10" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
           <div class="meter"><div class="cap"><span>Ложные тревоги</span><b>0 из 10</b></div><div class="dots amber" data-dots="10:0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <p class="note">Исправили лесенку и наживку. Но <b>до заявки — 0 из 4</b>, медиана денег до предупреждения 19%.</p>
+          <p class="note">Исправили лесенку и наживку. Но <b>до заявки&nbsp;— 0 из 4</b>, медиана денег до предупреждения 19%.</p>
         </article>
       </div>
-      <p class="legend rv" style="--d:.16s"><b>Как читать:</b> «заметили обман» — предупреждение появилось хотя бы раз за историю; «ложные тревоги» — честный клиент получил предупреждение. «До заявки» считается отдельно и видно в таблице.</p>
+      <p class="aside-note legend"><span><b>Как читать:</b> «заметили обман»&nbsp;— предупреждение появилось хотя бы раз за историю; «ложные тревоги»&nbsp;— честный клиент получил предупреждение. «До заявки» считается отдельно и видно в таблице.</span></p>
 
-      <p class="scroll-hint">Таблица прокручивается вбок →</p>
-      <div class="cmp rv" style="--d:.1s">
-        <div class="scroll">
+      <div class="cmp panel">
+        <div class="scroll" tabindex="0" role="region" aria-label="Сравнение трёх тестов">
           <table>
             <thead><tr><th scope="col">Набор</th><th scope="col">Заметили обман</th><th scope="col">Успели до заявки</th><th scope="col">Ложные тревоги</th><th scope="col">Пауза сработала</th></tr></thead>
             <tbody>
@@ -291,54 +300,53 @@
           </table>
         </div>
       </div>
+      <p class="scroll-hint">Таблица прокручивается вбок <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></p>
 
       <div class="verdict">
-        <div class="vd rv" style="--d:.03s"><b>Ловим — но поздно</b>В третьем тесте предупреждение приходило уже после заявки: 19% денег к этому моменту успевало уйти.</div>
-        <div class="vd rv" style="--d:.06s"><b>Рано — но с тревогами</b>Во втором тесте успевали до заявки, зато беспокоили 9 честных клиентов из 10.</div>
-        <div class="vd rv" style="--d:.09s"><b>Значит, порог 2 — компромисс</b>Не победа. Чтобы двигаться дальше, нужны обезличенные данные банка, а не новые подгонки под свои же примеры.</div>
+        <div class="vd"><b>Ловим&nbsp;— но поздно</b>В третьем тесте предупреждение приходило уже после заявки: 19% денег к этому моменту успевало уйти.</div>
+        <div class="vd"><b>Рано&nbsp;— но с тревогами</b>Во втором тесте успевали до заявки, зато беспокоили 9 честных клиентов из 10.</div>
+        <div class="vd statement"><b>Значит, порог&nbsp;2&nbsp;— компромисс</b>Не победа. Чтобы двигаться дальше, нужны обезличенные данные банка, а не новые подгонки под свои же примеры.</div>
       </div>
-      <p class="reports rv" style="--d:.12s">Отчёты целиком: <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_A.md">набор A</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind1.md">Тест 1</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind2.md">Тест 2</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind3.md">Тест 3</a> · исходные истории и генератор — в репозитории.</p>
+      <p class="reports">Отчёты целиком: <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_A.md">набор A</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind1.md">Тест 1</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind2.md">Тест 2</a> · <a href="https://github.com/Ordalinnn/tumar/blob/main/docs/metrics_blind3.md">Тест 3</a> · исходные истории и генератор&nbsp;— в репозитории.</p>
     </div>
   </section>
 
-  <section id="limits">
+  <section id="limits" aria-labelledby="limits-h">
     <div class="wrap">
       <div class="sec-head">
-        <p class="kicker rv">Ограничения</p>
-        <h2 class="rv" style="--d:.05s">Чего Тұмар пока не умеет</h2>
-        <p class="sub rv" style="--d:.1s">Честный список важнее красивых цифр: именно он показывает, что проверять дальше.</p>
+        <h2 id="limits-h">Чего Тұмар пока не умеет</h2>
+        <p class="sub">Честный список важнее красивых цифр: именно он показывает, что проверять дальше.</p>
       </div>
       <div class="fray" id="fray" aria-hidden="true"></div>
       <div class="limits">
-        <p class="limit rv">Если депозит закрыли рано, предупреждаем поздно.</p>
-        <p class="limit rv" style="--d:.04s">Не видим обман через лицензированную биржу.</p>
-        <p class="limit rv" style="--d:.08s">Честный клиент — оплата стройке, долг другу, торговля криптовалютой — бывает похож на жертву.</p>
-        <p class="limit rv" style="--d:.12s">Все истории вымышлены: это проверка логики, а не результат в банке.</p>
+        <p class="limit">Если депозит закрыли рано, предупреждаем поздно.</p>
+        <p class="limit">Не видим обман через лицензированную биржу.</p>
+        <p class="limit">Честный клиент&nbsp;— оплата стройке, долг другу, торговля криптовалютой&nbsp;— бывает похож на жертву.</p>
+        <p class="limit">Все истории вымышлены: это проверка логики, а не результат в банке.</p>
       </div>
       <div class="next">
-        <div class="nx rv" style="--d:.04s"><i>Шаг 1</i><b>Раньше депозита</b>Искать сигналы до заявки, а не рядом с ней.</div>
-        <div class="nx rv" style="--d:.07s"><i>Шаг 2</i><b>Данные банка</b>Проверить на обезличенных операциях, а не на вымышленных.</div>
-        <div class="nx rv" style="--d:.1s"><i>Шаг 3</i><b>Порог и ложные</b>Снизить тревоги, не потеряв раннее предупреждение.</div>
-        <div class="nx rv" style="--d:.13s"><i>Шаг 4</i><b>Казахский язык</b>Интерфейс и текст предупреждения — на двух языках.</div>
+        <div class="nx"><i>Шаг 1</i><b>Раньше депозита</b>Искать сигналы до заявки, а не рядом с ней.</div>
+        <div class="nx"><i>Шаг 2</i><b>Данные банка</b>Проверить на обезличенных операциях, а не на вымышленных.</div>
+        <div class="nx"><i>Шаг 3</i><b>Порог и ложные</b>Снизить тревоги, не потеряв раннее предупреждение.</div>
+        <div class="nx"><i>Шаг 4</i><b>Казахский язык</b>Интерфейс и текст предупреждения&nbsp;— на двух языках.</div>
       </div>
     </div>
   </section>
 
-  <section id="run">
+  <section id="run" aria-labelledby="run-h">
     <div class="wrap run-grid">
       <div>
-        <p class="kicker rv">Запуск</p>
-        <h2 class="rv" style="--d:.05s">Один файл, ноль зависимостей от сети</h2>
-        <p class="sub rv" style="--d:.1s">Приложение поднимается локально: демо на 160 историй, панель аналитика и экран качества с этими же тестами.</p>
-        <div class="req rv" style="--d:.14s">
-          <span>Python 3.12+</span><span>Streamlit 1.56+</span><span>pandas</span><span>Altair</span><span>45 проверок pytest</span>
+        <h2 id="run-h">Один файл, ноль зависимостей от сети</h2>
+        <p class="sub">Приложение поднимается локально: демо на 160 историй, панель аналитика и экран качества с этими же тестами.</p>
+        <div class="req">
+          <span class="pill">Python 3.12+</span><span class="pill">Streamlit 1.56+</span><span class="pill">pandas</span><span class="pill">Altair</span><span class="pill">45 проверок pytest</span>
         </div>
-        <div class="cta-row rv" style="--d:.18s">
-          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Открыть демо <span class="ar" aria-hidden="true">↗</span></a>
+        <div class="cta-row">
+          <a class="btn pri" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Открыть демо <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
           <span class="cta-note">Приложение в браузере, без установки</span>
         </div>
       </div>
-      <div class="term rv" style="--d:.08s">
+      <div class="term panel">
         <div class="bar"><i></i><i></i><i></i><span>tumar</span><button id="copy" type="button">Скопировать</button></div>
         <pre><span class="p">$</span> python -m pip install -r requirements.txt
 <span class="p">$</span> streamlit run app.py
@@ -348,15 +356,15 @@
     </div>
   </section>
 
-  <section class="final">
+  <section class="final horizon" aria-labelledby="final-h">
     <div class="wrap">
-      <div class="amulet rv" id="amulet2" aria-hidden="true"></div>
-      <h2 class="rv" style="--d:.05s">Слайды для защиты</h2>
-      <p class="sub rv" style="--d:.1s">Одиннадцать слайдов: схема, признаки, логика, слепые тесты и ограничения. Управление — стрелками, пробелом или кликом.</p>
-      <div class="cta-row rv" style="--d:.15s">
-        <a class="btn pri" href="slides.html">Открыть слайды <span class="ar" aria-hidden="true">↗</span></a>
+      <div class="amulet" id="amulet2" aria-hidden="true"></div>
+      <h2 id="final-h">Слайды для защиты</h2>
+      <p class="sub">Одиннадцать слайдов: схема, признаки, логика, слепые тесты и ограничения. Управление&nbsp;— стрелками, пробелом или кликом.</p>
+      <div class="cta-row">
+        <a class="btn pri" href="slides.html">Открыть слайды <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
         <a class="btn" href="slides.pdf">PDF</a>
-        <a class="btn" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Открыть демо <span class="ar" aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://tumarr.streamlit.app/" target="_blank" rel="noopener">Открыть демо <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
       </div>
     </div>
   </section>
@@ -369,10 +377,10 @@
   </div>
 </footer>
 
-<button class="up" id="up" type="button" aria-label="Наверх">↑</button>
+<button class="up" id="up" type="button" aria-label="Наверх"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"/></svg></button>
 
-<dialog class="lb" id="lb" aria-label="Скриншот приложения"><button class="lb-x" type="button" aria-label="Закрыть">×</button><img src="img/app-client.jpg" alt=""></dialog>
+<dialog class="lb" id="lb" aria-label="Скриншот приложения"><button class="lb-x" type="button" aria-label="Закрыть"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg></button><img src="img/app-client.jpg" alt=""></dialog>
 
-<script src="site.js?v=6"></script>
+<script src="site.js?v=7"></script>
 </body>
 </html>

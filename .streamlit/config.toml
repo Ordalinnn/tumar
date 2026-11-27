@@ -1,24 +1,36 @@
 [theme]
-# ночная степь, как на сайте и слайдах: серебро на чёрном, сердолик как главный цвет
+# ночная степь, как на сайте и слайдах: токены из DESIGN.md §8 (источник значений — docs/style.css §1)
 base = "dark"
-primaryColor = "#ff5a3c"
-backgroundColor = "#06080a"
-secondaryBackgroundColor = "#0f1517"
-textColor = "#e9f2ee"
-linkColor = "#ff8a70"
-font = "Bahnschrift, 'Roboto Condensed', 'Arial Narrow', 'Segoe UI', system-ui, sans-serif"
-headingFont = "Bahnschrift, 'DIN Alternate', 'Roboto Condensed', 'Arial Narrow', system-ui, sans-serif"
-borderColor = "#243032"
-dataframeBorderColor = "#1b2426"
-dataframeHeaderBackgroundColor = "#0c1214"
-baseRadius = "14px"
-buttonRadius = "999px"
+primaryColor = "#ff5a3c"                 # --carn
+backgroundColor = "#05070a"              # --night-0
+secondaryBackgroundColor = "#0a0e11"     # --night-1
+textColor = "#ecf3ef"                    # --silver
+linkColor = "#ff8a70"                    # --carn-hi
+linkUnderline = true
+codeTextColor = "#ecf3ef"
+codeBackgroundColor = "#0a0e11"
+font = "'Golos Text':https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..700&display=swap"
+headingFont = "'Fira Sans Extra Condensed':https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@700;800&display=swap"
+codeFont = "'Fira Code':https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap"
+baseFontSize = 16
+headingFontWeights = [800, 800, 700, 700, 700, 700]
+headingFontSizes = ["3.5rem", "2.5rem", "1.625rem", "1.25rem", "1.0625rem", "0.9375rem"]
+metricValueFontSize = "2.75rem"
+metricValueFontWeight = 800
+baseRadius = "16px"                      # --r-md
+buttonRadius = "999px"                   # --r-pill
+borderColor = "#1c2427"                  # --line на ночи
+dataframeBorderColor = "#141b1e"         # --line-soft на ночи
+dataframeHeaderBackgroundColor = "#10171a"  # --night-2
 showWidgetBorder = true
-redColor = "#ff5a3c"
-orangeColor = "#ffc45c"
+redColor = "#ff5a3c"                     # тревога
+orangeColor = "#ffc45c"                  # деньги под угрозой (янтарь)
 yellowColor = "#ffc45c"
-greenColor = "#5ec8b4"
-blueColor = "#969fcd"
+greenColor = "#5ec8b4"                   # спасено, всё в порядке (мята)
+blueColor = "#9fb0c8"                    # пыль: нейтральная справка
+grayColor = "#8b9792"                    # --silver-3
+chartCategoricalColors = ["#ff5a3c", "#5ec8b4", "#ffc45c", "#9fb0c8", "#ff8a70", "#aab6b1"]
+chartSequentialColors = ["#1a0f0d", "#3b1610", "#5e1d13", "#842515", "#ab2f19", "#d23f2a", "#ff5a3c", "#ff7a5e", "#ff9d86", "#ffc2b4"]
 
 [client]
 toolbarMode = "minimal"
